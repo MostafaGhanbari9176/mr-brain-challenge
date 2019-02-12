@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.DMainMenu
 import ir.pepotec.app.game.ui.App
 import kotlinx.android.synthetic.main.item_main_menu.view.*
 
-class AdapterMainMenu(private val source: ArrayList<String>,
+class AdapterMainMenu(private val source: ArrayList<DMainMenu>,
                       private val listener:() -> Unit) :
     RecyclerView.Adapter<AdapterMainMenu.ViewHolder>() {
 
@@ -25,11 +26,15 @@ class AdapterMainMenu(private val source: ArrayList<String>,
     }
 
     class ViewHolder(itemView: View, private val listener: ()->Unit) : RecyclerView.ViewHolder(itemView) {
-        fun binder(subject:String) {
+        fun binder(data:DMainMenu) {
+            with(data){
+            App.loadImage(itemView.imgMainMenu,iUrl,R.drawable.game_mode_item_back)
             itemView.txtMainMenu.text = subject
             itemView.txtMainMenu.setShadowLayer(1f,-5f,5f, R.color.primaryColor)
-            itemView.setOnClickListener{listener()
-            //Toast.makeText(App.instance, "OKOKOK",Toast.LENGTH_SHORT).show()
+            itemView.setOnClickListener {
+                listener()
+                //Toast.makeText(App.instance, "OKOKOK",Toast.LENGTH_SHORT).show()
+            }
             }
             //itemView.imageView.setImageResource(R.drawable.main_menu_back_item)
         }

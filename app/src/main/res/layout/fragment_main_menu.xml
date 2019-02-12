@@ -3,11 +3,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:layoutDirection="rtl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activities.MainMenuActivity"
-        android:background="@drawable/first_menu_background">
+        tools:context=".ui.activityMain.FragmentMainMenu"
+        android:background="@drawable/circle_back">
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/MainMenu"/>
+            android:layout_height="match_parent" android:id="@+id/RVMainMenu"/>
 </android.support.constraint.ConstraintLayout>

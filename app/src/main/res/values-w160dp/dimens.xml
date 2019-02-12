@@ -1,0 +1,5 @@
+<!-- 0.5 * source -->
+
+<resources>
+    <dimen name="puzzle_height">35dp</dimen>
+</resources>
