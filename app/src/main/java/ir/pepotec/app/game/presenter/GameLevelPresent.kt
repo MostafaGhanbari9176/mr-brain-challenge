@@ -10,8 +10,8 @@ class GameLevelPresent(private val listenr: GameLevelInterface) {
 
     fun getData(){
         val data = ArrayList<DGameLevel>()
-        for(i in 0..10){
-            data.add(DGameLevel(i, "Subject$i", "", i,i))
+        for(i in 0..2){
+            data.add(DGameLevel(i,"Subject$i", "", i, i))
         }
         listenr.GameLevelData(data)
     }

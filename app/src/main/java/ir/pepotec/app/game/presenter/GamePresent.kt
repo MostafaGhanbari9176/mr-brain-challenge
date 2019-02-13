@@ -14,7 +14,11 @@ class GamePresent(private val listener:GamePresentInterface) {
 
         val blocks = ArrayList<DBlock>()
         blocks.add(DBlock(0,1,1,2))
-        blocks.add(DBlock(0,0,1,1))
-        listener.gameData(DGame(1,2f,1,blocks))
+        if(gId == 0)
+            listener.gameData(DGame(1,1f,1,blocks))
+        if(gId == 1)
+            listener.gameData(DGame(1,2f,1,blocks))
+        if(gId == 2)
+            listener.gameData(DGame(1,0.5f,1,blocks))
     }
 }

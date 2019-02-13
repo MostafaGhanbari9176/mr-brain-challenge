@@ -10,6 +10,6 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
         android:id="@+id/RVGameMode"
-        android:background="@drawable/lozi_back_blue">
+        android:background="@drawable/lozi_back_orange">
 
 </android.support.v7.widget.RecyclerView>

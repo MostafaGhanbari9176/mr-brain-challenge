@@ -10,7 +10,7 @@ class GameModePresent(private val listener: ModeGameInterface) {
 
     fun getData(){
         var data = ArrayList<DGameMode>()
-        for (i in 0..10){
+        for (i in 0..4){
             data.add(DGameMode(i, "Subject$i", ""))
         }
         listener.modeMenuData(data)
