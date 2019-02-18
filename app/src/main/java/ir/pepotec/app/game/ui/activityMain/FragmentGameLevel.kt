@@ -12,7 +12,7 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.DGameLevel
 import ir.pepotec.app.game.presenter.GameLevelPresent
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.activityGame.ActivityGame
+import ir.pepotec.app.game.ui.gameModels.a.ActivityA
 import ir.pepotec.app.game.ui.adapters.AdapterGameLevel
 import kotlinx.android.synthetic.main.fragment_game_level.*
 
@@ -42,7 +42,7 @@ class FragmentGameLevel : Fragment(), GameLevelPresent.GameLevelInterface {
     }
 
     private fun gotoNextActivity(data:DGameLevel) {
-        val intent = Intent(ctx, ActivityGame::class.java)
+        val intent = Intent(ctx, ActivityA::class.java)
         with(data) {
             intent.putExtra("gId", gId)
         }
