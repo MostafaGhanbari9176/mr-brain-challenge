@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activityMain.FragmentMainMenu"
-        android:background="@drawable/tire_back">
+>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/RVMainMenu" app:layout_constraintEnd_toEndOf="parent"

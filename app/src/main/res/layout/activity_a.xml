@@ -4,7 +4,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/tire_back"
+                android:background="@drawable/back_mode_a"
                 android:id="@+id/GameParent" android:layoutDirection="rtl">
     <LinearLayout
             android:orientation="horizontal"
@@ -14,31 +14,34 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/puzzle_height" android:id="@+id/LLRightA"
-                android:background="@color/secondaryDarkYellow">
+                android:background="@drawable/block_back">
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/puzzle_height" android:id="@+id/LLSpaceA"
-                android:background="@color/secondaryDarkOrange">
+        >
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/puzzle_height" android:id="@+id/LLLeftA"
-                android:background="@color/secondaryDarkYellow">
+                android:background="@drawable/block_back">
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="@dimen/puzzle_height"
-            android:layout_height="@dimen/puzzle_height" android:background="@color/secondaryLightGreen"
+            android:layout_height="@dimen/puzzle_height" android:background="@drawable/block_back"
             android:id="@+id/LLPuzzleA" android:layout_centerInParent="true">
     </LinearLayout>
     <Button
             android:text="شروع"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/btnStartGame" android:layout_centerInParent="true"/>
+            android:layout_width="187dp"
+            android:layout_height="wrap_content" android:id="@+id/btnStartGame" android:layout_above="@+id/imgAnim"
+            android:layout_marginBottom="-341dp" android:layout_alignParentEnd="true" android:layout_marginEnd="106dp"
+            android:layout_alignParentStart="true" android:layout_marginStart="118dp" android:layout_marginTop="37dp"
+            android:layout_below="@+id/imgAnim"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
@@ -54,4 +57,8 @@
             android:layout_below="@+id/btnStartGame" android:layout_centerHorizontal="true" android:textSize="24sp"
             android:textColor="@color/secondaryDarkOrange" android:textStyle="bold" android:alpha="0.5"
             android:scaleX="0" android:scaleY="0"/>
+    <ImageView
+            android:layout_width="256dp"
+            android:layout_height="256dp" app:srcCompat="@drawable/test" android:id="@+id/imgAnim"
+            android:layout_centerInParent="true"/>
 </RelativeLayout>

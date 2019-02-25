@@ -35,7 +35,7 @@ class AdapterMainMenu(
     class ViewHolder(itemView: View, private val listener: () -> Unit) : RecyclerView.ViewHolder(itemView) {
         fun binder(data: DMainMenu, position: Int) {
             with(data) {
-                if (position != 0)
+                if (position != 5)
                     App.loadImage(itemView.imgMainMenu, iUrl, R.drawable.game_mode_item_back)
                 else
                     loadGif(itemView.imgMainMenu)

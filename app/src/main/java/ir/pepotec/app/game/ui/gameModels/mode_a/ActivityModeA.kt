@@ -1,25 +1,27 @@
-package ir.pepotec.app.game.ui.gameModels.a
+package ir.pepotec.app.game.ui.gameModels.mode_a
 
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.graphics.Point
+import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateInterpolator
+import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.widget.LinearLayout
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import kotlinx.android.synthetic.main.activity_a.*
 import org.jetbrains.anko.toast
-import kotlin.math.log
+import kotlin.math.abs
 
-class ActivityA : AppCompatActivity(), View.OnDragListener, GameCreatorA.GameCreatorInterface {
+class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.GameCreatorInterface {
 
     private var mLastTouchX: Int = 0
     lateinit var puzzle: LinearLayout
@@ -115,6 +117,7 @@ class ActivityA : AppCompatActivity(), View.OnDragListener, GameCreatorA.GameCre
             }
 
             override fun onAnimationEnd(animation: Animator?) {
+                (imgAnim.drawable as Animatable).start()
                 showResult()
             }
 
@@ -223,9 +226,16 @@ class ActivityA : AppCompatActivity(), View.OnDragListener, GameCreatorA.GameCre
         return true
     }
 
+    private var step = 0
+
     private fun changePuzzleSize(dx: Int) {
-        puzzle.requestLayout()
-        puzzle.layoutParams.width = puzzle.width + (dx / 1.5).toInt()
+        step+=dx
+        if(abs(step) >= (p.x / 20))
+        {
+            puzzle.requestLayout()
+            puzzle.layoutParams.width = puzzle.width + (step / 2)
+            step = 0
+        }
     }
 
 

@@ -1,4 +1,4 @@
-package ir.pepotec.app.game.ui.gameModels.a
+package ir.pepotec.app.game.ui.gameModels.mode_a
 
 import android.content.Context
 import android.graphics.Point
@@ -46,13 +46,13 @@ class GameCreatorA(
     }
 
     private fun getHeightPX(): Int {
-        return (ctx as ActivityA).resources.getDimension(R.dimen.puzzle_height).toInt()
+        return (ctx as ActivityModeA).resources.getDimension(R.dimen.puzzle_height).toInt()
     }
 
     override fun gameData(data: DA) {
         initSpaceLength(data.alpha)
         initBlocksLength(data.sLocation)
-        addGuide()
+        //addGuide()
         initPuzzle(data.alpha, data.pLocation)
         listener.gameCreated(space, data.alpha)
     }
@@ -88,12 +88,16 @@ class GameCreatorA(
     }
 
     private fun initSpaceLength(alpha: Float) {
+        val step = (p.x)/40
         val max = if (alpha > 1)
             (p.x / alpha).toInt()
         else
             (p.x * 0.8).toInt()
         val min = (p.x * 0.2).toInt()
         space = (min..max).random()
+        if(space % step != 0){
+         space = if(space > step) space+(space%step) else space-(space%step)
+        }
         val params = LinearLayout.LayoutParams(space, getHeightPX())
         LLSpace.layoutParams = params
     }

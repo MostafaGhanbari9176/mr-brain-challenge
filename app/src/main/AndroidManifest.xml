@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ir.pepotec.app.game.ui.gameModels.a.ActivityA"
+        <activity android:name="ir.pepotec.app.game.ui.gameModels.mode_a.ActivityModeA"
                   android:theme="@style/AppTheme"
         android:screenOrientation="portrait"/>
 

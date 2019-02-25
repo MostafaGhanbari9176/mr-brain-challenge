@@ -5,7 +5,8 @@
     <color name="primaryDarkColor">#33333d</color>
     <color name="secondaryOrange">#ff6859</color>
     <color name="secondaryLightOrange">#ff9a86</color>
-    <color name="secondaryDarkOrange">#86C6352F</color>
+    <color name="secondaryLightOrange2">#FF6E60</color>
+    <color name="secondaryDarkOrange">#F44336</color>
     <color name="secondaryPesteie">#1eb980</color>
     <color name="secondaryLightPesteie">#62ecb0</color>
     <color name="secondaryDarkPesteie">#008853</color>
@@ -25,5 +26,5 @@
     <color name="secondaryTextColor">#000000</color>
     <color name="dark">#000000</color>
     <color name="light">#fff</color>
-    <color name="light2">#EEEEEE</color>
+    <color name="light2">#E9E9E9</color>
 </resources>
