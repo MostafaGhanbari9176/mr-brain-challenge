@@ -19,6 +19,8 @@
     <color name="secondaryFirozei">#72deff</color>
     <color name="secondaryLightFirozei">#a9ffff</color>
     <color name="secondaryDarkFirozei">#34accc</color>
+    <color name="blue">#2196F3</color>
+    <color name="red">#F44336</color>
     <color name="secondaryPurple">#b15dff</color>
     <color name="secondaryLightPurple">#e78eff</color>
     <color name="secondaryDarkPurple">#7c2bcb</color>

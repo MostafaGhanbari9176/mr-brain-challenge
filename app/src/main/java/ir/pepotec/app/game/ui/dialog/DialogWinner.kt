@@ -4,20 +4,27 @@ import android.animation.ObjectAnimator
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.AnimatedVectorDrawable
-import android.graphics.drawable.ColorDrawable
+import android.graphics.Outline
+import android.graphics.Rect
+import android.graphics.drawable.*
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
+import com.devs.vectorchildfinder.VectorChildFinder
+import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import kotlinx.android.synthetic.main.dialog_loser.view.*
 import kotlinx.android.synthetic.main.dialog_winner.view.*
+import kotlinx.android.synthetic.main.morph.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class DialogWinner(
     private val message: String,
-    private val listener: ResualtDialogResponse
+    private val listener: ResualtDialogResponse,
+    private val score: Int
 ) {
 
     private var v: View
@@ -37,7 +44,8 @@ class DialogWinner(
     }
 
     private fun initViews() {
-        // v.txtDialogLoser.text = message
+        v.txtDialogWinner.text = score.toString()
+        v.txtDialogWinner.setShadowLayer(1f, 0f, 6f, R.color.primaryColor)
         v.btnMenuDialogWinner.setOnClickListener {
             listener.prevMenu()
             d.cancel()
@@ -53,16 +61,28 @@ class DialogWinner(
     }
 
     private fun startAnim() {
-        (v.imgDialogWinner.drawable as AnimatedVectorDrawable).stop()
-        (v.imgDialogWinner.drawable as AnimatedVectorDrawable).start()
 
-        showMessage()
-    }
-
-    private fun showMessage() {
-        doAsync() {
-            Thread.sleep(800)
-            uiThread { (ObjectAnimator.ofFloat(v.txtDialogWinner,View.ALPHA,0f,1f).start())}
+        val d = (v.imgDialogWinner.drawable as AnimatedVectorDrawable)
+        d.start()
+        v.imgDialogWinner.requestLayout()
+        doAsync {
+            while (true) {
+                Thread.sleep(100)
+                if (!(d.isRunning))
+                    break
+            }
+            uiThread {
+                setResults()
+            }
         }
+
     }
+
+    private fun setResults() {
+        (ObjectAnimator.ofFloat(v.txtDialogWinner, View.ALPHA, 0f, 1f).start())
+        val vector = VectorChildFinder(ctx, R.drawable.winner_message, v.imgDialogWinner)
+        val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
+        path.trimPathEnd = score / 100.0f
+    }
+
 }

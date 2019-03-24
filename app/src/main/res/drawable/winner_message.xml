@@ -1,440 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
-                 xmlns:android="http://schemas.android.com/apk/res/android">
-    <aapt:attr name="android:drawable">
-        <vector xmlns:android="http://schemas.android.com/apk/res/android"
-                android:width="24dp"
-                android:height="24dp"
-                android:viewportWidth="24"
-                android:viewportHeight="24"
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24"
+        android:viewportHeight="24"
+>
+    <path
+            android:fillColor="#2196F3"
+            android:pathData="M4,9 C4,4 4,4 9,4 H15 C 20,4 20,4 20,9 V15 C 20,20 20,20 15,20 H9 C 4,20 4,20 4,15"
+    />
+
+    <group
+            android:pivotX="6"
+            android:pivotY="17"
+            android:scaleX="0.2"
+            android:scaleY="0.2"
+            android:name="star_one_parent">
+        <path android:fillColor="#000" android:fillAlpha="0.15"
+              android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+        <path
+                android:fillColor="#fff"
+                android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        />
+        <group
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:pivotY="12"
+                android:pivotX="12"
         >
-            <group
-                    android:fillAlpha="0"
-                    android:pivotX="12"
-                    android:pivotY="12"
-                    android:scaleX="0"
-                    android:scaleY="0"
-                    android:name="parent_star">
-                <clip-path
-                        android:name="my_star"
-                        android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                />
-                <path
-                        android:fillColor="#2196F3"
-                        android:pathData="M4,9 C4,4 4,4 9,4 H15 C 20,4 20,4 20,9 V15 C 20,20 20,20 15,20 H9 C 4,20 4,20 4,15"
-                />
-                <path
-                        android:name="back_color"
-                        android:fillColor="@color/secondaryYellow"
-                        android:pathData="M0,0 H24 V24 H0 Z"
-                />
-            </group>
-            <group
+            <path android:fillColor="#2196F3"
+                  android:pathData="M12,5V1L7,6l5,5V7c3.31,0 6,2.69 6,6s-2.69,6 -6,6 -6,-2.69 -6,-6H4c0,4.42 3.58,8 8,8s8,-3.58 8,-8 -3.58,-8 -8,-8z"/>
+        </group>
+    </group>
+    <group
 
-                    android:pivotX="6"
-                    android:pivotY="17"
-                    android:scaleX="0"
-                    android:scaleY="0"
-                    android:name="star_one_parent">
-                <clip-path
-                        android:name="star_one"
-                        android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                />
-                <path android:fillColor="#000" android:fillAlpha="0.15"
-                      android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
-                <path
-                        android:fillColor="#fff"
-                        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-                />
-                <group
-                        android:scaleX="0.8"
-                        android:scaleY="0.8"
-                        android:pivotY="12"
-                        android:pivotX="12"
-                >
-                    <path android:fillColor="#2196F3"
-                          android:pathData="M12,5V1L7,6l5,5V7c3.31,0 6,2.69 6,6s-2.69,6 -6,6 -6,-2.69 -6,-6H4c0,4.42 3.58,8 8,8s8,-3.58 8,-8 -3.58,-8 -8,-8z"/>
-                </group>
-                <path
-                        android:name="back_one"
-                        android:fillColor="@color/secondaryYellow"
-                        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-                />
-            </group>
-            <group
-
-                    android:pivotX="12"
-                    android:pivotY="17"
-                    android:scaleX="0"
-                    android:scaleY="0"
-                    android:name="star_two_parent">
-                <clip-path
-                        android:name="star_two"
-                        android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                />
-                <path android:fillColor="#000" android:fillAlpha="0.15"
-                      android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
-                <path
-                        android:fillColor="#fff"
-                        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-                />
-                <group
-                        android:scaleX="0.8"
-                        android:scaleY="0.8"
-                        android:pivotY="12"
-                        android:pivotX="12"
-                >
-                    <path android:fillColor="#2196F3"
-                          android:pathData="M4,8h4L8,4L4,4v4zM10,20h4v-4h-4v4zM4,20h4v-4L4,16v4zM4,14h4v-4L4,10v4zM10,14h4v-4h-4v4zM16,4v4h4L20,4h-4zM10,8h4L14,4h-4v4zM16,14h4v-4h-4v4zM16,20h4v-4h-4v4z"
-                    />
-                </group>
-                <path
-                        android:name="back_two"
-                        android:fillColor="@color/secondaryYellow"
-                        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-                />
-            </group>
-            <group
-
-                    android:pivotX="18"
-                    android:pivotY="17"
-                    android:scaleX="0"
-                    android:scaleY="0"
-                    android:name="star_three_parent">
-                <clip-path
-                        android:name="star_three"
-                        android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                />
-                <path android:fillColor="#000" android:fillAlpha="0.15"
-                      android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
-                <path
-                        android:fillColor="#fff"
-                        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-                />
-                <group
-                        android:scaleX="0.8"
-                        android:scaleY="0.8"
-                        android:pivotY="12"
-                        android:pivotX="12"
-                >
-                    <path android:fillColor="#2196F3"
-                          android:pathData="M12,8V4l8,8 -8,8v-4H4V8z"
-                    />
-                </group>
-                <path
-                        android:name="back_three"
-                        android:fillColor="@color/secondaryYellow"
-                        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-                />
-            </group>
-            <group>
-                <clip-path
-                        android:name="clip_progress"
-                        android:pathData="M4,9 H20 V9 H4"
-                />
-                <path
-                        android:strokeColor="#000"
-                        android:strokeWidth="2.7"
-                        android:strokeAlpha="0.15"
-                        android:strokeLineCap="round"
-                        android:pathData="M6.5,10.9 H17.5"
-                />
-                <path
-                        android:strokeColor="#fff"
-                        android:strokeWidth="2.7"
-                        android:strokeLineCap="round"
-                        android:pathData="M6.5,10.5 H17.5"
-                />
-                <path
-                        android:strokeAlpha="0.3"
-                        android:strokeColor="#2196F3"
-                        android:strokeWidth="2.4"
-                        android:strokeLineCap="round"
-                        android:pathData="M6.5,10.5 H17.5"
-                />
-                <path
-                        android:strokeColor="#2196F3"
-                        android:strokeWidth="2"
-                        android:strokeLineCap="round"
-                        android:pathData="M6.5,10.5 H10"
-                />
-            </group>
-        </vector>
-    </aapt:attr>
-    <target android:name="star_one_parent">
-        <aapt:attr name="android:animation">
-            <set>
-                <set android:ordering="sequentially">
-                    <set android:ordering="together">
-                        <objectAnimator
-                                android:propertyName="scaleX"
-                                android:valueFrom="0"
-                                android:valueTo="0.3"
-                                android:duration="300"
-                                android:valueType="floatType"
-                        />
-                        <objectAnimator
-                                android:propertyName="scaleY"
-                                android:valueFrom="0"
-                                android:valueTo="0.3"
-                                android:duration="300"
-                                android:valueType="floatType"
-                        />
-                    </set>
-                    <set android:ordering="together">
-                        <objectAnimator
-                                android:propertyName="scaleX"
-                                android:valueFrom="0.3"
-                                android:valueTo="0.2"
-                                android:duration="100"
-                                android:valueType="floatType"
-                        />
-                        <objectAnimator
-                                android:propertyName="scaleY"
-                                android:valueFrom="0.3"
-                                android:valueTo="0.2"
-                                android:duration="100"
-                                android:valueType="floatType"
-                        />
-                    </set>
-                </set>
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="star_two_parent">
-        <aapt:attr name="android:animation">
-            <set android:ordering="sequentially">
-                <set android:ordering="together">
-                    <objectAnimator
-                            android:startOffset="150"
-                            android:propertyName="scaleX"
-                            android:valueFrom="0"
-                            android:valueTo="0.4"
-                            android:duration="300"
-                            android:valueType="floatType"
-                    />
-                    <objectAnimator
-
-                            android:propertyName="scaleY"
-                            android:valueFrom="0"
-                            android:valueTo="0.4"
-                            android:duration="300"
-                            android:valueType="floatType"
-                    />
-                </set>
-                <set android:ordering="together">
-                    <objectAnimator
-                            android:propertyName="scaleX"
-                            android:valueFrom="0.4"
-                            android:valueTo="0.2"
-                            android:duration="100"
-                            android:valueType="floatType"
-                    />
-                    <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0.4"
-                            android:valueTo="0.2"
-                            android:duration="100"
-                            android:valueType="floatType"
-                    />
-                </set>
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="star_three_parent">
-        <aapt:attr name="android:animation">
-            <set android:ordering="sequentially">
-                <set android:ordering="together">
-                    <objectAnimator
-                            android:startOffset="300"
-                            android:propertyName="scaleX"
-                            android:valueFrom="0"
-                            android:valueTo="0.3"
-                            android:duration="300"
-                            android:valueType="floatType"
-                    />
-                    <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0"
-                            android:valueTo="0.3"
-                            android:duration="300"
-                            android:valueType="floatType"
-                    />
-                </set>
-                <set android:ordering="together">
-                    <objectAnimator
-                            android:propertyName="scaleX"
-                            android:valueFrom="0.3"
-                            android:valueTo="0.2"
-                            android:duration="100"
-                            android:valueType="floatType"
-                    />
-                    <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0.3"
-                            android:valueTo="0.2"
-                            android:duration="100"
-                            android:valueType="floatType"
-                    />
-                </set>
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="parent_star">
-        <aapt:attr name="android:animation">
-            <set android:ordering="sequentially">
-                <set android:ordering="together">
-                    <objectAnimator
-                            android:startOffset="500"
-                            android:duration="300"
-                            android:propertyName="scaleX"
-                            android:valueFrom="0"
-                            android:valueTo="1.2"
-                            android:valueType="floatType"
-                    />
-                    <objectAnimator
-                            android:duration="300"
-                            android:propertyName="scaleY"
-                            android:valueFrom="0"
-                            android:valueTo="1.2"
-                            android:valueType="floatType"
-                    />
-                </set>
-                <set android:ordering="together">
-                    <objectAnimator
-                            android:duration="200"
-                            android:propertyName="scaleX"
-                            android:valueFrom="1.2"
-                            android:valueTo="1"
-                            android:valueType="floatType"
-                    />
-                    <objectAnimator
-                            android:duration="200"
-                            android:propertyName="scaleY"
-                            android:valueFrom="1.2"
-                            android:valueTo="1"
-                            android:valueType="floatType"
-                    />
-                </set>
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="my_star">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:startOffset="900"
-                    android:duration="200"
-                    android:propertyName="pathData"
-                    android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                    android:valueTo="M12,21L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,9.24l0,11.5L5.82,21z"
-                    android:valueType="pathType"
+            android:pivotX="12"
+            android:pivotY="17"
+            android:scaleX="0.2"
+            android:scaleY="0.2"
+            android:name="star_two_parent">
+        <path android:fillColor="#000" android:fillAlpha="0.15"
+              android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+        <path
+                android:fillColor="#fff"
+                android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        />
+        <group
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:pivotY="12"
+                android:pivotX="12"
+        >
+            <path android:fillColor="#2196F3"
+                  android:pathData="M4,8h4L8,4L4,4v4zM10,20h4v-4h-4v4zM4,20h4v-4L4,16v4zM4,14h4v-4L4,10v4zM10,14h4v-4h-4v4zM16,4v4h4L20,4h-4zM10,8h4L14,4h-4v4zM16,14h4v-4h-4v4zM16,20h4v-4h-4v4z"
             />
-        </aapt:attr>
-    </target>
-    <target android:name="back_color">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:startOffset="1000"
-                    android:propertyName="fillAlpha"
-                    android:valueFrom="1"
-                    android:valueTo="0"
-                    android:duration="100"
-                    android:valueType="floatType"
-            />
-        </aapt:attr>
-    </target>
-    <target android:name="back_one">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:startOffset="900"
-                    android:propertyName="fillAlpha"
-                    android:valueFrom="1"
-                    android:valueTo="0"
-                    android:duration="300"
-                    android:valueType="floatType"
-            />
-        </aapt:attr>
-    </target>
-    <target android:name="back_two">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:startOffset="900"
-                    android:propertyName="fillAlpha"
-                    android:valueFrom="1"
-                    android:valueTo="0"
-                    android:duration="300"
-                    android:valueType="floatType"
-            />
-        </aapt:attr>
-    </target>
-    <target android:name="back_three">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:startOffset="900"
-                    android:propertyName="fillAlpha"
-                    android:valueFrom="1"
-                    android:valueTo="0"
-                    android:duration="300"
-                    android:valueType="floatType"
-            />
-        </aapt:attr>
-    </target>
-    <target android:name="star_one">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                        android:startOffset="900"
-                        android:propertyName="pathData"
-                        android:duration="200"
-                        android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                        android:valueTo="M12,23L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,10l0,11.5L5.82,21z"
-                        android:valueType="pathType"
+        </group>
+    </group>
+    <group
 
-                />
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="star_two">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                        android:startOffset="900"
-                        android:propertyName="pathData"
-                        android:duration="200"
-                        android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                        android:valueTo="M12,23L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,10l0,11.5L5.82,21z"
-                        android:valueType="pathType"
-
-                />
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="star_three">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                        android:startOffset="900"
-                        android:propertyName="pathData"
-                        android:duration="200"
-                        android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                        android:valueTo="M12,23L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,10l0,11.5L5.82,21z"
-                        android:valueType="pathType"
-
-                />
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="clip_progress">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:startOffset="950"
-                    android:propertyName="pathData"
-                    android:duration="100"
-                    android:valueFrom="M4,9 H20 V9 H4"
-                    android:valueTo="M4,9 H20 V13 H4"
-                    android:valueType="pathType"
+            android:pivotX="18"
+            android:pivotY="17"
+            android:scaleX="0.2"
+            android:scaleY="0.2"
+            android:name="star_three_parent">
+        <path android:fillColor="#000" android:fillAlpha="0.15"
+              android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+        <path
+                android:fillColor="#fff"
+                android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        />
+        <group
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:pivotY="12"
+                android:pivotX="12"
+        >
+            <path android:fillColor="#2196F3"
+                  android:pathData="M12,8V4l8,8 -8,8v-4H4V8z"
             />
-        </aapt:attr>
-    </target>
+        </group>
+    </group>
+    <group>
+        <path
+                android:strokeColor="#000"
+                android:strokeWidth="2.7"
+                android:strokeAlpha="0.15"
+                android:strokeLineCap="round"
+                android:pathData="M6.5,10.9 H17.5"
+        />
+        <path
+                android:strokeColor="#fff"
+                android:strokeWidth="2.7"
+                android:strokeLineCap="round"
+                android:pathData="M6.5,10.5 H17.5"
+        />
+        <path
+                android:strokeAlpha="0.3"
+                android:strokeColor="#2196F3"
+                android:strokeWidth="2"
+                android:strokeLineCap="round"
+                android:pathData="M6.5,10.5 H17.5"
+        />
+        <path
+                android:name="progress"
+                android:trimPathEnd="0.1"
+                android:strokeColor="#2196F3"
+                android:strokeWidth="2"
+                android:strokeLineCap="round"
+                android:pathData="M6.5,10.5 H17.5"
+        />
 
-</animated-vector>
+    </group>
+</vector>

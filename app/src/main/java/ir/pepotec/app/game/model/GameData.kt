@@ -1,6 +1,6 @@
 package ir.pepotec.app.game.model
 
-data class DA(var id:Int, var alpha:Float, var pLocation: Int, var sLocation:Int)
+data class DModeA(var id:Int, var alpha:Float, var pX: Int,var pY:Int, var sLocation:Int)
 
 data class DMainMenu(var id:Int, var subject:String, var iUrl:String)
 

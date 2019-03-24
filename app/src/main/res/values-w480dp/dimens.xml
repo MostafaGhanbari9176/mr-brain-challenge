@@ -3,6 +3,7 @@
 
 <resources>
     <dimen name="puzzle_height">105dp</dimen>
-    <dimen name="txt_three">36sp</dimen>
+    <dimen name="txt_normal">36sp</dimen>
+    <dimen name="txt_subject">38sp</dimen>
     <dimen name="line_space_three">22sp</dimen>
 </resources>

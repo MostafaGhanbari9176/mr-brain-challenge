@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector xmlns:android="http://schemas.android.com/apk/res/android"
+                android:height="360dp"
+                android:viewportHeight="360"
+                android:viewportWidth="72"
+                android:width="72dp">
+
+            <group
+                    android:name="parent_c_one"
+                    android:scaleY="1"
+                    android:scaleX="1"
+                    android:pivotX="36"
+                    android:pivotY="-10">
+                <path android:fillColor="#000" android:fillAlpha="0.15"
+                      android:pathData="MM36,16m-10,0a10.1,10 0,1 1,20 0a10.1,10 0,1 1,-20 0"/>
+                <path
+                        android:name="c_one"
+                        android:fillColor="#fff"
+                        android:pathData="M36,16m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+                <clip-path
+                        android:pathData="M30,6 H45 V22 H30Z M30,23.2 H41 V26 H30Z"
+                />
+                <path
+                        android:name="q_mark"
+                        android:trimPathEnd="1"
+                        android:strokeWidth="3"
+                        android:strokeLineCap="round"
+                        android:strokeColor="#000"
+                        android:strokeAlpha="0.3"
+                        android:pathData="M33,13 C 32,7 41,7 40,14 C 40,15 38,17 38,17 C 36,19 36,22 36,24"
+                />
+                <path
+                        android:name="q_mark"
+                        android:trimPathEnd="0"
+                        android:strokeWidth="1.5"
+                        android:strokeLineCap="round"
+                        android:strokeColor="@color/blue"
+                        android:pathData="M33,13 C 32,7 41,7 40,14 C 40,15 38,17 38,17 C 36,19 36,22 36,24"
+                />
+            </group>
+            <group
+                    android:name="parent_c_two"
+                    android:scaleY="1"
+                    android:scaleX="1"
+                    android:translateY="24"
+                    android:pivotX="36"
+                    android:pivotY="-60">
+                <path android:fillColor="#000" android:fillAlpha="0.15"
+                      android:pathData="MM36,16m-10,0a10.1,10 0,1 1,20 0a10.1,10 0,1 1,-20 0"/>
+                <path
+                        android:name="c_two"
+                        android:fillColor="#fff"
+                        android:pathData="M36,16m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+                <path
+                        android:name="m_mark"
+                        android:strokeColor="@color/blue"
+                        android:strokeWidth="0"
+                        android:strokeLineCap="round"
+                        android:pathData="M31,16H31 M36,16H36 M41,16H41 M31,11H31 M36,11H36 M41,11H41 M31,21H31 M36,21H36 M41,21H41"
+                />
+            </group>
+            <group
+                    android:name="parent_c_three"
+                    android:translateY="48"
+                    android:scaleY="1"
+                    android:scaleX="1"
+                    android:pivotX="36"
+                    android:pivotY="-111">
+                <path android:fillColor="#000" android:fillAlpha="0.15"
+                      android:pathData="MM36,16m-10,0a10.1,10 0,1 1,20 0a10.1,10 0,1 1,-20 0"/>
+                <path
+                        android:name="c_three"
+                        android:fillColor="#fff"
+                        android:pathData="M36,16m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+                <path
+                        android:name="volume"
+                        android:strokeColor="@color/blue"
+                        android:strokeWidth="1"
+                        android:strokeLineCap="round"
+                        android:strokeLineJoin="round"
+                        android:trimPathEnd="0"
+                        android:pathData="M30,14 H33 L38,10 V22 L33,18 H30 V14 M40,15 C 41.5,15 41.5,17 40,17 M40,13 C 44,13 44,19 40,19"
+                />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="parent_c_one">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                        android:propertyName="scaleX"
+                        android:duration="100"
+                        android:valueFrom="1"
+                        android:valueTo="3"
+                        android:valueType="floatType"
+                />
+                <objectAnimator
+                        android:propertyName="scaleY"
+                        android:duration="150"
+                        android:valueFrom="1"
+                        android:valueTo="3"
+                        android:valueType="floatType"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_two">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                        android:propertyName="scaleX"
+                        android:duration="250"
+                        android:valueFrom="1"
+                        android:valueTo="3"
+                        android:valueType="floatType"
+                />
+                <objectAnimator
+                        android:propertyName="scaleY"
+                        android:duration="300"
+                        android:valueFrom="1"
+                        android:valueTo="3"
+                        android:valueType="floatType"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_three">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                        android:propertyName="scaleX"
+                        android:duration="350"
+                        android:valueFrom="1"
+                        android:valueTo="3"
+                        android:valueType="floatType"
+                />
+                <objectAnimator
+                        android:propertyName="scaleY"
+                        android:duration="350"
+                        android:valueFrom="1"
+                        android:valueTo="3"
+                        android:valueType="floatType"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="q_mark">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="150"
+                    android:propertyName="trimPathEnd"
+                    android:duration="350"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="m_mark">
+        <aapt:attr name="android:animation">
+
+                <objectAnimator
+                        android:startOffset="300"
+                        android:propertyName="strokeWidth"
+                        android:duration="300"
+                        android:valueFrom="0"
+                        android:valueTo="3.3"
+                        android:valueType="floatType"
+
+                />
+
+        </aapt:attr>
+    </target>
+    <target android:name="volume">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="350"
+                    android:propertyName="trimPathEnd"
+                    android:duration="300"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
+</animated-vector>

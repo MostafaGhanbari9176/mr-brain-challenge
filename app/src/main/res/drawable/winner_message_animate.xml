@@ -148,16 +148,24 @@
                 <path
                         android:strokeAlpha="0.3"
                         android:strokeColor="#2196F3"
-                        android:strokeWidth="2.4"
+                        android:strokeWidth="2"
                         android:strokeLineCap="round"
                         android:pathData="M6.5,10.5 H17.5"
                 />
-                <path
-                        android:strokeColor="#2196F3"
-                        android:strokeWidth="2"
-                        android:strokeLineCap="round"
-                        android:pathData="M6.5,10.5 H10"
-                />
+                <group
+                        android:name="parent_progress"
+                        android:pivotX="6.5"
+                        android:pivotY="12"
+                        android:scaleX="1"
+                >
+                    <path
+                            android:name="progress"
+                            android:strokeColor="#2196F3"
+                            android:strokeWidth="2"
+                            android:strokeLineCap="round"
+                            android:pathData="M6.5,10.5 H17.5"
+                    />
+                </group>
             </group>
         </vector>
     </aapt:attr>
@@ -214,7 +222,6 @@
                             android:valueType="floatType"
                     />
                     <objectAnimator
-                            android:startOffset="150"
                             android:propertyName="scaleY"
                             android:valueFrom="0"
                             android:valueTo="0.4"
@@ -254,8 +261,6 @@
                             android:valueType="floatType"
                     />
                     <objectAnimator
-                            android:startOffset="300"
-
                             android:propertyName="scaleY"
                             android:valueFrom="0"
                             android:valueTo="0.3"
@@ -295,8 +300,6 @@
                             android:valueType="floatType"
                     />
                     <objectAnimator
-                            android:startOffset="500"
-
                             android:duration="300"
                             android:propertyName="scaleY"
                             android:valueFrom="0"
@@ -391,7 +394,7 @@
                         android:propertyName="pathData"
                         android:duration="200"
                         android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                        android:valueTo="M12,23L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,10l0,11.5L5.82,21z"
+                        android:valueTo="M12,24L19.18,24l3.5,0L23,9.24l-0.5,-7L12,2 2,2 2,12l0,12L5.82,24z"
                         android:valueType="pathType"
 
                 />
@@ -406,7 +409,7 @@
                         android:propertyName="pathData"
                         android:duration="200"
                         android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                        android:valueTo="M12,23L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,10l0,11.5L5.82,21z"
+                        android:valueTo="M12,24L19.18,24l3.5,0L23,9.24l-0.5,-7L12,2 2,2 2,12l0,12L5.82,24z"
                         android:valueType="pathType"
 
                 />
@@ -421,7 +424,7 @@
                         android:propertyName="pathData"
                         android:duration="200"
                         android:valueFrom="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"
-                        android:valueTo="M12,23L18.18,21l3.5,0L22,9.24l-0.5,-7L12,2 2,2 2,10l0,11.5L5.82,21z"
+                        android:valueTo="M12,24L19.18,24l3.5,0L23,9.24l-0.5,-7L12,2 2,2 2,12l0,12L5.82,24z"
                         android:valueType="pathType"
 
                 />
@@ -440,5 +443,17 @@
             />
         </aapt:attr>
     </target>
-
+    <target android:name="progress">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:startOffset="1000"
+                    android:propertyName="trimPathEnd"
+                    android:duration="500"
+                    android:valueFrom="0"
+                    android:valueTo="0.8"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
 </animated-vector>

@@ -5,11 +5,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/back_mode_a"
-                android:id="@+id/GameParent" android:layoutDirection="rtl">
+                android:id="@+id/GameParentA" android:layoutDirection="rtl">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_alignParentBottom="true" android:gravity="bottom">
+            android:layout_height="match_parent" android:layout_alignParentBottom="true" android:gravity="bottom"
+            android:id="@+id/LLSpaceParentA">
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
@@ -35,30 +36,12 @@
             android:layout_height="@dimen/puzzle_height" android:background="@drawable/block_back"
             android:id="@+id/LLPuzzleA" android:layout_centerInParent="true">
     </LinearLayout>
-    <Button
-            android:text="شروع"
-            android:layout_width="187dp"
-            android:layout_height="wrap_content" android:id="@+id/btnStartGame" android:layout_above="@+id/imgAnim"
-            android:layout_marginBottom="-341dp" android:layout_alignParentEnd="true" android:layout_marginEnd="106dp"
-            android:layout_alignParentStart="true" android:layout_marginStart="118dp" android:layout_marginTop="37dp"
-            android:layout_below="@+id/imgAnim"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/txtAlpha"
+            android:layout_height="wrap_content" android:id="@+id/txtAlphaA"
             android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp" android:textSize="18sp" android:textStyle="bold"
             android:textColor="@color/secondaryLightYellow" android:background="@drawable/progress_back"
-            android:padding="4dp"/>
-    <TextView
-            android:text="Loser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/loseMessage" android:layout_marginTop="78dp"
-            android:layout_below="@+id/btnStartGame" android:layout_centerHorizontal="true" android:textSize="24sp"
-            android:textColor="@color/secondaryDarkOrange" android:textStyle="bold" android:alpha="0.5"
-            android:scaleX="0" android:scaleY="0"/>
-    <ImageView
-            android:layout_width="256dp"
-            android:layout_height="256dp" app:srcCompat="@drawable/winner_message" android:id="@+id/imgAnim"
-            android:layout_centerInParent="true"/>
+            android:padding="4dp" android:layout_alignParentEnd="true"/>
 </RelativeLayout>

@@ -2,7 +2,8 @@
 
     <!-- Base application theme. -->
     <dimen name="puzzle_height">70dp</dimen>
-    <dimen name="txt_three">24sp</dimen>
+    <dimen name="txt_normal">24sp</dimen>
+    <dimen name="txt_subject">26sp</dimen>
     <dimen name="line_space_three">15sp</dimen>
 
 </resources>

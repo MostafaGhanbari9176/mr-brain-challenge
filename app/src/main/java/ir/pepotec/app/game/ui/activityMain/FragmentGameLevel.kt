@@ -3,17 +3,18 @@ package ir.pepotec.app.game.ui.activityMain
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.DGameLevel
 import ir.pepotec.app.game.presenter.GameLevelPresent
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.gameModels.mode_a.ActivityModeA
+import ir.pepotec.app.game.ui.gameModes.mode_a.FragmentModeA
 import ir.pepotec.app.game.ui.adapters.AdapterGameLevel
+import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import kotlinx.android.synthetic.main.fragment_game_level.*
 
 class FragmentGameLevel : Fragment(), GameLevelPresent.GameLevelInterface {
@@ -35,16 +36,17 @@ class FragmentGameLevel : Fragment(), GameLevelPresent.GameLevelInterface {
     }
 
     override fun GameLevelData(data: ArrayList<DGameLevel>) {
-       RVGameLevel.layoutManager = GridLayoutManager(ctx, 2)
-        val adapter = AdapterGameLevel(data) {gotoNextActivity(it) }
+        RVGameLevel.layoutManager = GridLayoutManager(ctx, 2)
+        val adapter = AdapterGameLevel(data) { gotoNextActivity(it) }
         RVGameLevel.adapter = adapter
 
     }
 
-    private fun gotoNextActivity(data:DGameLevel) {
-        val intent = Intent(ctx, ActivityModeA::class.java)
+    private fun gotoNextActivity(data: DGameLevel) {
+        val intent = Intent(ctx, ActivityGame::class.java)
         with(data) {
-            intent.putExtra("gId", gId)
+                  intent.putExtra("levelId", gId)
+            intent.putExtra("modeId", pId)
         }
         startActivity(intent)
     }

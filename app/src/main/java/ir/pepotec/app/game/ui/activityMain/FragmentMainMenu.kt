@@ -3,12 +3,11 @@ package ir.pepotec.app.game.ui.activityMain
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.DMainMenu
 import ir.pepotec.app.game.presenter.MainMenuPresent

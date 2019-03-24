@@ -1,6 +1,7 @@
 <!--   0.75 * source   -->
 <resources>
     <dimen name="puzzle_height">52.5dp</dimen>
-    <dimen name="txt_three">18sp</dimen>
+    <dimen name="txt_normal">18sp</dimen>
+    <dimen name="txt_subject">20sp</dimen>
     <dimen name="line_space_three">11sp</dimen>
 </resources>

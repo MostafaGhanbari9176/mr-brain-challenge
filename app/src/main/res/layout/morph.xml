@@ -3,95 +3,29 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" android:layoutDirection="rtl"
+                android:background="@android:color/darker_gray">
 
     <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/clip_test"
+            android:layout_width="48dp"
+            android:layout_height="244dp"
+            android:src="@drawable/ic_circle"
             android:id="@+id/imgMorph"
-            android:background="@color/secondaryDarkGreen"/>
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_weight="0.35">
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_weight="0.19">
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.15">
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.7">
-                <TextView
-                        android:text="بهتر از این می تونی عمل کنی,دوباره تلاش کن!"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView3" android:gravity="center"
-                        android:textStyle="bold" android:textColor="@color/light" android:textSize="@dimen/txt_three"
-                        android:lineSpacingExtra="@dimen/line_space_three"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.15">
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_weight="0.13">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.23">
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.2">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnMenuLoserDialog"
-                        android:background="@android:color/transparent"
-                />
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.14">
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.2">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnReplayLoserDialog"
-                        android:background="@android:color/transparent"
-                />
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" android:layout_weight="0.23">
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_weight="0.33">
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"/>
+    <Button
+            android:text="Button"
+            android:layout_width="150dp"
+            android:layout_height="150dp" android:id="@+id/btn1" android:layout_centerInParent="true"
+            android:layout_margin="64dp" android:layout_marginTop="100dp" android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp" android:layout_marginBottom="100dp"/>
+    <Button
+            android:text="Button"
+            android:layout_width="150dp"
+            android:layout_height="150dp" android:id="@+id/btn2"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="64dp" android:layout_marginEnd="-193dp"
+            android:layout_centerInParent="true" android:layout_alignBottom="@+id/btn1"
+            android:layout_marginBottom="200dp"/>
+
 </RelativeLayout>

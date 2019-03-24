@@ -4,13 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 
 class ActivityMain : AppCompatActivity(), View.OnClickListener {
@@ -22,14 +21,13 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
     val fade = 0.7f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        App.instance = this
+        setContentView(R.layout.main_activity)
         initViews()
     }
 
     private fun initViews() {
-        animateViews()
         App.fullScreen(this)
+        animateViews()
         setView(FragmentMainMenu())
         imgControlGameLevels.setOnClickListener(this)
 

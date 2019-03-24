@@ -4,10 +4,10 @@ import android.app.Application
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import ir.pepotec.app.game.R
@@ -19,6 +19,7 @@ class App : Application() {
         super.onCreate()
         instance = this
     }
+
     companion object {
         lateinit var instance: Context
         val baseUrl = "http://localhost:8080/game/"
@@ -32,6 +33,7 @@ class App : Application() {
         }
 
         fun fullScreen(context: AppCompatActivity) {
+            instance = context
             val flags = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

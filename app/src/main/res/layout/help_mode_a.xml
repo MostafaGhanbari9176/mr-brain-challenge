@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layoutDirection="rtl"
+>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LL2HelpMA"
+    >
+        <TextView
+                android:text="جایگاه"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView2" android:gravity="center"
+                android:textSize="@dimen/txt_subject" android:textColor="@color/light" android:textStyle="bold"
+                android:paddingTop="4dp"/>
+        <ImageView
+                android:layout_height="match_parent" app:srcCompat="@drawable/ic_arrow"
+                android:id="@+id/imageView3" android:layout_width="match_parent" android:rotation="90"/>
+    </LinearLayout>
+    <Button
+            android:text="متوجه شدم"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/btnHelpMA"
+            android:textSize="@dimen/txt_normal"
+            android:background="@drawable/btn_red" android:textColor="#fff" android:padding="16dp"
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" android:textStyle="bold"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LL1HelpMA"
+    >
+        <ImageView
+                android:layout_height="match_parent" app:srcCompat="@drawable/ic_arrow"
+                android:rotation="-90" android:layout_width="match_parent"/>
+        <TextView
+                android:text="پازل"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:gravity="center"
+                android:textSize="@dimen/txt_subject" android:textColor="@color/light" android:textStyle="bold"
+                android:paddingTop="4dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/LL3HelpMA">
+        <ImageView
+                android:layout_height="match_parent" app:srcCompat="@drawable/ic_arrow"
+                android:rotation="270" android:layout_width="match_parent"/>
+        <TextView
+                android:text="ضریب"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:gravity="center"
+                android:textSize="@dimen/txt_subject" android:textColor="@color/light" android:textStyle="bold"
+                android:paddingTop="4dp"/>
+    </LinearLayout>
+    <TextView
+            android:text="نحوه انجام بازی به این شکل می باشد که اندازه پازل برابر با اندازه جایگاه ضربه در ضریب شود یعنی اگر ضریب دو باشد اندازه پازل برابر می شود با دوبرابر اندازه جایگاه"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/txtHelpMA" android:gravity="center"
+            android:textColor="@color/light" android:textStyle="bold" android:textSize="@dimen/txt_normal"
+            android:lineSpacingExtra="@dimen/line_space_three" android:paddingEnd="32dp" android:paddingStart="32dp"/>
+    <ImageView
+            android:layout_width="200dp"
+            android:layout_height="300dp" app:srcCompat="@drawable/ic_mester_brain"
+            android:id="@+id/imgHelpMA" android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"/>
+</RelativeLayout>

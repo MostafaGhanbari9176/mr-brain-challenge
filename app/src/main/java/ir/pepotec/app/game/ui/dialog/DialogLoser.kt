@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -54,7 +55,7 @@ class DialogLoser(
     }
 
     private fun showMessage() {
-        doAsync() {
+        doAsync {
             Thread.sleep(800)
             uiThread { (ObjectAnimator.ofFloat(v.txtDialogLoser,View.ALPHA,0f,1f).start())}
         }
