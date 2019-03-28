@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import ir.pepotec.app.game.R
-import ir.pepotec.app.game.model.DModeA
-import ir.pepotec.app.game.presenter.APresent
+import ir.pepotec.app.game.model.ModeAData
+import ir.pepotec.app.game.presenter.PModeALevel
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 
@@ -20,7 +20,7 @@ class GameCreatorA(
     private val LLPuzzle: LinearLayout,
     private val p: Point,
     private val listener: GameCreatorInterface
-) : APresent.GamePresentInterface {
+) : PModeALevel.PModeALevelInterface {
 
     interface GameCreatorInterface {
         fun gameCreated(space: Int, alpha: Float, guideSpace: LinearLayout, guidePuzzle: LinearLayout)
@@ -32,7 +32,7 @@ class GameCreatorA(
     private var blockLengthL: Int = 0
 
     fun createGame() {
-        APresent(this).getGameData(gId)
+        PModeALevel(this).getLevelData(gId)
     }
 
     private fun createGuide(pX: Int, pY: Int, alpha: Float, transY: Float): LinearLayout {
@@ -53,17 +53,17 @@ class GameCreatorA(
         return (ctx as ActivityGame).resources.getDimension(R.dimen.puzzle_height).toInt()
     }
 
-    override fun gameData(data: DModeA) {
+    override fun levelData(data: ModeAData) {
         initSpaceLength(data.alpha)
-        initBlocksLength(data.sLocation)
+        initBlocksLength(data.spaceX)
         //addGuide()
-        initPuzzle(data.alpha, data.pX, data.pY)
+        initPuzzle(data.alpha, data.puzzleX, data.puzzleY)
 
         listener.gameCreated(
             space,
             data.alpha,
-            createGuide(data.sLocation, 0, data.alpha, (p.y - getHeightPX()).toFloat()),
-            createGuide(data.pX, data.pY, data.alpha, (getHeightPX() + 10f))
+            createGuide(data.spaceX, 0, data.alpha, (p.y - getHeightPX()).toFloat()),
+            createGuide(data.puzzleX, data.puzzleY, data.alpha, (getHeightPX() + 10f))
         )
     }
 

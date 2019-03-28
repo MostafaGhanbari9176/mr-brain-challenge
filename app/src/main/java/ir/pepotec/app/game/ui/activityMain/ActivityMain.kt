@@ -3,6 +3,8 @@ package ir.pepotec.app.game.ui.activityMain
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -49,12 +51,6 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
         set.duration = du
         set.startDelay = 800
         set.start()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        App.instance = this
-
     }
 
     override fun onBackPressed() {
@@ -197,7 +193,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
         set.start()
     }
 
-    fun animateImageToBack() {
+    fun animateImageToBack(modeId:String) {
         keyMode = "back"
         imgControlGameLevels.isEnabled = false
         var scX = ObjectAnimator.ofFloat(imgControlGameLevels, View.SCALE_X, 1f, 1.2f, sc)
@@ -238,7 +234,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                setView(FragmentGameLevel())
+                showGameLevel(modeId)
                 imgControlGameLevels.isEnabled = true
             }
 
@@ -250,6 +246,14 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
+    }
+
+
+    fun showGameLevel(modeId:String)
+    {
+        val f = FragmentGameLevel()
+        f.modeId = modeId
+        setView(f)
     }
 
 
@@ -276,5 +280,18 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        App.instance = this
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        App.instance = this
+        if(resultCode == Activity.RESULT_OK && requestCode == 1){
+            showGameLevel(data!!.getStringExtra("modeId"))
+        }
+    }
 
 }

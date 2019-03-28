@@ -1,5 +1,7 @@
 package ir.pepotec.app.game.ui.gameModes
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -18,7 +20,7 @@ import org.jetbrains.anko.uiThread
 class ActivityGame : AppCompatActivity() {
 
     private var levelId = -1
-    private var modeId = -1
+    private var modeId = "error"
     private var mLastTouchX: Int = 0
     private var mLastTouchY: Int = 0
     private lateinit var f: MyFragment
@@ -31,10 +33,10 @@ class ActivityGame : AppCompatActivity() {
         if (intent?.extras?.isEmpty == false) {
 
             levelId = intent.getIntExtra("levelId", -1)
-            modeId = intent.getIntExtra("modeId", -1)
+            modeId = intent.getStringExtra("modeId")
 
         }
-        startGame()
+        startGame(modeId, levelId)
     }
 
     private fun initView() {
@@ -45,7 +47,7 @@ class ActivityGame : AppCompatActivity() {
         }
 
         btnVolumeAG.setOnClickListener {
-           changeVolume()
+            changeVolume()
             closeMenu()
         }
 
@@ -55,13 +57,13 @@ class ActivityGame : AppCompatActivity() {
         }
 
         btnHelpAG.setOnClickListener {
-            f.runHelper()
+            f?.runHelper()
             closeMenu()
         }
 
         parentAG.setOnTouchListener { v, event -> !onTouchEvent(event) }
 
-        parentAG.setOnClickListener { f.myClickListener() }
+        parentAG.setOnClickListener { f?.myClickListener() }
     }
 
     private fun changeVolume() {
@@ -71,7 +73,12 @@ class ActivityGame : AppCompatActivity() {
 
     private fun closeMenu() {
         imgMenuAG.setImageDrawable(null)
-        imgMenuAG.setImageDrawable(ContextCompat.getDrawable(this, if(mute) R.drawable.menu_close_animate_mute else R.drawable.menu_close_animate))
+        imgMenuAG.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                if (mute) R.drawable.menu_close_animate_mute else R.drawable.menu_close_animate
+            )
+        )
         val d = (imgMenuAG.drawable as AnimatedVectorDrawable)
         btnBackMenuAG.visibility = View.GONE
         btnVolumeAG.visibility = View.GONE
@@ -81,13 +88,13 @@ class ActivityGame : AppCompatActivity() {
             Thread.sleep(100)
             uiThread { d.start() }
         }
-       doAsync {
-            while (true){
-                if(!d.isRunning)
+        doAsync {
+            while (true) {
+                if (!d.isRunning)
                     break
             }
             uiThread {
-                if(closeGame)
+                if (closeGame)
                     (this@ActivityGame).finish()
             }
         }
@@ -95,7 +102,12 @@ class ActivityGame : AppCompatActivity() {
     }
 
     private fun openMenu() {
-        imgMenuAG.setImageDrawable(ContextCompat.getDrawable(this, if(mute) R.drawable.menu_animate_mute else R.drawable.menu_animate))
+        imgMenuAG.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                if (mute) R.drawable.menu_animate_mute else R.drawable.menu_animate
+            )
+        )
         btnBackMenuAG.visibility = View.VISIBLE
         btnVolumeAG.visibility = View.VISIBLE
         btnHelpAG.visibility = View.VISIBLE
@@ -108,17 +120,21 @@ class ActivityGame : AppCompatActivity() {
         App.instance = this
     }
 
-    private fun startGame() {
+    fun startGame(modeId:String, levelId:Int) {
+        this.modeId = modeId
+        this.levelId = levelId
         when (modeId) {
-            0 -> {
+            "a" -> {
                 f = FragmentModeA()
                 (f as FragmentModeA).levelId = levelId
             }
             else -> {
-                toast("levelId not 0")
+                toast("mode $modeId notFound")
+                return
             }
         }
 
+        //  supportFragmentManager.beginTransaction().remove(f)
         supportFragmentManager.beginTransaction().replace(R.id.ContainerGame, f).commit()
     }
 
@@ -149,8 +165,9 @@ class ActivityGame : AppCompatActivity() {
             MotionEvent.ACTION_POINTER_UP -> {
             }
         }
-        f.myTouchListener(dx, dy)
+        f?.myTouchListener(dx, dy)
         return true
     }
+
 
 }

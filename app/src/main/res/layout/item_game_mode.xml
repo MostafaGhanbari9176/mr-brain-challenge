@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-           xmlns:app="http://schemas.android.com/apk/res-auto"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content" android:src="@drawable/game_mode_item_back"
-           android:id="@+id/imgModeMenu" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
->
-</ImageView>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="@dimen/item_game_mode"
+              android:layout_height="@dimen/item_game_mode">
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:src="@drawable/item_game_mode"
+               android:id="@+id/imgModeMenu"
+               android:layerType="none">
+    </ImageView>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.22">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.2">
+            <TextView
+                    android:text="الف"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/txtSubjectItemMode" android:gravity="center"
+                    android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.13">
+            <TextView
+                    android:text="100"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/txtScoreMode" android:gravity="center"
+                    android:textColor="@color/dark" android:textStyle="bold" android:textSize="@dimen/txt_small_two"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.45">
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

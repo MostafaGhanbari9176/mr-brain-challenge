@@ -25,15 +25,6 @@
                 />
                 <path
                         android:name="q_mark"
-                        android:trimPathEnd="1"
-                        android:strokeWidth="3"
-                        android:strokeLineCap="round"
-                        android:strokeColor="#000"
-                        android:strokeAlpha="0.3"
-                        android:pathData="M33,13 C 32,7 41,7 40,14 C 40,15 38,17 38,17 C 36,19 36,22 36,24"
-                />
-                <path
-                        android:name="q_mark"
                         android:trimPathEnd="0"
                         android:strokeWidth="1.5"
                         android:strokeLineCap="round"
@@ -59,7 +50,7 @@
                         android:strokeColor="@color/blue"
                         android:strokeWidth="0"
                         android:strokeLineCap="round"
-                        android:pathData="M31,16H31 M36,16H36 M41,16H41 M31,11H31 M36,11H36 M41,11H41 M31,21H31 M36,21H36 M41,21H41"
+                        android:pathData="M31,16H31.1 M36,16H36.1 M41,16H41.1 M31,11H31.1 M36,11H36.1 M41,11H41.1 M31,21H31.1 M36,21H36.1 M41,21H41.1"
                 />
             </group>
             <group

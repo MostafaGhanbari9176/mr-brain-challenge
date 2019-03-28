@@ -7,12 +7,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.help_mode_a.view.*
 import org.jetbrains.anko.toast
 
@@ -24,7 +26,7 @@ class HelpModeA(
     private val txtAlpha: TextView,
     @ColorRes private val parentColor: Int,
     private val listener: OnClickListener
-) : RelativeLayout(ctx, null) {
+) : RelativeLayout(ctx, null) ,View.OnTouchListener{
 
     companion object {
         lateinit var c: Canvas
@@ -196,8 +198,10 @@ class HelpModeA(
             3 -> {
                 presentChildDelay = 200
                 presentChildNumber++
+                val v = presenterView.txtHelpMA
+                v.setShadowLayer(10f, 7f, 7f, R.color.dark)
                 addPresenterChildes(
-                    presenterView.txtHelpMA,
+                    v,
                     0f,
                     0f
                 )
@@ -209,6 +213,7 @@ class HelpModeA(
                 v.setOnClickListener {
                     listener.onClick(v)
                 }
+                v.setOnTouchListener(this)
                 addPresenterChildes(
                     v,
                     space.x + space.width / 2,
@@ -249,6 +254,13 @@ class HelpModeA(
             start()
         }
 
+    }
+
+    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        when(v?.id){
+            R.id.btnHelpMA -> ButtonEvent(v, event, R.raw.sound_primary)
+        }
+        return false
     }
 }
 

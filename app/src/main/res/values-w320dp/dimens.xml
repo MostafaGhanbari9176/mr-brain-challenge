@@ -2,6 +2,9 @@
 <resources>
     <dimen name="puzzle_height">70dp</dimen>
     <dimen name="txt_normal">24sp</dimen>
-    <dimen name="txt_subject">26sp</dimen>
+    <dimen name="txt_big">26sp</dimen>
     <dimen name="line_space_three">15sp</dimen>
+    <dimen name="item_game_mode">210dp</dimen>
+    <dimen name="txt_small_one">14sp</dimen>
+    <dimen name="txt_small_two">10sp</dimen>
 </resources>

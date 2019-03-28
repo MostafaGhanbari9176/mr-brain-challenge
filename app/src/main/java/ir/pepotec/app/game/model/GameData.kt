@@ -1,9 +1,26 @@
 package ir.pepotec.app.game.model
 
-data class DModeA(var id:Int, var alpha:Float, var pX: Int,var pY:Int, var sLocation:Int)
+data class GameModeData(
+    val modeId:String,
+    val subject:String,
+    val scoreAverage:Int,
+    val lock:Int
+)
 
-data class DMainMenu(var id:Int, var subject:String, var iUrl:String)
+data class ModeAData(
+    val levelId: Int,
+    val subject: String,
+    val score: Int,
+    val lock: Int,
+    val alpha: Float,
+    val spaceX: Int,
+    val puzzleX: Int,
+    val puzzleY: Int
+)
 
-data class DGameMode(var id:Int, var subject:String, var iUrl:String)
-
-data class DGameLevel(var id:Int, var subject:String, var iUrl:String, var pId:Int, var gId:Int)
+data class ItemData(
+    val id:Int,
+    val subject:String,
+    val score:Int,
+    val lock:Int
+)

@@ -4,17 +4,22 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
 import android.widget.LinearLayout
+import android.widget.Toast
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.presenter.PModeALevel
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.dialog.DialogLoser
 import ir.pepotec.app.game.ui.dialog.DialogWinner
@@ -50,7 +55,14 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        createGame(levelId)
+        if (levelId == -1) {
+            val t: Toast = Toast.makeText(ctx, "levelId is $levelId (-1)", Toast.LENGTH_LONG)
+            t.setGravity(Gravity.TOP, 0, 0)
+            t.show()
+        } else {
+            createGame(levelId)
+            toast("levelID is $levelId")
+        }
     }
 
     private fun initViews() {
@@ -63,6 +75,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private fun startGame() {
         gameStarted = true
         gameResult = result()
+        MediaPlayer.create(ctx, R.raw.sound_start).start()
         when (gameResult) {
             0 -> runLoserGame()
             else -> runWinnerGame()
@@ -109,6 +122,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     private fun runWinnerGame() {
+        PModeALevel().saveScore(levelId, gameResult)
         val xTransTo = (LLSpaceA.x + (LLSpaceA.width) / 2) - (puzzle.x + (puzzle.width) / 2)
         val yTransTo = (LLSpaceA.y) - (puzzle.y)
         val tranY = ObjectAnimator.ofFloat(puzzle, View.TRANSLATION_Y, 0f, yTransTo)
@@ -189,10 +203,10 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
 
     override fun runHelper() {
 
-        if (parentView == null) {
+        if (parentView == null)
             parentView = (context as Activity).window.decorView as ViewGroup
-            helperView = HelpModeA(ctx, puzzle, LLSpaceA, txtAlphaA, R.color.blue, this@FragmentModeA)
-        }
+
+        helperView = HelpModeA(ctx, puzzle, LLSpaceA, txtAlphaA, R.color.blue, this@FragmentModeA)
         parentView?.addView(helperView)
 
     }
@@ -211,22 +225,20 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     override fun prevMenu() {
-        (ctx as ActivityGame).finish()
+        (ctx as ActivityGame).apply {
+            setResult(RESULT_OK, intent.putExtra("mode_id", "a"))
+            finish()
+        }
     }
 
     override fun replay() {
-        (ctx as ActivityGame).recreate()
+        (ctx as ActivityGame).startGame("a", levelId)
     }
 
     override fun nextLevel() {
-        if (levelId == 3)
-            toast("notExist")
-        else {
-            (ctx as ActivityGame).finish()
-            val intent = Intent(ctx, FragmentModeA::class.java)
-            intent.putExtra("levelId", levelId + 1)
-            startActivity(intent)
-        }
+        levelId++
+        (ctx as ActivityGame).startGame("a", levelId)
+
     }
 
     override fun onClick(v: View) {
@@ -242,7 +254,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
 
         ObjectAnimator.ofFloat(helperView, View.ALPHA, 1f, 0f).apply {
             duration = 500
-            addListener(object :Animator.AnimatorListener{
+            addListener(object : Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator?) {
 
                 }
