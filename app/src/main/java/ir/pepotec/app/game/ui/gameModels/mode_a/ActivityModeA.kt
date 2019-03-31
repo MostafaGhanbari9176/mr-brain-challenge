@@ -3,25 +3,29 @@ package ir.pepotec.app.game.ui.gameModels.mode_a
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.content.Intent
 import android.graphics.Point
 import android.graphics.drawable.Animatable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.widget.LinearLayout
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.dialog.DialogLoser
+import ir.pepotec.app.game.ui.dialog.DialogWinner
+import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
 import kotlinx.android.synthetic.main.activity_a.*
 import org.jetbrains.anko.toast
 import kotlin.math.abs
 
-class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.GameCreatorInterface {
+class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.GameCreatorInterface,
+    ResualtDialogResponse {
 
     private var mLastTouchX: Int = 0
     lateinit var puzzle: LinearLayout
@@ -30,13 +34,14 @@ class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.Gam
     val p = Point()
     var gameResult: Int = 0
     lateinit var gameCreatorA: GameCreatorA
+    var gId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_a)
         App.instance = this
         if ((intent?.extras?.isEmpty) == false) {
-            val gId = intent.getIntExtra("gId", -1)
+            gId = intent.getIntExtra("gId", -1)
             initViews()
             createGame(gId)
         } else
@@ -70,10 +75,10 @@ class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.Gam
     private fun runLoserGame() {
         val transTo = (LLSpaceA.x + (LLSpaceA.width) / 2) - (puzzle.x + (puzzle.width) / 2)
         val tranY =
-        if(((puzzle.width) / alpha) < space)
-            ObjectAnimator.ofFloat(puzzle, View.TRANSLATION_Y, puzzle.y, LLSpaceA.y)
-        else
-            ObjectAnimator.ofFloat(puzzle, View.TRANSLATION_Y, puzzle.y, LLSpaceA.y - puzzle.height)
+            if (((puzzle.width) / alpha) < space)
+                ObjectAnimator.ofFloat(puzzle, View.TRANSLATION_Y, puzzle.y, LLSpaceA.y)
+            else
+                ObjectAnimator.ofFloat(puzzle, View.TRANSLATION_Y, puzzle.y, LLSpaceA.y - puzzle.height)
         val tranX = ObjectAnimator.ofFloat(puzzle, View.TRANSLATION_X, 0f, transTo)
         val scX = ObjectAnimator.ofFloat(puzzle, View.SCALE_X, 1f, 1 / alpha)
         val set = AnimatorSet()
@@ -87,8 +92,8 @@ class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.Gam
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                showResult()
-                showLoseMessage()
+                DialogLoser("txt", App.instance as ActivityModeA)
+                //showLoseMessage()
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -117,7 +122,7 @@ class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.Gam
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                (imgAnim.drawable as Animatable).start()
+                DialogWinner("", App.instance as ActivityModeA)
                 showResult()
             }
 
@@ -229,14 +234,31 @@ class ActivityModeA : AppCompatActivity(), View.OnDragListener, GameCreatorA.Gam
     private var step = 0
 
     private fun changePuzzleSize(dx: Int) {
-        step+=dx
-        if(abs(step) >= (p.x / 20))
-        {
+        step += dx
+        if (abs(step) >= (p.x / 20)) {
             puzzle.requestLayout()
             puzzle.layoutParams.width = puzzle.width + (step / 2)
             step = 0
         }
     }
 
+    override fun prevMenu() {
+        this.finish()
+    }
+
+    override fun replay() {
+        this.recreate()
+    }
+
+    override fun nextLevel() {
+        if(gId == 3)
+            toast("notExist")
+        else {
+            this.finish()
+            val intent = Intent(this, ActivityModeA::class.java)
+            intent.putExtra("gId", gId+1)
+            startActivity(intent)
+        }
+    }
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+        android:width="100dp"
+        android:height="100dp"
+        android:viewportWidth="100"
+        android:viewportHeight="100">
+    <path
+            android:fillColor="@color/secondaryDarkFirozei"
+            android:pathData="M 0,0 L 100,0 100,96 99.5,100 0.5,100 0,96 z"/>
+    <path
+            android:fillColor="@color/secondaryFirozei"
+            android:pathData="M 0,0 L 100,0 100,50 0,50 z"/>
+    <path
+            android:strokeColor="@color/light"
+            android:strokeWidth="15"
+            android:strokeAlpha="0.1"
+            android:pathData="M0,0 H100"
+    />
+    <path
+            android:fillAlpha="0.9"
+            android:fillColor="@color/secondaryLightFirozei"
+            android:pathData="M 0,30 L 100,30 100,96 0,96 z"/>
+<!--    <path
+            android:fillAlpha="0.5"
+            android:pathData="M 0,30 L 100,30 100,50 0,50 z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                    android:endColor="@color/secondaryLightFirozei"
+                    android:startColor="#666"
+                    android:type="linear"
+                    android:angle="270"/>
+        </aapt:attr>
+    </path>-->
+
+</vector>

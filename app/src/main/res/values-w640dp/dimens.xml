@@ -2,4 +2,6 @@
 
 <resources>
     <dimen name="puzzle_height">140dp</dimen>
+    <dimen name="txt_three">48sp</dimen>
+    <dimen name="line_space_three">30sp</dimen>
 </resources>
