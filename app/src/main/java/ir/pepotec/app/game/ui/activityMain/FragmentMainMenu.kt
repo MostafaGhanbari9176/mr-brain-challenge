@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.ItemData
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.adapters.AdapterMainMenu
+import ir.pepotec.app.game.ui.activityMain.adapters.AdapterMainMenu
 import kotlinx.android.synthetic.main.fragment_main_menu.*
 
 class FragmentMainMenu : Fragment() {

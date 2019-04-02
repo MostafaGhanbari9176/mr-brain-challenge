@@ -15,9 +15,9 @@
     "score" : 0,
     "lock" : 1,
     "alpha" :2.0,
-    "space_x":1,
+    "space_x":0,
     "puzzle_x":1,
-    "puzzle_y":0
+    "puzzle_y":1
   },
   {
     "level_id" :2,

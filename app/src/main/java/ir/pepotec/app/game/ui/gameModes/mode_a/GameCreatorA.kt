@@ -23,7 +23,7 @@ class GameCreatorA(
 ) : PModeALevel.PModeALevelInterface {
 
     interface GameCreatorInterface {
-        fun gameCreated(space: Int, alpha: Float, guideSpace: LinearLayout, guidePuzzle: LinearLayout)
+        fun gameCreated(space: Int, alpha: Float, guideSpace: LinearLayout, guidePuzzle: LinearLayout, isFinally:Boolean)
     }
 
     private val ctx: Context = App.instance
@@ -63,7 +63,8 @@ class GameCreatorA(
             space,
             data.alpha,
             createGuide(data.spaceX, 0, data.alpha, (p.y - getHeightPX()).toFloat()),
-            createGuide(data.puzzleX, data.puzzleY, data.alpha, (getHeightPX() + 10f))
+            createGuide(data.puzzleX, data.puzzleY, data.alpha, (getHeightPX() + 10f)),
+            data.isFinally == 1
         )
     }
 
@@ -90,26 +91,17 @@ class GameCreatorA(
             }
         }
 
-        var params = LinearLayout.LayoutParams(blockLengthR, getHeightPX())
-        LLRight.layoutParams = params
-        params = LinearLayout.LayoutParams(blockLengthL, getHeightPX())
-        LLLeft.layoutParams = params
+        LLRight.layoutParams.width = blockLengthR
+        LLLeft.layoutParams.width = blockLengthL
 
     }
 
     private fun initSpaceLength(alpha: Float) {
         val step = (p.x) / 40
-        val max = if (alpha > 1)
-            (p.x / alpha).toInt()
-        else
-            (p.x * 0.8).toInt()
-        val min = (p.x * 0.2).toInt()
-        space = (min..max).random()
-        if (space % step != 0) {
-            space = if (space > step) space + (space % step) else space - (space % step)
-        }
-        val params = LinearLayout.LayoutParams(space, getHeightPX())
-        LLSpace.layoutParams = params
+        val min = 15
+        val max: Int = if(alpha<=1) 32 else  (40f / alpha).toInt()
+        space = ((min..max).random() * step)
+        LLSpace.layoutParams.width = space
     }
 
     private fun getPuzzleLength(alpha: Float): Int =

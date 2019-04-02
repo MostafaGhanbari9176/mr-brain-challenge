@@ -4,30 +4,31 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/back_mode_a"
+                android:background="@drawable/animate_gradient_blue"
                 android:id="@+id/GameParentA" android:layoutDirection="rtl">
+    <include layout="@layout/help_guide"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_alignParentBottom="true" android:gravity="bottom"
-            android:id="@+id/LLSpaceParentA">
+    >
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLRightA"
-                android:background="@drawable/block_back">
+                android:layout_height="@dimen/puzzle_height"
+                android:background="@drawable/block_back" android:id="@+id/LLRightA">
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="@dimen/puzzle_height" android:id="@+id/LLSpaceA"
         >
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLLeftA"
-                android:background="@drawable/block_back">
+                android:layout_height="@dimen/puzzle_height"
+                android:background="@drawable/block_back" android:id="@+id/LLLeftA">
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -37,11 +38,22 @@
             android:id="@+id/LLPuzzleA" android:layout_centerInParent="true">
     </LinearLayout>
     <TextView
-            android:text="TextView"
+            android:text="0.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/txtAlphaA"
-            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp" android:textSize="18sp" android:textStyle="bold"
-            android:textColor="@color/secondaryLightYellow" android:background="@drawable/progress_back"
-            android:padding="4dp" android:layout_alignParentEnd="true"/>
+            android:textSize="@dimen/txt_small_one" android:textStyle="bold"
+            android:textColor="@color/secondaryLightYellow" android:background="@drawable/txt_back_blue"
+            android:padding="8dp" android:layout_alignParentEnd="true" android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"/>
+    <TextView
+            android:text="@string/txt_news_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/txtStartNews" android:gravity="center"
+            android:textSize="@dimen/txt_normal" android:textStyle="bold" android:textColor="@color/primaryColor"
+            android:paddingStart="32dp" android:paddingEnd="32dp" android:lineSpacingExtra="@dimen/line_space_three"
+            android:alpha="0"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/finger_animation"
+            android:id="@+id/imgFingerHelperA" android:alpha="0"/>
 </RelativeLayout>

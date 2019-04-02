@@ -14,6 +14,7 @@ class GameModeDb(
 ) : SQLiteOpenHelper(ctx, dbName, null, 1) {
 
     companion object {
+        const val id: String = "id"
         const val modeId: String = "mode_id"
         const val subject: String = "subject"
         const val scoreAverage: String = "score_average"
@@ -22,7 +23,7 @@ class GameModeDb(
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL("CREATE TABLE $tbName ( $modeId TEXT , $subject TEXT , $scoreAverage INTEGER , $lock BOOLEAN ) ")
+        db?.execSQL("CREATE TABLE $tbName ( $id INTEGER PRIMARY KEY AUTOINCREMENT , $modeId TEXT , $subject TEXT , $scoreAverage INTEGER , $lock BOOLEAN ) ")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -47,7 +48,7 @@ class GameModeDb(
     fun get(): ArrayList<GameModeData> {
         val data = ArrayList<GameModeData>()
         val reader = this.readableDatabase
-        val cursor:Cursor = reader.rawQuery("SELECT * FROM $tbName", null)
+        val cursor: Cursor = reader.rawQuery("SELECT * FROM $tbName", null)
         if (cursor.moveToFirst()) {
             do {
                 data.add(
@@ -60,6 +61,60 @@ class GameModeDb(
                 )
             } while (cursor.moveToNext())
         }
+        cursor.close()
+        reader.close()
+        return data
+    }
+
+    fun getSubject(modeId: String): String {
+        var data = "notFound"
+        val reader = this.readableDatabase
+        val cursor =
+            reader.rawQuery(" SELECT $subject FROM $tbName WHERE ${GameModeDb.modeId} = '$modeId' ", null)
+        if (cursor.moveToFirst())
+            data = cursor.getString(cursor.getColumnIndex(GameModeDb.subject))
+        reader.close()
+        cursor.close()
+        return data
+    }
+
+    fun getScoreAverage(modeId: String): Int {
+        var data = 0
+        val reader = this.readableDatabase
+        val cursor = reader.rawQuery(" SELECT $scoreAverage FROM $tbName WHERE ${GameModeDb.modeId} = '$modeId' ", null)
+        if (cursor.moveToFirst())
+            data = cursor.getInt(cursor.getColumnIndex(scoreAverage))
+        cursor.close()
+        reader.close()
+        return data
+    }
+
+    fun saveScoreAverage(modeId: String, score: Int) {
+        val writer = this.writableDatabase
+        writer.execSQL(" UPDATE $tbName SET $scoreAverage = $score WHERE ${GameModeDb.modeId} = '$modeId' ")
+        writer.close()
+
+    }
+
+    fun getScoreAverage(): ArrayList<Int> {
+
+        val data = ArrayList<Int>()
+        val reader = this.readableDatabase
+        val cursor = reader.rawQuery(" SELECT $scoreAverage FROM $tbName ", null)
+        if (cursor.moveToFirst()) {
+            do {
+                data.add(cursor.getInt(cursor.getColumnIndex(scoreAverage)))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        reader.close()
+        return data
+    }
+
+    fun getCount(): Int {
+        val reader = this.readableDatabase
+        val cursor = reader.rawQuery(" SELECT * FROM $tbName ", null)
+        val data = cursor.count
         cursor.close()
         reader.close()
         return data

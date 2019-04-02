@@ -1,16 +1,19 @@
 package ir.pepotec.app.game.ui.gameModes
 
 import android.app.Activity
-import android.content.Intent
-import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Animatable
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.gameModes.mode_a.FragmentModeA
+import ir.pepotec.app.game.ui.gameModes.mode_b.FragmentModeB
+import ir.pepotec.app.game.ui.gameModes.mode_c.FragmentModeC
+import ir.pepotec.app.game.ui.gameModes.mode_d.FragmentModeD
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.activity_game.*
 import org.jetbrains.anko.doAsync
@@ -24,8 +27,13 @@ class ActivityGame : AppCompatActivity() {
     private var mLastTouchX: Int = 0
     private var mLastTouchY: Int = 0
     private lateinit var f: MyFragment
-    private var mute = false
+    private var mute: Boolean
+        get() = Pref().getBollValue(Pref.mute, false)
+        set(value) {
+            Pref().saveBollValue(Pref.mute, value)
+        }
     private var closeGame = false
+    private var menuIsShow = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -47,7 +55,7 @@ class ActivityGame : AppCompatActivity() {
         }
 
         btnVolumeAG.setOnClickListener {
-            changeVolume()
+            mute = !mute
             closeMenu()
         }
 
@@ -57,21 +65,23 @@ class ActivityGame : AppCompatActivity() {
         }
 
         btnHelpAG.setOnClickListener {
-            f?.runHelper()
+            f.runHelper()
             closeMenu()
         }
 
         parentAG.setOnTouchListener { v, event -> !onTouchEvent(event) }
 
-        parentAG.setOnClickListener { f?.myClickListener() }
+        parentAG.setOnClickListener {
+            if (menuIsShow)
+                closeMenu()
+            else
+                f.myClickListener()
+        }
     }
 
-    private fun changeVolume() {
-        mute = !mute
-        //preferences = mute
-    }
 
     private fun closeMenu() {
+        menuIsShow = false
         imgMenuAG.setImageDrawable(null)
         imgMenuAG.setImageDrawable(
             ContextCompat.getDrawable(
@@ -79,7 +89,7 @@ class ActivityGame : AppCompatActivity() {
                 if (mute) R.drawable.menu_close_animate_mute else R.drawable.menu_close_animate
             )
         )
-        val d = (imgMenuAG.drawable as AnimatedVectorDrawable)
+        val d = (imgMenuAG.drawable as Animatable)
         btnBackMenuAG.visibility = View.GONE
         btnVolumeAG.visibility = View.GONE
         btnHelpAG.visibility = View.GONE
@@ -95,13 +105,15 @@ class ActivityGame : AppCompatActivity() {
             }
             uiThread {
                 if (closeGame)
-                    (this@ActivityGame).finish()
+                    onBackPressed()
+
             }
         }
 
     }
 
     private fun openMenu() {
+        menuIsShow = true
         imgMenuAG.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
@@ -112,7 +124,7 @@ class ActivityGame : AppCompatActivity() {
         btnVolumeAG.visibility = View.VISIBLE
         btnHelpAG.visibility = View.VISIBLE
         btnMenuAG.visibility = View.GONE
-        (imgMenuAG.drawable as AnimatedVectorDrawable).start()
+        (imgMenuAG.drawable as Animatable).start()
     }
 
     override fun onResume() {
@@ -120,14 +132,14 @@ class ActivityGame : AppCompatActivity() {
         App.instance = this
     }
 
-    fun startGame(modeId:String, levelId:Int) {
+    fun startGame(modeId: String, levelId: Int) {
         this.modeId = modeId
         this.levelId = levelId
         when (modeId) {
-            "a" -> {
-                f = FragmentModeA()
-                (f as FragmentModeA).levelId = levelId
-            }
+            "a" -> f = FragmentModeA()
+            "b" -> f = FragmentModeB()
+            "c" -> f = FragmentModeC()
+            "d" -> f = FragmentModeD()
             else -> {
                 toast("mode $modeId notFound")
                 return
@@ -135,6 +147,7 @@ class ActivityGame : AppCompatActivity() {
         }
 
         //  supportFragmentManager.beginTransaction().remove(f)
+        f.levelId = levelId
         supportFragmentManager.beginTransaction().replace(R.id.ContainerGame, f).commit()
     }
 
@@ -157,6 +170,8 @@ class ActivityGame : AppCompatActivity() {
             }
 
             MotionEvent.ACTION_UP -> {
+/*                if (!actionMove)
+                    f.myClickListener()*/
             }//mPosX = 0;
 
             MotionEvent.ACTION_CANCEL -> {
@@ -165,9 +180,14 @@ class ActivityGame : AppCompatActivity() {
             MotionEvent.ACTION_POINTER_UP -> {
             }
         }
-        f?.myTouchListener(dx, dy)
+        f.myTouchListener(dx, dy)
         return true
     }
 
+    override fun onBackPressed() {
+        setResult(Activity.RESULT_OK, intent.putExtra("mode_id", modeId))
+        this.finish()
+        super.onBackPressed()
+    }
 
 }

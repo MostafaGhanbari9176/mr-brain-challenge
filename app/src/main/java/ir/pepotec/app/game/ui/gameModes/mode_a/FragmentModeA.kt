@@ -5,9 +5,11 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.graphics.Point
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.AnimationDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.Gravity
@@ -19,8 +21,11 @@ import android.view.animation.BounceInterpolator
 import android.widget.LinearLayout
 import android.widget.Toast
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.Pref
+import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeALevel
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.dialog.DialogFinishMode
 import ir.pepotec.app.game.ui.dialog.DialogLoser
 import ir.pepotec.app.game.ui.dialog.DialogWinner
 import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
@@ -34,6 +39,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     ResualtDialogResponse, View.OnClickListener {
 
 
+    private var isFinally = false
     private lateinit var helperView: HelpModeA
     private var parentView: ViewGroup? = null
     private lateinit var puzzle: LinearLayout
@@ -42,12 +48,15 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private val p = Point()
     private var gameResult: Int = 0
     private lateinit var gameCreatorA: GameCreatorA
-    var levelId: Int = -1
+    override var levelId: Int = 0
     private var firstTap = false
     private var gameStarted = false
     private lateinit var guideSpace: LinearLayout
     private lateinit var guidePuzzle: LinearLayout
     private val ctx: Context = App.instance
+    private val mute: Boolean
+        get() = Pref().getBollValue(Pref.mute, false)
+    private var fingerVector: Animatable? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mode_a, container, false)
     }
@@ -61,21 +70,23 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
             t.show()
         } else {
             createGame(levelId)
-            toast("levelID is $levelId")
         }
     }
 
     private fun initViews() {
-
+        (GameParentA.background as AnimationDrawable).apply {
+            setEnterFadeDuration(2000)
+            setExitFadeDuration(4000)
+            start()
+        }
         puzzle = LLPuzzleA
-        //GameParentA.setOnDragListener(this)
-
     }
 
     private fun startGame() {
         gameStarted = true
         gameResult = result()
-        MediaPlayer.create(ctx, R.raw.sound_start).start()
+        if (!mute)
+            MediaPlayer.create(ctx, R.raw.sound_start).start()
         when (gameResult) {
             0 -> runLoserGame()
             else -> runWinnerGame()
@@ -153,7 +164,12 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     private fun showWinnerDialog() {
-        DialogWinner("", this, gameResult)
+        if (!isFinally)
+            DialogWinner("ایول !", this, gameResult)
+        else {
+            toast("امتیاز این مرحله : ${result()}", Toast.LENGTH_LONG)
+            DialogFinishMode(PGameMode().getModeSubject("a"), PGameMode().getScoreAverage("a"), this)
+        }
 
     }
 
@@ -172,17 +188,53 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         gameCreatorA.createGame()
     }
 
-    override fun gameCreated(space: Int, alpha: Float, guideSpace: LinearLayout, guidePuzzle: LinearLayout) {
+    override fun gameCreated(
+        space: Int,
+        alpha: Float,
+        guideSpace: LinearLayout,
+        guidePuzzle: LinearLayout,
+        isFinally: Boolean
+    ) {
+        this.isFinally = isFinally
         this.space = space
         this.alpha = alpha
         this.guidePuzzle = guidePuzzle
         this.guideSpace = guideSpace
         txtAlphaA.text = alpha.toString()
+        if (levelId == 1 && !Pref().getBollValue(Pref.help_a, false)) {
+            answerForHelp()
+            fingerVector = imgFingerHelperA.drawable as Animatable
+            fingerVector?.start()
+            imgFingerHelperA.alpha = 0.7f
+        }
+    }
+
+    private fun answerForHelp() {
+        Pref().saveBollValue(Pref.help_a, true)
+        AlertDialog.Builder(ctx).apply {
+            setTitle("راهنما")
+            setMessage("مایل به مشاهده راهنما هستی؟")
+            setNegativeButton("نه") { dialog, which -> dialog.cancel() }
+            setPositiveButton("بله") { dialog, which ->
+                runHelper()
+                dialog.cancel()
+            }
+            show()
+        }
     }
 
     private var step = 0
 
     override fun myTouchListener(dx: Int, dy: Int) {
+        if (fingerVector?.isRunning == true) {
+            fingerVector?.stop()
+            imgFingerHelperA.alpha = 0f
+            ObjectAnimator.ofFloat(txtStartNews, View.ALPHA, 0f, 1f).apply {
+                duration = 300
+                interpolator = AccelerateInterpolator()
+                start()
+            }
+        }
         step += dx
         if (abs(step) >= (p.x / 20)) {
             firstTap = false
@@ -206,7 +258,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         if (parentView == null)
             parentView = (context as Activity).window.decorView as ViewGroup
 
-        helperView = HelpModeA(ctx, puzzle, LLSpaceA, txtAlphaA, R.color.blue, this@FragmentModeA)
+        helperView = HelpModeA(ctx, puzzle, LLSpaceA, txtAlphaA, R.color.primaryColor, this@FragmentModeA)
         parentView?.addView(helperView)
 
     }
@@ -220,8 +272,10 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     private fun changeGuideVisibility(newWidth: Int) {
-        guidePuzzle.visibility = if (newWidth == space) View.VISIBLE else View.GONE
-        guideSpace.visibility = if (newWidth == space) View.VISIBLE else View.GONE
+        if (alpha != 1f) {
+            guidePuzzle.visibility = if (newWidth == space) View.VISIBLE else View.GONE
+            guideSpace.visibility = if (newWidth == space) View.VISIBLE else View.GONE
+        }
     }
 
     override fun prevMenu() {
@@ -233,11 +287,17 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
 
     override fun replay() {
         (ctx as ActivityGame).startGame("a", levelId)
+        App.fullScreen(ctx as ActivityGame)
     }
 
     override fun nextLevel() {
-        levelId++
-        (ctx as ActivityGame).startGame("a", levelId)
+        if (isFinally) {
+            (ctx as ActivityGame).startGame("b", 1)
+        } else {
+            levelId++
+            (ctx as ActivityGame).startGame("a", levelId)
+        }
+        App.fullScreen(ctx as ActivityGame)
 
     }
 

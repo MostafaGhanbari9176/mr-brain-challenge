@@ -5,7 +5,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/parentAG"
                 android:layoutDirection="rtl"
-                android:background="#f0f">
+                android:background="@color/light2">
 
     <FrameLayout
             android:layout_width="match_parent"

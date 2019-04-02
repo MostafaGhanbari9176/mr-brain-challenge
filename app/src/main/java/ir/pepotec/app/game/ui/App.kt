@@ -2,6 +2,7 @@ package ir.pepotec.app.game.ui
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Typeface
 import android.os.Build
 import android.view.View
@@ -15,10 +16,11 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import ir.pepotec.app.game.R
-import ir.pepotec.app.game.model.GameModeData
-import ir.pepotec.app.game.model.ModeAData
+import ir.pepotec.app.game.model.*
 import ir.pepotec.app.game.model.local_data_base.GameModeDb
 import ir.pepotec.app.game.model.local_data_base.ModeADb
+import ir.pepotec.app.game.model.local_data_base.ModeBDb
+import ir.pepotec.app.game.model.local_data_base.ModeCDb
 import org.jetbrains.anko.toast
 
 class App : Application() {
@@ -31,7 +33,11 @@ class App : Application() {
     }
 
     private fun addDataToDb() {
+        Pref().saveBollValue(Pref.help_a, false)
+
         ModeADb(this).deleteDb()
+        ModeCDb(this).deleteDb()
+        ModeBDb(this).deleteDb()
         GameModeDb(this).deleteDb()
 
         var jsonString = this.assets.open("mode_a_level.json").bufferedReader().use {
@@ -50,7 +56,8 @@ class App : Application() {
                         get(ModeADb.alpha).asFloat,
                         get(ModeADb.spaceX).asInt,
                         get(ModeADb.puzzleX).asInt,
-                        get(ModeADb.puzzleY).asInt
+                        get(ModeADb.puzzleY).asInt,
+                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0
                     )
                 )
             }
@@ -73,20 +80,61 @@ class App : Application() {
                 )
             }
         }
+
+
+        jsonString = this.assets.open("mode_c_level.json").bufferedReader().use {
+            it.readText()
+        }
+
+        jsonArr = JsonParser().parse(jsonString) as JsonArray
+        for (x in jsonArr) {
+            val jsonObject: JsonObject = x as JsonObject
+            with(jsonObject) {
+                ModeCDb(this@App).save(
+                    ModeCData(
+                        get(ModeCDb.levelId).asInt,
+                        get(ModeCDb.subject).asString,
+                        get(ModeCDb.score).asInt,
+                        get(ModeCDb.lock).asInt,
+                        get(ModeCDb.alpha).asFloat,
+                        get(ModeCDb.spaceX).asInt,
+                        get(ModeCDb.puzzleX).asInt,
+                        get(ModeCDb.busX).asInt,
+                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0
+                    )
+                )
+            }
+        }
+
+
+        jsonString = this.assets.open("mode_b_level.json").bufferedReader().use {
+            it.readText()
+        }
+
+        jsonArr = JsonParser().parse(jsonString) as JsonArray
+        for (x in jsonArr) {
+            val jsonObject: JsonObject = x as JsonObject
+            with(jsonObject) {
+                ModeBDb(this@App).save(
+                    ModeBData(
+                        get(ModeBDb.levelId).asInt,
+                        get(ModeBDb.subject).asString,
+                        get(ModeBDb.score).asInt,
+                        get(ModeBDb.lock).asInt,
+                        get(ModeBDb.alpha).asFloat,
+                        get(ModeBDb.puzzleY).asInt,
+                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0
+                    )
+                )
+            }
+        }
+
+
     }
 
     companion object {
         lateinit var instance: Context
         val baseUrl = "http://localhost:8080/game/"
-        fun loadImage(img: ImageView, iUrl: String, iError: Int) {
-            return
-            val rOption = RequestOptions().error(iError).placeholder(R.drawable.progress)
-            Glide.with(instance!!)
-                .load("http://pepotec.ir/images/arduino-icon.png")
-                .apply(rOption)
-                .into(img)
-        }
-
         fun fullScreen(context: AppCompatActivity) {
             instance = context
             val flags = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -114,6 +162,10 @@ class App : Application() {
                         }
                     }
             }
+        }
+
+        fun getBlockHeight(): Float {
+            return App.instance.resources.getDimension(R.dimen.puzzle_height)
         }
     }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="rtl"
+                android:background="@drawable/gradient_white_start" android:id="@+id/ParentModeD">
+<include layout="@layout/help_guide"/>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/RVModeD" android:clickable="false"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/LLEventsModeD"
+            android:clickable="false" android:gravity="top">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/LLPuzzleParentModeD" android:gravity="center">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/puzzle_height" android:background="@drawable/block_back"
+                    android:id="@+id/LLPuzzleRightModeD">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/puzzle_height" android:id="@+id/LLPuzzleModeD">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/puzzle_height" android:background="@drawable/block_back"
+                    android:id="@+id/LLPuzzleLeftModeD">
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+            android:text="امتیاز : 0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txtScoreModeD"
+            android:background="@drawable/txt_back_red" android:padding="8dp" android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+            android:textStyle="bold" android:textColor="@color/light2" android:textSize="@dimen/txt_small_one"
+            android:layout_centerHorizontal="true"/>
+</RelativeLayout>

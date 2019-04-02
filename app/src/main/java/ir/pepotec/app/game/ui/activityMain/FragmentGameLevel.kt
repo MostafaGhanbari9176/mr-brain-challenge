@@ -12,7 +12,7 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.ItemData
 import ir.pepotec.app.game.presenter.PGameLevel
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.adapters.AdapterGameLevel
+import ir.pepotec.app.game.ui.activityMain.adapters.AdapterGameLevel
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import kotlinx.android.synthetic.main.fragment_game_level.*
 

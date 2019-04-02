@@ -158,6 +158,7 @@
                         android:scaleX="1"
                 >
                     <path
+                            android:trimPathEnd="0.1"
                             android:name="progress"
                             android:strokeColor="#2196F3"
                             android:strokeWidth="2"
@@ -439,19 +440,6 @@
                     android:valueFrom="M4,9 H20 V9 H4"
                     android:valueTo="M4,9 H20 V13 H4"
                     android:valueType="pathType"
-            />
-        </aapt:attr>
-    </target>
-    <target android:name="progress">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                    android:interpolator="@android:anim/accelerate_interpolator"
-                    android:startOffset="1000"
-                    android:propertyName="trimPathEnd"
-                    android:duration="500"
-                    android:valueFrom="0"
-                    android:valueTo="0.8"
-                    android:valueType="floatType"
             />
         </aapt:attr>
     </target>

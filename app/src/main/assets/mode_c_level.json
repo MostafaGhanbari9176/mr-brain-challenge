@@ -1,0 +1,43 @@
+[
+  {
+    "level_id" :0,
+    "subject" : "مرحله آغازین",
+    "score" : 0,
+    "lock" : 0,
+    "alpha" :1.0,
+    "space_x":1,
+    "puzzle_x":1,
+    "bus_x":1
+  },
+  {
+    "level_id" :1,
+    "subject" : "مرحله دوم",
+    "score" : 0,
+    "lock" : 0,
+    "alpha" :2.0,
+    "space_x":1,
+    "puzzle_x":1,
+    "bus_x":0
+  },
+  {
+    "level_id" :1,
+    "subject" : "مرحلهtwo",
+    "score" : 0,
+    "lock" : 0,
+    "alpha" :2.0,
+    "space_x":2,
+    "puzzle_x":2,
+    "bus_x":2
+  }
+,
+  {
+    "level_id" :1,
+    "subject" : "مرحلهtwo",
+    "score" : 0,
+    "lock" : 0,
+    "alpha" :2.0,
+    "space_x":2,
+    "puzzle_x":0,
+    "bus_x":1
+  }
+]

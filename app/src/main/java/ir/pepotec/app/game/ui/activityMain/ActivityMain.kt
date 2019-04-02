@@ -3,13 +3,22 @@ package ir.pepotec.app.game.ui.activityMain
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
 import android.view.View
+import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.devs.vectorchildfinder.VectorChildFinder
+import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.ui.App
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -17,6 +26,7 @@ import kotlinx.android.synthetic.main.main_activity.*
 class ActivityMain : AppCompatActivity(), View.OnClickListener {
 
 
+    private var progress: Float = 0f
     var keyMode = "out"
     val sc = 0.7F
     val du = 120L
@@ -30,9 +40,17 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
     private fun initViews() {
         App.fullScreen(this)
         animateViews()
+        initProgress()
         setView(FragmentMainMenu())
         imgControlGameLevels.setOnClickListener(this)
 
+    }
+
+    private fun initProgress() {
+        val p = Point()
+        windowManager.defaultDisplay.getRealSize(p)
+        val param = RelativeLayout.LayoutParams(p.x, p.x/6)
+        imgProgressAM.layoutParams = param
     }
 
     private fun animateViews() {
@@ -57,8 +75,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
         if (keyMode == "out") {
             this.finish()
             super.onBackPressed()
-        }
-        else{
+        } else {
             imgControlGameLevels.callOnClick()
         }
     }
@@ -92,9 +109,9 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
         })
 
         if (keyMode == "out") {
-            scX = ObjectAnimator.ofFloat(LLProgress, View.SCALE_X, 0.1f, 1.2f, 1f)
-            scY = ObjectAnimator.ofFloat(LLProgress, View.SCALE_Y, 0.1f, 1.2f, 1f)
-            op = ObjectAnimator.ofFloat(LLProgress, View.ALPHA, 0f, 1f)
+            scX = ObjectAnimator.ofFloat(imgProgressAM, View.SCALE_X, 0.1f, 1.2f, 1f)
+            scY = ObjectAnimator.ofFloat(imgProgressAM, View.SCALE_Y, 0.1f, 1.2f, 1f)
+            op = ObjectAnimator.ofFloat(imgProgressAM, View.ALPHA, 0f, 1f)
             set = AnimatorSet()
             set.playTogether(scX, scY, op)
             set.duration = 2 * du
@@ -116,6 +133,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
 
             override fun onAnimationEnd(animation: Animator?) {
                 setView(FragmentGameMode())
+                animateProgress(PGameMode().getScoreAverage().toFloat())
                 imgControlGameLevels.isEnabled = true
             }
 
@@ -184,16 +202,16 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
             }
         })
 
-        scX = ObjectAnimator.ofFloat(LLProgress, View.SCALE_X, 1f, 1.2f, 0.1f)
-        scY = ObjectAnimator.ofFloat(LLProgress, View.SCALE_Y, 1f, 1.2f, 0.1f)
-        op = ObjectAnimator.ofFloat(LLProgress, View.ALPHA, 1f, 0f)
+        scX = ObjectAnimator.ofFloat(imgProgressAM, View.SCALE_X, 1f, 1.2f, 0.1f)
+        scY = ObjectAnimator.ofFloat(imgProgressAM, View.SCALE_Y, 1f, 1.2f, 0.1f)
+        op = ObjectAnimator.ofFloat(imgProgressAM, View.ALPHA, 1f, 0f)
         set = AnimatorSet()
         set.playTogether(scX, scY, op)
         set.duration = 2 * du
         set.start()
     }
 
-    fun animateImageToBack(modeId:String) {
+    fun animateImageToBack(modeId: String) {
         keyMode = "back"
         imgControlGameLevels.isEnabled = false
         var scX = ObjectAnimator.ofFloat(imgControlGameLevels, View.SCALE_X, 1f, 1.2f, sc)
@@ -246,14 +264,28 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
+
     }
 
+    fun animateProgress(to:Float){
+        ValueAnimator.ofFloat(progress, to).apply {
+            duration = 500
+            interpolator = DecelerateInterpolator()
+            addUpdateListener {
+                val vector = VectorChildFinder(this@ActivityMain, R.drawable.big_progress, imgProgressAM)
+                val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
+                path.trimPathEnd = it.animatedValue as Float / 100
+            }
+            start()
+        }
+        progress = to
+    }
 
-    fun showGameLevel(modeId:String)
-    {
+    fun showGameLevel(modeId: String) {
         val f = FragmentGameLevel()
         f.modeId = modeId
         setView(f)
+        animateProgress(PGameMode().getScoreAverage(modeId).toFloat())
     }
 
 
@@ -289,7 +321,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         App.instance = this
-        if(resultCode == Activity.RESULT_OK && requestCode == 1){
+        if (resultCode == Activity.RESULT_OK && requestCode == 1) {
             showGameLevel(data!!.getStringExtra("modeId"))
         }
     }

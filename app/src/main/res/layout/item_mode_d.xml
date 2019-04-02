@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:layoutDirection="rtl" android:gravity="bottom"
+              android:clickable="false">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/puzzle_height" android:layout_weight="1"
+            android:background="@drawable/gradient_red_start" android:id="@+id/PTEST" android:clickable="false">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp" android:background="@drawable/gradient_shadow_red"
+                android:id="@+id/LLTest">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/puzzle_height" android:id="@+id/LLBus1ItemModeD" android:clickable="false">
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/puzzle_height" android:background="@drawable/gradient_red_start"
+            android:id="@+id/LLBlockItemModeD" android:clickable="false">
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/txtPosition" android:textSize="24sp"
+                android:textColor="#000" android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/puzzle_height" android:id="@+id/LLBus2ItemModeD" android:clickable="false">
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/puzzle_height" android:layout_weight="1"
+            android:background="@drawable/gradient_red_start" android:clickable="false">
+    </LinearLayout>
+</LinearLayout>

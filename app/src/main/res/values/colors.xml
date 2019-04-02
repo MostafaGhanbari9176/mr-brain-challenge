@@ -29,4 +29,5 @@
     <color name="dark">#000000</color>
     <color name="light">#fff</color>
     <color name="light2">#E9E9E9</color>
+    <color name="light3">#DFDFDF</color>
 </resources>

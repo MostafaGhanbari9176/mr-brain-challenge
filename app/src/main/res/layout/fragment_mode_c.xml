@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/animate_gradient_orange"
+                android:id="@+id/GameParentC" android:layoutDirection="rtl">
+    <include layout="@layout/help_guide"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_alignParentBottom="true"
+            android:gravity="center_vertical">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLRightBusC"
+                android:background="@drawable/block_back">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLBusC"
+                android:layout_weight="1">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLLeftBusC"
+                android:background="@drawable/block_back">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_alignParentBottom="true" android:gravity="bottom"
+    >
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLRightSeatC"
+                android:background="@drawable/block_back">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLSeatC"
+        >
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/puzzle_height" android:id="@+id/LLLeftSeatC"
+                android:background="@drawable/block_back">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="@dimen/puzzle_height"
+            android:layout_height="@dimen/puzzle_height" android:background="@drawable/block_back"
+            android:id="@+id/LLPuzzleC" android:layout_centerInParent="true">
+    </LinearLayout>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txtAlphaC"
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" android:textSize="18sp" android:textStyle="bold"
+            android:textColor="@color/secondaryLightYellow" android:background="@drawable/progress_back"
+            android:padding="4dp" android:layout_alignParentEnd="true"/>
+</RelativeLayout>

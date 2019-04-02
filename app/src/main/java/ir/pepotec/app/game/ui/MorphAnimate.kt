@@ -8,6 +8,8 @@ import android.view.ViewGroup
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import kotlinx.android.synthetic.main.morph.*
 
@@ -20,49 +22,11 @@ class MorphAnimate : AppCompatActivity() {
         App.fullScreen(this)
 
         imgMorph.setOnClickListener {
-
-            x = if (x == 0) {
-                imgMorph.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.menu_animate))
-                val d = (imgMorph.drawable as AnimatedVectorDrawable)
-                d.start()
-                1
-            } else if (x == 1) {
-                imgMorph.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.menu_close_animate))
-                val d = (imgMorph.drawable as AnimatedVectorDrawable)
-                d.start()
-                2
-            } else if (x == 2) {
-                imgMorph.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.menu_animate_mute))
-                val d = (imgMorph.drawable as AnimatedVectorDrawable)
-                d.start()
-                3
-            } else {
-                imgMorph.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.menu_close_animate_mute))
-                val d = (imgMorph.drawable as AnimatedVectorDrawable)
-                d.start()
-                0
-            }
-            /* doAsync {
-                 while (true) {
-                     if (!(d.isRunning))
-                         break
-                 }
-                 uiThread {
-
-                 }
-             }*/
+            (imgMorph.drawable as AnimatedVectorDrawable).start()
 
         }
 
-        btn1.setOnClickListener {
-            startHelp()
-        }
-        btn2.setOnClickListener {
-            val li:LayoutInflater = LayoutInflater.from(this@MorphAnimate)
-            val v: View = li.inflate(R.layout.test, null, false)
-            val d: ViewGroup = window.decorView as ViewGroup
-            d.addView(v)
-        }
+
     }
 
     private fun startHelp() {

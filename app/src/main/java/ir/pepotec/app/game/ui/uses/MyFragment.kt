@@ -9,6 +9,7 @@ abstract class MyFragment : Fragment() {
     abstract fun myTouchListener(dx: Int, dy: Int)
     abstract fun myClickListener()
     abstract fun runHelper()
+    abstract var levelId:Int
     fun toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(App.instance, message, duration).show()
     }

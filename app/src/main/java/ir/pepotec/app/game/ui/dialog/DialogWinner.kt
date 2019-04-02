@@ -1,6 +1,7 @@
 package ir.pepotec.app.game.ui.dialog
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -9,7 +10,9 @@ import android.graphics.Rect
 import android.graphics.drawable.*
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
@@ -62,7 +65,7 @@ class DialogWinner(
 
     private fun startAnim() {
 
-        val d = (v.imgDialogWinner.drawable as AnimatedVectorDrawable)
+        val d = (v.imgDialogWinner.drawable as Animatable )
         d.start()
         v.imgDialogWinner.requestLayout()
         doAsync {
@@ -79,10 +82,21 @@ class DialogWinner(
     }
 
     private fun setResults() {
-        (ObjectAnimator.ofFloat(v.txtDialogWinner, View.ALPHA, 0f, 1f).start())
-        val vector = VectorChildFinder(ctx, R.drawable.winner_message, v.imgDialogWinner)
-        val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
-        path.trimPathEnd = score / 100.0f
+        ValueAnimator.ofFloat(20f,100f).apply {
+            duration = 300
+            interpolator = DecelerateInterpolator()
+            addUpdateListener {
+                val value = it.animatedValue as Float
+                v.txtDialogWinner.alpha = value/100
+                if(value <= score)
+                {
+                    val vector = VectorChildFinder(ctx, R.drawable.winner_message, v.imgDialogWinner)
+                    val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
+                    path.trimPathEnd = value/100
+                }
+            }
+            start()
+        }
     }
 
 }

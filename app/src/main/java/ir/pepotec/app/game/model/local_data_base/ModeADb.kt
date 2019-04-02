@@ -19,13 +19,14 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
         const val spaceX = "space_x"
         const val puzzleX = "puzzle_x"
         const val puzzleY = "puzzle_y"
+        const val isFinally = "is_finally"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(
-            " CREATE TABLE $tbName ( $levelId INTEGER , $subject TEXT , " +
+            " CREATE TABLE $tbName ( $levelId INTEGER PRIMARY KEY AUTOINCREMENT , $subject TEXT , " +
                     "$score TEXT , $lock BOOLEAN , $alpha FLOAT , " +
-                    "$spaceX INTEGER , $puzzleX INTEGER , $puzzleY INTEGER )"
+                    "$spaceX INTEGER , $puzzleX INTEGER , $puzzleY INTEGER , $isFinally INTEGER )"
         )
     }
 
@@ -39,7 +40,6 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
         val cValue = ContentValues()
 
         with(data) {
-            cValue.put(ModeADb.levelId, levelId)
             cValue.put(ModeADb.subject, subject)
             cValue.put(ModeADb.score, score)
             cValue.put(ModeADb.lock, lock)
@@ -47,6 +47,7 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
             cValue.put(ModeADb.spaceX, spaceX)
             cValue.put(ModeADb.puzzleX, puzzleX)
             cValue.put(ModeADb.puzzleY, puzzleY)
+            cValue.put(ModeADb.isFinally, isFinally)
         }
 
         writer.insert(tbName, null, cValue)
@@ -69,7 +70,8 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
                         cursor.getFloat(cursor.getColumnIndex(alpha)),
                         cursor.getInt(cursor.getColumnIndex(spaceX)),
                         cursor.getInt(cursor.getColumnIndex(puzzleX)),
-                        cursor.getInt(cursor.getColumnIndex(puzzleY))
+                        cursor.getInt(cursor.getColumnIndex(puzzleY)),
+                        cursor.getInt(cursor.getColumnIndex(isFinally))
                     )
                 )
             } while (cursor.moveToNext())
@@ -92,7 +94,8 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
                 cursor.getFloat(cursor.getColumnIndex(alpha)),
                 cursor.getInt(cursor.getColumnIndex(spaceX)),
                 cursor.getInt(cursor.getColumnIndex(puzzleX)),
-                cursor.getInt(cursor.getColumnIndex(puzzleY))
+                cursor.getInt(cursor.getColumnIndex(puzzleY)),
+                cursor.getInt(cursor.getColumnIndex(isFinally))
             )
 
         }
@@ -111,6 +114,31 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
         val writer = this.writableDatabase
         writer.execSQL(" UPDATE $tbName SET $lock = 0 WHERE ${ModeADb.levelId} = $levelId ")
         writer.close()
+    }
+
+    fun getCount(): Int {
+
+        val reader = this.readableDatabase
+        val cursor = reader.rawQuery(" SELECT * FROM $tbName ", null)
+        val data = cursor.count
+        cursor.close()
+        reader.close()
+        return data
+    }
+
+    fun getScore():ArrayList<Int>{
+        val data = ArrayList<Int>()
+        val reader = this.readableDatabase
+        val cursor = reader.rawQuery(" SELECT ${ModeCDb.score} FROM $tbName ",null)
+        if(cursor.moveToFirst())
+        {
+            do{
+                data.add(cursor.getInt(cursor.getColumnIndex(ModeCDb.score)))
+            }while (cursor.moveToNext())
+        }
+        cursor.close()
+        reader.close()
+        return data
     }
 
     fun deleteDb() {

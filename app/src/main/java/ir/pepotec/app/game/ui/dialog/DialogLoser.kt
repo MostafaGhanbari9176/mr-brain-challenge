@@ -48,8 +48,8 @@ class DialogLoser(
     }
 
     private fun startAnim() {
-        (v.imgDialogLoser.drawable as AnimatedVectorDrawable).stop()
-        (v.imgDialogLoser.drawable as AnimatedVectorDrawable).start()
+        (v.imgDialogLoser.drawable as Animatable).stop()
+        (v.imgDialogLoser.drawable as Animatable).start()
 
         showMessage()
     }

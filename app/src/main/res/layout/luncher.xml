@@ -7,5 +7,5 @@
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent" app:srcCompat="@drawable/ic_mester_brain"
-            tools:layout_editor_absoluteY="391dp" tools:layout_editor_absoluteX="323dp" android:id="@+id/imageView"/>
+            tools:layout_editor_absoluteY="391dp" tools:layout_editor_absoluteX="323dp"/>
 </androidx.constraintlayout.ConstraintLayout>

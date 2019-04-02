@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.help_mode_a.view.*
 import org.jetbrains.anko.toast
@@ -26,7 +27,7 @@ class HelpModeA(
     private val txtAlpha: TextView,
     @ColorRes private val parentColor: Int,
     private val listener: OnClickListener
-) : RelativeLayout(ctx, null) ,View.OnTouchListener{
+) : RelativeLayout(ctx, null), View.OnTouchListener {
 
     companion object {
         lateinit var c: Canvas
@@ -35,9 +36,9 @@ class HelpModeA(
     private lateinit var presenterView: RelativeLayout
     private var presentChildNumber: Int = 0
     private val parentDuration = 500
-    private val childDuration = 300
+    private val childDuration = 400L
     private val childDelay = 200
-    private var presentChildDelay = 500
+    private var presentChildDelay = 500L
     private val parentPaint = Paint()
     private val transPaint = Paint()
     private var puzzleAnimator: ValueAnimator? = null
@@ -46,7 +47,7 @@ class HelpModeA(
 
     init {
         setOnClickListener {
-            ctx.toast("Clicked")
+
         }
         bringToFront()
         setWillNotDraw(false)
@@ -200,11 +201,21 @@ class HelpModeA(
                 presentChildNumber++
                 val v = presenterView.txtHelpMA
                 v.setShadowLayer(10f, 7f, 7f, R.color.dark)
-                addPresenterChildes(
-                    v,
-                    0f,
-                    0f
-                )
+                if (puzzle.y > 0) {
+                    v.layoutParams.width = width - LL2HelpMA.width
+                    addPresenterChildes(
+                        v,
+                        LL2HelpMA.width.toFloat(),
+                        0f
+                    )
+                }else
+                {
+                    addPresenterChildes(
+                        v,
+                        0f,
+                        height/2f - 2* App.getBlockHeight()
+                    )
+                }
             }
             4 -> {
                 presentChildDelay = 1000
@@ -216,8 +227,8 @@ class HelpModeA(
                 v.setOnTouchListener(this)
                 addPresenterChildes(
                     v,
-                    space.x + space.width / 2,
-                    space.y
+                    txtHelpMA.x + txtHelpMA.width / 2,
+                    txtHelpMA.y + txtHelpMA.height + 40
                 )
             }
         }
@@ -230,8 +241,8 @@ class HelpModeA(
         addView(v)
         v.alpha = 0f
         ObjectAnimator.ofFloat(v, View.ALPHA, 0f, 1f).apply {
-            startDelay = presentChildDelay.toLong()
-            duration = childDuration.toLong()
+            startDelay = presentChildDelay
+            duration = childDuration
             addListener(object : Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator?) {
                 }
@@ -244,10 +255,10 @@ class HelpModeA(
                 }
 
                 override fun onAnimationStart(animation: Animator?) {
-                    if (presentChildNumber != 4) {
-                        v.x = (x - (v.width / 2))
-                        v.y = y
-                    }
+
+                    v.x = x - (if (presentChildNumber != 4) v.width / 2 else 0)
+                    v.y = y
+
                 }
             })
 
@@ -257,7 +268,7 @@ class HelpModeA(
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        when(v?.id){
+        when (v?.id) {
             R.id.btnHelpMA -> ButtonEvent(v, event, R.raw.sound_primary)
         }
         return false

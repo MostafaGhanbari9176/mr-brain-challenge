@@ -11,7 +11,7 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.GameModeData
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.adapters.AdapterGameMode
+import ir.pepotec.app.game.ui.activityMain.adapters.AdapterGameMode
 import kotlinx.android.synthetic.main.fragment_game_mode.*
 
 class FragmentGameMode : Fragment(), PGameMode.PGameModeListener {
