@@ -2,39 +2,53 @@ package ir.pepotec.app.game.ui.activityMain.adapters
 
 import android.animation.ValueAnimator
 import android.graphics.Point
+import android.graphics.drawable.Animatable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.GameModeData
+import ir.pepotec.app.game.model.ItemData
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.item_game_mode.view.*
+import kotlinx.android.synthetic.main.item_infinite.view.*
 
 class AdapterGameMode(private val source: ArrayList<GameModeData>, private val listener: (modeId: String) -> Unit) :
-    RecyclerView.Adapter<AdapterGameMode.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val view: View = LayoutInflater.from(App.instance).inflate(R.layout.item_game_mode, p0, false)
-        return ViewHolder(view, listener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val li = LayoutInflater.from(App.instance)
+        return  if (viewType == 1)
+             HolderOne(li.inflate(R.layout.item_game_mode, parent, false), listener)
+        else
+             HolderTwo(li.inflate(R.layout.item_infinite, parent, false), listener)
     }
 
     override fun getItemCount(): Int = source.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binder(source[position], position)
+    override fun getItemViewType(position: Int): Int {
+        return if (position == 3) 2 else 1
     }
 
-    class ViewHolder(itemView: View, private val listener: (modeId: String) -> Unit) :
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+        if(getItemViewType(position) == 1)
+            (holder as HolderOne).binder(source[position], position)
+        else
+            (holder as HolderTwo).binder(source[position], position)
+    }
+
+    class HolderOne(itemView: View, private val listener: (modeId: String) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
 
         fun binder(data: GameModeData, position: Int) {
@@ -74,8 +88,8 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
         private fun initItemView(position: Int) {
             val p = Point()
             (App.instance as ActivityMain).windowManager.defaultDisplay.getRealSize(p)
-            val param = RelativeLayout.LayoutParams(p.x / 2, p.x / 2)
-            itemView.layoutParams = param
+            itemView.layoutParams.width = p.x/2
+            itemView.layoutParams.height = p.x/2
             if (position == 0 || position == 1)
                 setMargin(itemView)
 
@@ -97,8 +111,41 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
         }
 
         private fun setMargin(v: View) {
-            val params = (v.layoutParams) as RelativeLayout.LayoutParams
+            val params = (v.layoutParams) as GridLayoutManager.LayoutParams
             params.topMargin = ((App.instance) as ActivityMain).imgProgressAM.height
+        }
+    }
+
+    class HolderTwo(itemView:View, private val listener: (modeId: String) -> Unit) : RecyclerView.ViewHolder(itemView) {
+         fun binder(data:GameModeData, position:Int){
+             itemView.setOnTouchListener { v, event ->
+                 ButtonEvent(v, event)
+             false}
+             (itemView.LLItemInfinite.background as Animatable).start()
+             initView()
+             with(data)
+             {
+                 itemView.txtScoreInfinite.text = scoreAverage.toString()
+                 if(lock == 0)
+                 {
+                     itemView.txtScoreInfinite.visibility = View.VISIBLE
+                     itemView.imgLockInfinite.visibility = View.GONE
+                     itemView.setOnClickListener { listener(modeId) }
+                 }
+                 else
+                 {
+                     itemView.txtScoreInfinite.visibility = View.GONE
+                     itemView.imgLockInfinite.visibility = View.VISIBLE
+                     itemView.setOnClickListener {  }
+                 }
+             }
+        }
+
+        private fun initView() {
+            val p = Point()
+            (App.instance as ActivityMain).windowManager.defaultDisplay.getRealSize(p)
+            itemView.layoutParams.width = p.x/2
+            itemView.layoutParams.height = p.x/2
         }
     }
 }

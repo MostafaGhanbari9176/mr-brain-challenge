@@ -1,5 +1,6 @@
 package ir.pepotec.app.game.ui
 
+import android.graphics.Point
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,9 +21,16 @@ class MorphAnimate : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morph)
         App.fullScreen(this)
-
+        val p = Point()
+        this.windowManager.defaultDisplay.getRealSize(p)
+        imgMorph.layoutParams.height = p.x
+        imgMorph2.layoutParams.height = p.x
         imgMorph.setOnClickListener {
             (imgMorph.drawable as AnimatedVectorDrawable).start()
+
+        }
+        imgMorph2.setOnClickListener {
+            (imgMorph2.drawable as AnimatedVectorDrawable).start()
 
         }
 

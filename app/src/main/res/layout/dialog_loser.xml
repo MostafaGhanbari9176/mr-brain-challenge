@@ -38,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/txtDialogLoser" android:gravity="center"
                         android:textStyle="bold" android:textColor="@color/light"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/txt_small_one"
                         android:lineSpacingExtra="@dimen/line_space_three" android:padding="16dp"
                         android:alpha="0"/>
             </LinearLayout>

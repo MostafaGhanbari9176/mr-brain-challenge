@@ -1,13 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:viewportWidth="24"
-        android:viewportHeight="24"
-        android:height="24dp"
-        android:width="24dp">
-    <path
-            android:strokeColor="@color/red"
-            android:strokeWidth="1"
-            android:pathData="M0,0 H24 V24 H0 z"
-    />
-</vector>
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+        <vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportWidth="24"
+                android:viewportHeight="24"
+                android:height="24dp"
+                android:width="24dp">
+            <group
+                    android:name="parent"
+                    android:pivotX="0"
+                    android:pivotY="0"
+                    android:scaleX="0.125"
+                    android:scaleY="0.125"
+            >
+                <path android:name="del"
+                      android:fillColor="@color/red"
+                      android:pathData="M12,21.35l-1.45,-1.32C5.4,15.36 2,12.28 2,8.5 2,5.42 4.42,3 7.5,3c1.74,0 3.41,0.81 4.5,2.09C13.09,3.81 14.76,3 16.5,3 19.58,3 22,5.42 22,8.5c0,3.78 -3.4,6.86 -8.55,11.54L12,21.35z"/>
+            </group>
+            <group
+                    android:name="parent"
+                    android:pivotX="0"
+                    android:pivotY="0"
+                    android:scaleX="0.125"
+                    android:scaleY="0.125"
+            >
+
+
+                <group android:name="right">
+                    <clip-path android:pathData="M0,0 h12 v24 h-12 z"/>
+                    <path android:name="del_right"
+                          android:fillColor="@color/red"
+                          android:pathData="M12,21.35l-1.45,-1.32C5.4,15.36 2,12.28 2,8.5 2,5.42 4.42,3 7.5,3c1.74,0 3.41,0.81 4.5,2.09C13.09,3.81 14.76,3 16.5,3 19.58,3 22,5.42 22,8.5c0,3.78 -3.4,6.86 -8.55,11.54L12,21.35z"/>
+                </group>
+
+                <group android:name="left">
+                    <clip-path android:pathData="M12,0 h12 v24 h-12 "/>
+                    <path android:name="del_left"
+                          android:fillColor="@color/red"
+                          android:pathData="M12,21.35l-1.45,-1.32C5.4,15.36 2,12.28 2,8.5 2,5.42 4.42,3 7.5,3c1.74,0 3.41,0.81 4.5,2.09C13.09,3.81 14.76,3 16.5,3 19.58,3 22,5.42 22,8.5c0,3.78 -3.4,6.86 -8.55,11.54L12,21.35z"/>
+                </group>
+
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="parent">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                        android:propertyName="scaleX"
+                        android:duration="300"
+                        android:valueFrom="0.125"
+                        android:valueTo="0.5"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/accelerate_interpolator"
+                />
+                <objectAnimator
+                        android:propertyName="scaleY"
+                        android:duration="300"
+                        android:valueFrom="0.125"
+                        android:valueTo="0.5"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/accelerate_interpolator"
+                />
+                <objectAnimator
+                        android:propertyName="pivotX"
+                        android:duration="300"
+                        android:valueFrom="0"
+                        android:valueTo="12"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/decelerate_interpolator"
+                />
+                <objectAnimator
+                        android:propertyName="pivotY"
+                        android:duration="300"
+                        android:valueFrom="0"
+                        android:valueTo="12"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/decelerate_interpolator"
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="del_left">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="200"
+                    android:propertyName="fillColor"
+                    android:duration="300"
+                    android:valueFrom="@color/red"
+                    android:valueTo="#990000"
+                    android:valueType="colorType"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="del_right">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="200"
+                    android:propertyName="fillColor"
+                    android:duration="300"
+                    android:valueFrom="@color/red"
+                    android:valueTo="#990000"
+                    android:valueType="colorType"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="right">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="600"
+                    android:propertyName="translateX"
+                    android:duration="500"
+                    android:valueFrom="0"
+                    android:valueTo="-48"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="left">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="600"
+                    android:propertyName="translateX"
+                    android:duration="500"
+                    android:valueFrom="0"
+                    android:valueTo="48"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+<!--    <target android:name="del">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="600"
+                    android:propertyName="fillAlpha"
+                    android:duration="300"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="del">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="900"
+                    android:propertyName="fillAlpha"
+                    android:duration="100"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>-->
+</animated-vector>

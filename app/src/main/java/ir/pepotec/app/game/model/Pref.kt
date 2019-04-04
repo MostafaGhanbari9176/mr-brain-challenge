@@ -9,6 +9,10 @@ class Pref {
     companion object {
         const val help_a = "help_a"
         const val mute = "mute"
+        const val score = "score"
+        const val block = "block"
+        const val del = "del"
+        const val DLock = "DLock"
     }
 
     private val p = App.instance.getSharedPreferences("MostafaGhanbari", MODE_PRIVATE)

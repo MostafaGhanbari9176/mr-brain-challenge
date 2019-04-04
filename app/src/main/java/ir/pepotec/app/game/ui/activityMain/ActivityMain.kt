@@ -132,9 +132,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                setView(FragmentGameMode())
-                animateProgress(PGameMode().getScoreAverage().toFloat())
-                imgControlGameLevels.isEnabled = true
+                showGameMode()
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -146,6 +144,12 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
             }
         })
         keyMode = "home"
+    }
+
+    private fun showGameMode() {
+        setView(FragmentGameMode())
+        animateProgress(PGameMode().getScoreAverage().toFloat())
+        imgControlGameLevels.isEnabled = true
     }
 
     private fun animateImageToOut() {
@@ -322,7 +326,11 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         App.instance = this
         if (resultCode == Activity.RESULT_OK && requestCode == 1) {
-            showGameLevel(data!!.getStringExtra("modeId"))
+            val modeId = data!!.getStringExtra("modeId")
+            if(modeId == "d")
+                showGameMode()
+            else
+            showGameLevel(modeId)
         }
     }
 

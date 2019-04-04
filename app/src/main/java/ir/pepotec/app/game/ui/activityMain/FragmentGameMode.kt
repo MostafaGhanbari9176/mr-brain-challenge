@@ -1,6 +1,7 @@
 package ir.pepotec.app.game.ui.activityMain
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import ir.pepotec.app.game.model.GameModeData
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.adapters.AdapterGameMode
+import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import kotlinx.android.synthetic.main.fragment_game_mode.*
 
 class FragmentGameMode : Fragment(), PGameMode.PGameModeListener {
@@ -36,7 +38,18 @@ class FragmentGameMode : Fragment(), PGameMode.PGameModeListener {
 
     override fun gameModeData(data: ArrayList<GameModeData>) {
         RVGameMode.layoutManager = GridLayoutManager(ctx, 2)
-        val adapter = AdapterGameMode(data) { modeId ->  act.animateImageToBack(modeId) }
+        val adapter = AdapterGameMode(data) { modeId ->
+            if(modeId == "d")
+                startD()
+            else
+            act.animateImageToBack(modeId) }
         RVGameMode.adapter = adapter
+    }
+
+    private fun startD() {
+        val intent = Intent(ctx as ActivityMain, ActivityGame::class.java)
+        intent.putExtra("levelId", 0)
+        intent.putExtra("modeId", "d")
+        activity?.startActivityForResult(intent, 1)
     }
 }

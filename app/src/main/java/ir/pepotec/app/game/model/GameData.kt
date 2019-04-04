@@ -7,6 +7,13 @@ data class GameModeData(
     val lock: Int
 )
 
+data class ItemData(
+    val id: Int,
+    val subject: String,
+    val score: Int,
+    val lock: Int
+)
+
 data class ModeAData(
     val levelId: Int,
     val subject: String,
@@ -41,9 +48,11 @@ data class ModeCData(
     val isFinally: Int
 )
 
-data class ItemData(
-    val id: Int,
-    val subject: String,
-    val score: Int,
-    val lock: Int
+data class ModeDData(
+    val score:Int,
+    val del_count:Int,
+    val block_count:Int,
+    val lock:Int
 )
+
+
