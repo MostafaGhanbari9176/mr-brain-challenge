@@ -27,6 +27,7 @@
         android:screenOrientation="portrait"/>
 
 
+        <service android:name=".ui.uses.ServiceMusic"/>
     </application>
 
 </manifest>

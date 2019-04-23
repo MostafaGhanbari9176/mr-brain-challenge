@@ -6,10 +6,10 @@
         android:viewportWidth="100"
         android:viewportHeight="100">
     <path
-            android:fillColor="#aa00ff"
+            android:fillColor="@color/secondaryDarkYellow"
             android:pathData="M 0,0 L 100,0 100,96 99.5,100 0.5,100 0,96 z"/>
     <path
-            android:fillColor="#d500f9"
+            android:fillColor="@color/secondaryYellow"
             android:pathData="M 0,0 L 100,0 100,50 0,50 z"/>
     <path
             android:strokeColor="@color/light"
@@ -19,7 +19,7 @@
     />
     <path
             android:fillAlpha="0.9"
-            android:fillColor="#e040fb"
+            android:fillColor="@color/secondaryLightYellow"
             android:pathData="M 0,30 L 100,30 100,96 0,96 z"/>
     <!--    <path
                 android:fillAlpha="0.5"

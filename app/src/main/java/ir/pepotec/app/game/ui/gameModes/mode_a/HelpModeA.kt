@@ -269,7 +269,7 @@ class HelpModeA(
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         when (v?.id) {
-            R.id.btnHelpMA -> ButtonEvent(v, event, R.raw.sound_primary)
+            R.id.btnHelpMA -> ButtonEvent(v, event)
         }
         return false
     }

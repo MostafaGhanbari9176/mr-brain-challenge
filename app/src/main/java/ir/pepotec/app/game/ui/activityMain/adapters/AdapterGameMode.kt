@@ -16,6 +16,7 @@ import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.GameModeData
 import ir.pepotec.app.game.model.ItemData
+import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.uses.ButtonEvent
@@ -70,14 +71,13 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
                     itemView.setOnClickListener {}
                 } else {
                     itemView.txtScoreMode.visibility = View.VISIBLE
-                    itemView.txtScoreMode.text = scoreAverage.toString()
                     itemView.imgModeMenu.setImageDrawable(
                         ContextCompat.getDrawable(
                             App.instance,
                             R.drawable.item_game_mode
                         )
                     )
-                    animateProgress(scoreAverage.toFloat())
+                    animateProgress(scoreAverage)
                     itemView.setOnClickListener {
                         listener(modeId)
                     }
@@ -95,16 +95,18 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
 
         }
 
-        private fun animateProgress(score: Float) {
+        private fun animateProgress(score: Int) {
 
-            ValueAnimator.ofFloat(0f, score).apply {
+            ValueAnimator.ofInt(0, score).apply {
                 duration = 500
                 startDelay = 400
                 interpolator = DecelerateInterpolator()
                 addUpdateListener {
                     val vector = VectorChildFinder(App.instance, R.drawable.item_game_mode, itemView.imgModeMenu)
                     val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
-                    path.trimPathEnd = it.animatedValue as Float / 100
+                    val v = it.animatedValue as Int
+                    path.trimPathEnd = v/ 100f
+                    itemView.txtScoreMode.text = "$v"
                 }
                 start()
             }
@@ -125,7 +127,7 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
              initView()
              with(data)
              {
-                 itemView.txtScoreInfinite.text = scoreAverage.toString()
+                 itemView.txtScoreInfinite.text = "${Pref().getIntegerValue(Pref.score, 0)}"
                  if(lock == 0)
                  {
                      itemView.txtScoreInfinite.visibility = View.VISIBLE

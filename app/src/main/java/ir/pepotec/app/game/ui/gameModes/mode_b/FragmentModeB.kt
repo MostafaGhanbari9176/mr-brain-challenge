@@ -9,6 +9,8 @@ import android.content.Context
 import android.graphics.Point
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeBLevel
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.dialog.DialogFinishMode
 import ir.pepotec.app.game.ui.dialog.DialogLoser
 import ir.pepotec.app.game.ui.dialog.DialogWinner
@@ -27,13 +30,13 @@ import kotlinx.android.synthetic.main.fragment_mode_b.*
 import org.jetbrains.anko.doAsync
 import kotlin.math.abs
 
-class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDialogResponse{
+class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDialogResponse {
 
     override var levelId: Int = 0
-    private  var blockHeight = 0
+    private var blockHeight = 0
     private var isFinally = false
-    private lateinit var guidePuzzle:LinearLayout
-    private lateinit var guideSeat:LinearLayout
+    private lateinit var guidePuzzle: LinearLayout
+    private lateinit var guideSeat: LinearLayout
     private val ctx: Context = App.instance
     private var gameStarted: Boolean = false
     private var firstTap: Boolean = false
@@ -41,11 +44,9 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
     private var lose = false
     private var space = 0
     private var alpha = 1f
-    private var transY :ObjectAnimator? = null
     private var scaleX: ValueAnimator? = null
-    private var set: AnimatorSet? = null
-    private lateinit var seatAnimator :ValueAnimator
     private var limit = 0
+    private var animRun = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mode_b, container, false)
@@ -54,13 +55,13 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        GameCreatorB(levelId, ParentModeB, LLPuzzleModeB,LLSeatModeB, LLRightB, LLLeftB, p, this).createGame()
+        GameCreatorB(levelId, ParentModeB, LLPuzzleModeB, LLSeatModeB, LLRightB, LLLeftB, p, this).createGame()
     }
 
     private fun initView() {
         animateBackgrounds()
         blockHeight = App.getBlockHeight().toInt()
-        (ctx as  ActivityGame).windowManager.defaultDisplay.getRealSize(p)
+        (ctx as ActivityGame).windowManager.defaultDisplay.getRealSize(p)
         limit = p.y - 2 * blockHeight
     }
 
@@ -68,7 +69,7 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
         (ParentModeB.background as AnimationDrawable).apply {
             setExitFadeDuration(6000)
             setEnterFadeDuration(2000)
-           start()
+            start()
         }
 /*        (LLPuzzleModeB.background as AnimationDrawable).apply {
             setExitFadeDuration(4000)
@@ -90,7 +91,7 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
     private var step = 0
 
     override fun myTouchListener(dx: Int, dy: Int) {
-        if(gameStarted)
+        if (gameStarted)
             return
         step += dx
         if (abs(step) >= (p.x / 20)) {
@@ -127,42 +128,36 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
     }
 
     private fun runPuzzle() {
-        val transTo : Float = LLSeatModeB.y - LLPuzzleModeB.y
-        transY = ObjectAnimator.ofFloat(LLPuzzleModeB, View.TRANSLATION_Y, 0f, transTo).apply {
-            duration = 300
-            addListener(object : Animator.AnimatorListener{
-                override fun onAnimationRepeat(animation: Animator?) {
-
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    seatAnimator.cancel()
-                    if(!lose)
-                        showDialogWinner()
-                }
-
-                override fun onAnimationCancel(animation: Animator?) {
-
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
-                }
-            })
-            addUpdateListener {
-                val value = it.animatedValue as Float
-                if(value > limit)
-                {
-                    if (abs(LLPuzzleModeB.x - LLSeatModeB.x) > 40)
-                    {
-                        lose = true
-                        seatAnimator.cancel()
-                        set?.cancel()
-                        showDialogLoser()
+        val transTo: Float = LLSeatModeB.y - LLPuzzleModeB.y
+        val h = Handler()
+        Thread(
+            Runnable {
+                var value = 0f
+                while (animRun && value <= transTo) {
+                    value += 50
+                    if (value > transTo) {
+                        value = transTo
+                        animRun = false
                     }
-
+                    h.post { LLPuzzleModeB.translationY = value }
+                    if (value > limit) {
+                        if (abs(LLPuzzleModeB.x - LLSeatModeB.x) > 20 || abs(LLPuzzleModeB.width - LLSeatModeB.width) > 20) {
+                            lose = true
+                            animRun = false
+                        }
+                    }
+                    if (lose) {
+                        h.post { showDialogLoser() }
+                        break
+                    }
+                    Thread.sleep(5)
+                }
+                if (!lose) {
+                    h.post { showDialogWinner() }
+                    animRun = false
                 }
             }
-        }
+        ).start()
 
         scaleX = ValueAnimator.ofFloat(LLPuzzleModeB.width.toFloat(), LLPuzzleModeB.width / alpha).apply {
             duration = 50
@@ -170,27 +165,27 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
                 LLPuzzleModeB.requestLayout()
                 LLPuzzleModeB.layoutParams.width = (it.animatedValue as Float).toInt()
             }
-        }
-
-       set =  AnimatorSet().apply {
-            playTogether(transY, scaleX)
             start()
         }
     }
 
     private fun showDialogWinner() {
-        val score:Int = ((LLPuzzleModeB.width.toFloat() / LLSeatModeB.width.toFloat())*100).toInt()
+        val score: Int =
+            when (val v = ((LLPuzzleModeB.width.toFloat() / LLSeatModeB.width.toFloat()) * 100).toInt()) {
+                in 100..150 -> 100
+                else -> v
+            }
         PModeBLevel().saveScore(levelId, score)
-        if(!isFinally)
-        DialogWinner("", this, score)
-        else{
+        if (!isFinally)
+            DialogWinner("", this, score)
+        else {
             toast("امتیاز این مرحله : $score")
             DialogFinishMode(PGameMode().getModeSubject("b"), PGameMode().getScoreAverage("b"), this)
         }
     }
 
     private fun showDialogLoser() {
-        DialogLoser("", this)
+            DialogLoser("", this)
     }
 
     private fun runStartTapTimer() {
@@ -218,28 +213,33 @@ class FragmentModeB:MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDial
     }
 
     private fun runSeat() {
-        val from = 0
-        val to = (p.x - space)
-       seatAnimator = ValueAnimator.ofInt(from, to).apply{
-            duration = 2000
-            repeatCount = ValueAnimator.INFINITE
-            repeatMode = ValueAnimator.REVERSE
-            addUpdateListener {
-                val value = it.animatedValue as Int
-                LLRightB.requestLayout()
-                LLRightB.layoutParams.width = value
-                LLLeftB.requestLayout()
-                LLLeftB.layoutParams.width = to - value
+        val h = Handler()
+        Thread(Runnable {
+            val from = 0
+            val to = (p.x - space)
+            var step = 1
+            var value: Int = 1
+            while (animRun) {
+                if (value in (from + 1)..(to - 1))
+                    value += step
+                else {
+                    step *= -1
+                    value += step
+                }
+                h.post {
+                    LLRightB.requestLayout()
+                    LLRightB.layoutParams.width = value
+                    LLLeftB.requestLayout()
+                    LLLeftB.layoutParams.width = to - value
+                }
+                Thread.sleep(5)
             }
-            start()
-
-        }
-
+        }).start()
     }
 
     override fun onDestroy() {
-        set?.cancel()
-        seatAnimator.cancel()
+        animRun = false
+        scaleX?.cancel()
         super.onDestroy()
     }
 

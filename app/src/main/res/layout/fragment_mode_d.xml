@@ -3,7 +3,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layoutDirection="rtl"
-                android:background="@drawable/gradient_night" android:id="@+id/ParentModeD">
+                android:background="@drawable/g_sky" android:id="@+id/ParentModeD">
     <include layout="@layout/help_guide"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

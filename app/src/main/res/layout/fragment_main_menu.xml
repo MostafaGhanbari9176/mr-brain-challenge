@@ -1,7 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.recyclerview.widget.RecyclerView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:id="@+id/RVMainMenu"
-        app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+    >
+
+
+        <TextView
+                android:background="@drawable/item_main_start"
+                android:text="شروع بازی"
+                android:textColor="@color/light3"
+                android:textSize="@dimen/txt_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_main_menu_height" android:id="@+id/startGame"
+                android:layout_marginBottom="16dp"/>
+
+        <TextView
+                android:background="@drawable/item_main_setting"
+                android:text="تنظیمات"
+                android:textColor="@color/light3"
+                android:textSize="@dimen/txt_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_main_menu_height"
+                android:layout_marginBottom="16dp" android:id="@+id/setting"/>
+
+        <TextView
+                android:background="@drawable/item_main_comment"
+                android:text="ثبت نظر و امتیاز"
+                android:textColor="@color/light3"
+                android:textSize="@dimen/txt_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_main_menu_height"
+                android:layout_marginBottom="16dp" android:id="@+id/comment"/>
+
+        <TextView
+                android:background="@drawable/item_main_us"
+                android:text="درباره ما"
+                android:textColor="@color/light3"
+                android:textSize="@dimen/txt_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_main_menu_height" android:id="@+id/aboutUs"
+                android:layout_marginBottom="16dp"/>
+
+        <TextView
+                android:background="@drawable/item_main_out"
+                android:text="خروج"
+                android:textColor="@color/light3"
+                android:textSize="@dimen/txt_small_one"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_main_menu_height" android:id="@+id/gameOut"
+        />
+
+    </LinearLayout>
+</RelativeLayout>

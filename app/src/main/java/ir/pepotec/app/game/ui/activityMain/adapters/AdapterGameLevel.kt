@@ -54,7 +54,6 @@ class AdapterGameLevel(
                     itemView.setOnClickListener {}
                 } else {
                     itemView.txtScoreLevel.visibility = View.VISIBLE
-                    itemView.txtScoreLevel.text = score.toString()
                     itemView.imgLevelMenu.setImageDrawable(
                         ContextCompat.getDrawable(
                             App.instance,
@@ -64,7 +63,7 @@ class AdapterGameLevel(
                     itemView.setOnClickListener {
                         listener(id)
                     }
-                    animateProgress(score.toFloat())
+                    animateProgress(score)
                 }
             }
         }
@@ -79,15 +78,17 @@ class AdapterGameLevel(
                 setMargin(itemView)
         }
 
-        private fun animateProgress(score: Float) {
-            ValueAnimator.ofFloat(0f, score).apply {
+        private fun animateProgress(score: Int) {
+            ValueAnimator.ofInt(0, score).apply {
                 duration = 500
                 startDelay = 100
                 interpolator = DecelerateInterpolator()
                 addUpdateListener {
                     val vector = VectorChildFinder(App.instance, R.drawable.item_level, itemView.imgLevelMenu)
                     val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
-                    path.trimPathEnd = it.animatedValue as Float / 100
+                    val v = it.animatedValue as Int
+                    path.trimPathEnd =  v/ 100f
+                    itemView.txtScoreLevel.text="$v"
                 }
                 start()
             }

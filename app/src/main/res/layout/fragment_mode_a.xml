@@ -6,37 +6,66 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/animate_gradient_blue"
                 android:id="@+id/GameParentA" android:layoutDirection="rtl">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:background="#000" android:alpha="0.6">
+    </LinearLayout>
     <include layout="@layout/help_guide"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_alignParentBottom="true" android:gravity="bottom"
     >
-        <LinearLayout
-                android:orientation="horizontal"
+        <androidx.cardview.widget.CardView
+                app:cardCornerRadius="2dp"
+                android:id="@+id/LLRightA"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/puzzle_height"
-                android:background="@drawable/block_back" android:id="@+id/LLRightA">
-        </LinearLayout>
+                app:cardBackgroundColor="@android:color/transparent">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/block_back">
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="100dp"
                 android:layout_height="@dimen/puzzle_height" android:id="@+id/LLSpaceA"
         >
         </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
+        <androidx.cardview.widget.CardView
+                app:cardCornerRadius="2dp"
+                android:id="@+id/LLLeftA"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/puzzle_height"
-                android:background="@drawable/block_back" android:id="@+id/LLLeftA">
-        </LinearLayout>
+                app:cardBackgroundColor="@android:color/transparent">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/block_back">
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-    <LinearLayout
-            android:orientation="horizontal"
+    <androidx.cardview.widget.CardView
             android:layout_width="@dimen/puzzle_height"
-            android:layout_height="@dimen/puzzle_height" android:background="@drawable/block_back"
-            android:id="@+id/LLPuzzleA" android:layout_centerInParent="true">
-    </LinearLayout>
+            android:layout_height="@dimen/puzzle_height"
+            android:id="@+id/LLPuzzleA"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="2dp"
+            app:cardBackgroundColor="@android:color/transparent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/block_back"
+        >
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <TextView
             android:text="0.5"
             android:layout_width="wrap_content"
@@ -49,7 +78,8 @@
             android:text="@string/txt_news_start"
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/txtStartNews" android:gravity="center"
-            android:textSize="@dimen/txt_normal" android:textStyle="bold" android:textColor="@color/primaryColor"
+            android:textSize="@dimen/txt_normal" android:textStyle="bold"
+            android:textColor="@color/secondaryLightYellow"
             android:paddingStart="32dp" android:paddingEnd="32dp" android:lineSpacingExtra="@dimen/line_space_three"
             android:alpha="0"/>
     <ImageView

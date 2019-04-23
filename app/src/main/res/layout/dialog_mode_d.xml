@@ -159,11 +159,19 @@
                     android:padding="16dp" android:background="@drawable/btn_purple"
                     android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"/>
             <Button
-                    android:text="بازگشت به منو"
+                    android:text="ادامه بازی"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/btnBackModeD" android:layout_margin="8dp"
+                    android:layout_height="wrap_content" android:id="@+id/btnContinueInfinite"
+                    android:layout_margin="8dp"
                     android:padding="16dp" android:background="@drawable/btn_purple"
                     android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"/>
         </LinearLayout>
+        <Button
+                android:text="بازگشت به منو"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/btnBackModeD"
+                android:padding="16dp" android:background="@drawable/btn_purple"
+                android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"
+                android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

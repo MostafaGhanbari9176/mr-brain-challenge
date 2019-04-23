@@ -14,7 +14,7 @@
     "lock" : 0,
     "alpha" :2.0,
     "puzzle_y":0
-  },
+  }/*,
   {
     "level_id" :0,
     "subject" : "مرحله",
@@ -54,5 +54,5 @@
     "lock" : 0,
     "alpha" :0.5,
     "puzzle_y":1
-  }
+  }*/
 ]

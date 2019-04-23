@@ -15,6 +15,14 @@
             android:id="@+id/ContainerGame">
 
     </FrameLayout>
+    <TextView
+            android:text="500"
+            android:background="@drawable/ic_head_mester_brain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txtBarinNumberMain"
+            android:layout_toEndOf="@+id/imgMenuAG" android:padding="16dp" android:layout_marginTop="16dp"
+            android:textSize="@dimen/txt_small_two" android:textStyle="bold"
+            android:textColor="@color/light"/>
     <ImageView
             android:layout_width="48dp"
             android:layout_height="244dp"

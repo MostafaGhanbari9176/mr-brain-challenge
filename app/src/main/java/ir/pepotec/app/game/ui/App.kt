@@ -1,17 +1,18 @@
 package ir.pepotec.app.game.ui
 
 import android.app.Application
+import android.content.ComponentName
 import android.content.Context
-import android.content.res.Resources
+import android.content.Intent
+import android.content.ServiceConnection
 import android.graphics.Typeface
+import android.media.MediaPlayer
 import android.os.Build
+import android.os.IBinder
 import android.view.View
 import android.view.WindowManager
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -21,7 +22,7 @@ import ir.pepotec.app.game.model.local_data_base.GameModeDb
 import ir.pepotec.app.game.model.local_data_base.ModeADb
 import ir.pepotec.app.game.model.local_data_base.ModeBDb
 import ir.pepotec.app.game.model.local_data_base.ModeCDb
-import org.jetbrains.anko.toast
+import ir.pepotec.app.game.ui.uses.ServiceMusic
 
 class App : Application() {
 
@@ -30,6 +31,7 @@ class App : Application() {
         instance = this
         addDataToDb()
         overrideFont("SERIF", "fonts/Far_Tanab.ttf")
+
     }
 
     private fun addDataToDb() {
@@ -134,9 +136,7 @@ class App : Application() {
 
     companion object {
         lateinit var instance: Context
-        val baseUrl = "http://localhost:8080/game/"
         fun fullScreen(context: AppCompatActivity) {
-            instance = context
             val flags = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -163,13 +163,12 @@ class App : Application() {
                     }
             }
         }
-
         fun getBlockHeight(): Float {
             return App.instance.resources.getDimension(R.dimen.puzzle_height)
         }
     }
 
-    fun overrideFont(defaultFontNameToOverride: String, customFontFileNameInAssets: String) {
+    private fun overrideFont(defaultFontNameToOverride: String, customFontFileNameInAssets: String) {
         try {
             val customFontTypeface = Typeface.createFromAsset(this.assets, customFontFileNameInAssets)
 

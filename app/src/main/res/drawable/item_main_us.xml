@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+        <vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportHeight="5"
+                android:viewportWidth="25"
+                android:height="5dp"
+                android:width="25dp">
+            <path
+                    android:strokeAlpha="0.3"
+                    android:strokeColor="@color/dark"
+                    android:strokeWidth="4"
+                    android:strokeLineCap="round"
+                    android:pathData="M3.2,2.8 H21.8"
+            />
+            <path
+                    android:strokeColor="@color/item_main_primary"
+                    android:strokeWidth="4"
+                    android:strokeLineCap="round"
+                    android:pathData="M3,2.5 H22"
+            />
+            <group>
+                <clip-path
+                        android:pathData="M0,0 H25 V2.4 H0 z"
+                />
+                <path
+                        android:strokeAlpha="0.3"
+                        android:strokeColor="@color/item_main_shadow"
+                        android:strokeWidth="4"
+                        android:strokeLineCap="round"
+                        android:pathData="M3.3,2.9 H21.7"
+                />
+            </group>
+            <path
+                    android:strokeAlpha="0.2"
+                    android:strokeColor="@color/dark"
+                    android:strokeWidth="3.5"
+                    android:strokeLineCap="round"
+                    android:pathData="M21.9,2.5 h0.1"
+            />
+            <path
+                    android:strokeColor="@color/item_main_circle"
+                    android:strokeWidth="3.2"
+                    android:strokeLineCap="round"
+                    android:pathData="M21.9,2.5 h0.1"
+            />
+            <group
+                    android:pivotY="1.3"
+                    android:pivotX="23.3"
+                    android:scaleX="0.12"
+                    android:scaleY="0.12"
+            >
+                <path
+                        android:name="hand"
+                        android:strokeColor="@color/item_main_icon"
+                        android:strokeWidth="2.9"
+                        android:strokeLineCap="round"
+                        android:strokeLineJoin="round"
+                        android:pathData="M17,18 l4,-4 l-2,-4"
+                />
+                <path android:fillColor="@color/item_main_icon"
+                      android:pathData="M12,12c2.21,0 4,-1.79 4,-4s-1.79,-4 -4,-4 -4,1.79 -4,4 1.79,4 4,4zM12,14c-2.67,0 -8,1.34 -8,4v2h16v-2c0,-2.66 -5.33,-4 -8,-4z"/>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="hand">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="pathData"
+                    android:duration="500"
+                    android:valueFrom="M17,18 l4,-4 l-2,-4"
+                    android:valueTo="M17,18 l4,-4 l1,-4"
+                    android:valueType="pathType"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+            />
+        </aapt:attr>
+    </target>
+</animated-vector>

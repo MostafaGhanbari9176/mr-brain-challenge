@@ -120,6 +120,12 @@ class GameModeDb(
         return data
     }
 
+    fun unLock(modeId:String){
+        val writer = this.writableDatabase
+        writer.execSQL(" UPDATE $tbName SET $lock = 0 WHERE ${GameModeDb.modeId} = '$modeId' ")
+        writer.close()
+    }
+
     fun deleteDb() {
         val writer = this.writableDatabase
         ctx.deleteDatabase(writer.path)

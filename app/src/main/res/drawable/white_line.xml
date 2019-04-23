@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+<vector
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:viewportHeight="24"
+        android:viewportWidth="24"
+        android:height="24dp"
+        android:width="24dp">
+    <group
+            android:translateY="-4"
+            android:name="parent"
+    >
+        <path
+                android:fillAlpha="0.3"
+                android:fillColor="#fff"
+                android:pathData="M0,0 h24 v0.5 h-24 z"
+        />
+        <path
+                android:fillAlpha="0.4"
+                android:fillColor="#fff"
+                android:pathData="M0,0.5 h24 v0.5 h-24 z"
+        />
+        <path
+                android:fillAlpha="0.5"
+                android:fillColor="#fff"
+                android:pathData="M0,1 h24 v0.5 h-24 z"
+        />
+        <path
+                android:fillAlpha="0.6"
+                android:fillColor="#fff"
+                android:pathData="M0,1.5 h24 v0.5 h-24 z"
+        />
+        <path
+                android:fillAlpha="0.7"
+                android:fillColor="#fff"
+                android:pathData="M0,2 h24 v0.5 h-24 z"
+        />
+    </group>
+</vector>
+    </aapt:attr>
+    <target  android:name="parent">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+            android:propertyName="translateY"
+            android:duration="5000"
+            android:valueFrom="-4"
+            android:valueTo="24"
+            android:valueType="floatType"
+            android:interpolator="@android:anim/decelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+</animated-vector>

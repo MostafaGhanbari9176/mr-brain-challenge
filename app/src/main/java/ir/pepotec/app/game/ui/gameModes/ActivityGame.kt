@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.gameModes.mode_a.FragmentModeA
 import ir.pepotec.app.game.ui.gameModes.mode_b.FragmentModeB
 import ir.pepotec.app.game.ui.gameModes.mode_c.FragmentModeC
@@ -22,20 +23,23 @@ import org.jetbrains.anko.uiThread
 
 class ActivityGame : AppCompatActivity() {
 
+    private val music = ActivityMain.musicService
     private var levelId = -1
     private var modeId = "error"
     private var mLastTouchX: Int = 0
     private var mLastTouchY: Int = 0
-    private lateinit var f: MyFragment
+    private var f: MyFragment? = null
     private var mute: Boolean
         get() = Pref().getBollValue(Pref.mute, false)
         set(value) {
-            Pref().saveBollValue(Pref.mute, value)
+            music?.muteMusic(value)
         }
     private var closeGame = false
     private var menuIsShow = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        App.instance = this
         setContentView(R.layout.activity_game)
         initView()
         if (intent?.extras?.isEmpty == false) {
@@ -65,20 +69,19 @@ class ActivityGame : AppCompatActivity() {
         }
 
         btnHelpAG.setOnClickListener {
-            f.runHelper()
+            f?.runHelper()
             closeMenu()
         }
 
         parentAG.setOnTouchListener { v, event -> !onTouchEvent(event) }
 
         parentAG.setOnClickListener {
-            if (menuIsShow)
+/*            if (menuIsShow)
                 closeMenu()
-            else
-                f.myClickListener()
+            else*/
+                f?.myClickListener()
         }
     }
-
 
     private fun closeMenu() {
         menuIsShow = false
@@ -113,6 +116,11 @@ class ActivityGame : AppCompatActivity() {
     }
 
     private fun openMenu() {
+        if(f is FragmentModeD)
+        {
+            (f as FragmentModeD).stopGame()
+            return
+        }
         menuIsShow = true
         imgMenuAG.setImageDrawable(
             ContextCompat.getDrawable(
@@ -127,28 +135,34 @@ class ActivityGame : AppCompatActivity() {
         (imgMenuAG.drawable as Animatable).start()
     }
 
-    override fun onResume() {
-        super.onResume()
-        App.instance = this
-    }
-
     fun startGame(modeId: String, levelId: Int) {
         this.modeId = modeId
         this.levelId = levelId
         when (modeId) {
-            "a" -> f = FragmentModeA()
-            "b" -> f = FragmentModeB()
-            "c" -> f = FragmentModeC()
+            "a" -> {
+                if(f !is FragmentModeA || !(music?.isPlay!!))
+                music?.startMusic(R.raw.mode_a)
+                f = FragmentModeA()
+            }
+            "b" -> {
+                if(f !is FragmentModeB || !(music?.isPlay!!))
+                music?.startMusic(R.raw.mode_b)
+                f = FragmentModeB()
+            }
+            "c" -> {
+                if(f !is FragmentModeC || !(music?.isPlay!!))
+                    music?.startMusic(R.raw.mode_c)
+                f = FragmentModeC()
+            }
+
             "d" -> f = FragmentModeD()
             else -> {
                 toast("mode $modeId notFound")
                 return
             }
         }
-
-        //  supportFragmentManager.beginTransaction().remove(f)
-        f.levelId = levelId
-        supportFragmentManager.beginTransaction().replace(R.id.ContainerGame, f).commit()
+        f?.levelId = levelId
+        supportFragmentManager.beginTransaction().replace(R.id.ContainerGame, f!!).commit()
     }
 
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
@@ -156,6 +170,8 @@ class ActivityGame : AppCompatActivity() {
         var dy = 0
         when (ev?.action) {
             MotionEvent.ACTION_DOWN -> {
+                if(menuIsShow)
+                    closeMenu()
                 mLastTouchX = ev.x.toInt()
                 mLastTouchY = ev.y.toInt()
             }
@@ -180,13 +196,25 @@ class ActivityGame : AppCompatActivity() {
             MotionEvent.ACTION_POINTER_UP -> {
             }
         }
-        f.myTouchListener(dx, dy)
+        f?.myTouchListener(dx, dy)
         return true
     }
 
+    override fun onResume() {
+        super.onResume()
+        App.instance = this
+        music?.resumeMusic()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        music?.pauseMusic()
+    }
+
     override fun onBackPressed() {
+        f?.onDestroy()
         setResult(Activity.RESULT_OK, intent.putExtra("mode_id", modeId))
-        this.finish()
+        this@ActivityGame.finish()
         super.onBackPressed()
     }
 

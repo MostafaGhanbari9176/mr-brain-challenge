@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import kotlinx.android.synthetic.main.dialog_loser.view.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -33,6 +34,11 @@ class DialogLoser(
         d.setCancelable(false)
         d.show()
         startAnim()
+        playSound()
+    }
+
+    private fun playSound() {
+        ActivityMain.musicService?.loseSound()
     }
 
     private fun initViews() {

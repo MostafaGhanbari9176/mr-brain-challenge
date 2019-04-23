@@ -42,7 +42,7 @@ class FragmentGameMode : Fragment(), PGameMode.PGameModeListener {
             if(modeId == "d")
                 startD()
             else
-            act.animateImageToBack(modeId) }
+            act.showGameLevel(modeId) }
         RVGameMode.adapter = adapter
     }
 

@@ -9,9 +9,11 @@ import android.content.Context
 import android.graphics.Point
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -43,10 +45,9 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     private lateinit var guideBus: LinearLayout
     private lateinit var guidePuzzle: LinearLayout
     private lateinit var guideSpace: LinearLayout
-    private lateinit var set: AnimatorSet
-    private var transY:ObjectAnimator? = null
-    private var scaleX:ValueAnimator? = null
+    private var scaleX: ValueAnimator? = null
     private var lose = false
+    private var animRun = true
     private var puzzlePosition = RelativeLayout.CENTER_HORIZONTAL
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mode_c, container, false)
@@ -85,9 +86,9 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
         guideBus: LinearLayout,
         guidePuzzle: LinearLayout,
         isFinally: Boolean,
-        puzzlePosition:Int
+        puzzlePosition: Int
     ) {
-       this.puzzlePosition = puzzlePosition
+        this.puzzlePosition = puzzlePosition
         this.isFinally = isFinally
         this.space = space
         this.alpha = alpha
@@ -110,7 +111,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
 
     private fun changePuzzlePosition(dx: Int) {
 
-        step+=dx
+        step += dx
         if (abs(step) >= (p.x / 80)) {
             if (dx > 0 && (LLPuzzleC.x + LLPuzzleC.width) < p.x) {
                 if (LLPuzzleC.x + LLPuzzleC.width + dx > p.x) {
@@ -163,78 +164,73 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     }
 
     private fun runPuzzle() {
-        transY = ObjectAnimator.ofFloat(LLPuzzleC, View.TRANSLATION_Y, 0f, LLSeatC.y).apply {
-            duration = 5000
-            interpolator = DecelerateInterpolator()
-            addUpdateListener { checkAccident() }
-        }
+        val h = Handler()
+        val to = LLSeatC.y
+        Thread(
+            Runnable {
+                var v = 0f
+                while (v <= to && animRun) {
+                    v += 5
+                    if (v > to) {
+                        v = to
+                        animRun = false
+                    }
+                    h.post { LLPuzzleC.translationY = v }
+                    checkAccident()
+                    if (lose) {
+                        h.post { showLoserDialog() }
+                        break
+                    }
+                    Thread.sleep(10)
+                }
+                if (!lose)
+                    h.post{showDialogWinner()}
+            }
+        ).start()
         scaleX = ValueAnimator.ofFloat(LLPuzzleC.width.toFloat(), LLPuzzleC.width / alpha).apply {
-            duration = 1000
+            duration = 100
             addUpdateListener {
                 LLPuzzleC.requestLayout()
                 LLPuzzleC.layoutParams.width = (it.animatedValue as Float).toInt()
-                }
             }
-
-        set = AnimatorSet().apply {
-            playTogether(transY, scaleX)
             start()
-            addListener(object: Animator.AnimatorListener{
-                override fun onAnimationRepeat(animation: Animator?) {
-
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    if(!lose)
-                    showDialogWinner()
-                }
-
-                override fun onAnimationCancel(animation: Animator?) {
-
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
-
-                }
-            })
         }
-
 
     }
 
     private fun showDialogWinner() {
-        val score:Int = ((LLPuzzleC.width.toFloat() / LLSeatC.width.toFloat())*100).toInt()
+        val score: Int =
+            when (val v = ((LLPuzzleC.width.toFloat() / LLSeatC.width.toFloat()) * 100).toInt()) {
+                in 100..150 -> 100
+                else -> v
+            }
         PModeCLevel().saveScore(levelId, score)
-        if(!isFinally)
+        if (!isFinally)
             DialogWinner("", this, score)
-        else
-        {
+        else {
             toast("امتیاز این مرحله : $score")
             DialogFinishMode(PGameMode().getModeSubject("c"), PGameMode().getScoreAverage("c"), this)
         }
     }
-
 
     private fun checkAccident() {
         if (LLPuzzleC.y > (LLBusC.y - LLPuzzleC.height) && LLPuzzleC.y < (LLBusC.y + LLBusC.height)) {
             if (LLPuzzleC.x + 5 > LLBusC.x && (LLPuzzleC.x + LLPuzzleC.width - 5 < LLBusC.x + LLBusC.width)) {
 
             } else {
+                animRun = false
                 lose = true
-                set.cancel()
-                showLoserDialog()
             }
         } else if (LLPuzzleC.y > (LLSeatC.y - LLSeatC.height)) {
-            if (abs(LLPuzzleC.x - LLSeatC.x) > 40) {
+            if (abs(LLPuzzleC.x - LLSeatC.x) > 20 || abs(LLPuzzleC.width - LLSeatC.width) > 20) {
+                animRun = false
                 lose = true
-                set.cancel()
-                showLoserDialog()
             }
         }
     }
 
     private fun showLoserDialog() {
-        DialogLoser("", this)
+            DialogLoser("", this)
     }
 
     private fun runStartTapTimer() {
@@ -250,7 +246,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     }
 
     override fun onDestroy() {
-        transY?.cancel()
+        animRun = false
         scaleX?.cancel()
         super.onDestroy()
     }

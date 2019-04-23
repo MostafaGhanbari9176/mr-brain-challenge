@@ -18,18 +18,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
+import android.widget.CalendarView
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeALevel
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.dialog.DialogFinishMode
 import ir.pepotec.app.game.ui.dialog.DialogLoser
 import ir.pepotec.app.game.ui.dialog.DialogWinner
 import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
+import ir.pepotec.app.game.ui.uses.MyAnimation
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.fragment_mode_a.*
 import org.jetbrains.anko.doAsync
@@ -42,7 +46,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private var isFinally = false
     private lateinit var helperView: HelpModeA
     private var parentView: ViewGroup? = null
-    private lateinit var puzzle: LinearLayout
+    private lateinit var puzzle: CardView
     private var alpha: Float = 0f
     private var space: Int = 0
     private val p = Point()
@@ -54,8 +58,6 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private lateinit var guideSpace: LinearLayout
     private lateinit var guidePuzzle: LinearLayout
     private val ctx: Context = App.instance
-    private val mute: Boolean
-        get() = Pref().getBollValue(Pref.mute, false)
     private var fingerVector: Animatable? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mode_a, container, false)
@@ -85,15 +87,24 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private fun startGame() {
         gameStarted = true
         gameResult = result()
-        if (!mute)
-            MediaPlayer.create(ctx, R.raw.sound_start).start()
         when (gameResult) {
             0 -> runLoserGame()
             else -> runWinnerGame()
         }
     }
 
-    private fun runLoserGame() {
+/*    private fun runLoserGame() {
+        val xTransTo = (LLSpaceA.x + (LLSpaceA.width) / 2) - (puzzle.x + (puzzle.width) / 2)
+        val yTransTo = (LLSpaceA.y) - (puzzle.y)
+        MyAnimation(puzzle).apply {
+            moveX(xTransTo, 1000)
+            moveY(yTransTo, 1000)
+            scaleX(1f, 1 / alpha, 1000)
+            startAnimation()
+        }
+    }*/
+
+     private fun runLoserGame() {
         val xTransTo = (LLSpaceA.x + (LLSpaceA.width) / 2) - (puzzle.x + (puzzle.width) / 2)
         val yTransTo = (LLSpaceA.y) - (puzzle.y)
         val tranY =
@@ -205,7 +216,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
             answerForHelp()
             fingerVector = imgFingerHelperA.drawable as Animatable
             fingerVector?.start()
-            imgFingerHelperA.alpha = 0.7f
+            imgFingerHelperA.alpha = 1f
         }
     }
 
@@ -254,7 +265,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     override fun runHelper() {
-
+        ActivityMain.musicService?.decreaseVolume()
         if (parentView == null)
             parentView = (context as Activity).window.decorView as ViewGroup
 
@@ -305,7 +316,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         when (v.id) {
             R.id.btnHelpMA -> {
                 removeHelperView()
-
+                ActivityMain.musicService?.increaseVolume()
             }
         }
     }

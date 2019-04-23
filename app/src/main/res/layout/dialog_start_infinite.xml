@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="8dp" android:layout_margin="32dp" android:id="@+id/CVDialogStartInfinite">
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:background="@drawable/gradient_night"
+            android:layoutDirection="rtl" android:gravity="center_horizontal" android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="انتخاب سطح بازی : "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:padding="16dp"
+                    android:gravity="start" android:textStyle="bold" android:textColor="@color/light2"
+                    android:textSize="@dimen/txt_normal" android:layout_marginBottom="16dp"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:gravity="center" android:layout_marginBottom="16dp">
+                <Button
+                        android:text="آسون"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/btnEasyInfinite"
+                        android:layout_margin="8dp"
+                        android:padding="16dp" android:background="@drawable/btn_purple"
+                        android:textSize="@dimen/txt_small_one" android:textStyle="bold"
+                        android:textColor="@color/light"/>
+                <Button
+                        android:text="سخت"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/btnDificuktInfinite"
+                        android:layout_margin="8dp"
+                        android:padding="16dp" android:background="@drawable/btn_purple"
+                        android:textSize="@dimen/txt_small_one" android:textStyle="bold"
+                        android:textColor="@color/light"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" android:layout_marginBottom="16dp" android:layout_marginTop="16dp">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" android:layout_weight="1" android:background="@color/light"
+                    android:layout_marginEnd="16dp" android:layout_marginStart="16dp">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" android:layout_weight="1" android:background="@color/light"
+                    android:layout_marginEnd="16dp">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" android:layout_weight="1" android:background="@color/light"
+                    android:layout_marginEnd="16dp">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" android:layout_weight="1" android:background="@color/light"
+                    android:layout_marginEnd="16dp">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="بهترین نتایج بازی های قبل"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:padding="16dp"
+                    android:gravity="start" android:textStyle="bold" android:textColor="@color/light2"
+                    android:textSize="@dimen/txt_normal"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:text="امتیاز : "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:padding="8dp"
+                        android:textStyle="bold" android:textColor="@color/light2"
+                        android:textSize="@dimen/txt_normal" android:layout_marginStart="20dp"/>
+                <TextView
+                        android:text="1389"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/txtHSDialogStart" android:padding="8dp"
+                        android:textStyle="bold" android:textColor="@color/light2"
+                        android:textSize="@dimen/txt_normal"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:text="موانع : "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:padding="8dp"
+                        android:textStyle="bold" android:textColor="@color/light2"
+                        android:textSize="@dimen/txt_normal" android:layout_marginStart="20dp"/>
+                <TextView
+                        android:text="100"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/txtHBDialogStart" android:padding="8dp"
+                        android:textStyle="bold" android:textColor="@color/light2"
+                        android:textSize="@dimen/txt_normal"/>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+                android:text="بازگشت به منو"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/btnBackStartDialogInfinite"
+                android:layout_margin="16dp"
+                android:padding="16dp" android:background="@drawable/btn_purple"
+                android:textSize="@dimen/txt_small_one" android:textStyle="bold"
+                android:textColor="@color/light"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

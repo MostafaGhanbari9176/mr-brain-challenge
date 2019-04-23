@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.graphics.Outline
 import android.graphics.Rect
 import android.graphics.drawable.*
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -17,6 +18,7 @@ import com.devs.vectorchildfinder.VectorChildFinder
 import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import kotlinx.android.synthetic.main.dialog_loser.view.*
 import kotlinx.android.synthetic.main.dialog_winner.view.*
 import kotlinx.android.synthetic.main.morph.*
@@ -44,6 +46,11 @@ class DialogWinner(
         d.setCancelable(false)
         d.show()
         startAnim()
+        playSound()
+    }
+
+    private fun playSound() {
+        ActivityMain.musicService?.winSound()
     }
 
     private fun initViews() {

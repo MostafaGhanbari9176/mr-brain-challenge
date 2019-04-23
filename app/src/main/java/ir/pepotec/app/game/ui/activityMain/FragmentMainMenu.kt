@@ -1,6 +1,7 @@
 package ir.pepotec.app.game.ui.activityMain
 
 import android.content.Context
+import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.ItemData
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.adapters.AdapterMainMenu
+import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.fragment_main_menu.*
 
 class FragmentMainMenu : Fragment() {
@@ -28,14 +30,33 @@ class FragmentMainMenu : Fragment() {
     }
 
     private fun init() {
-        val listData = ArrayList<ItemData>()
-        listData.add(ItemData(0, "بازی مرحله ایی", 0, 0))
-        listData.add(ItemData(0, "بازی تحت شبکه", 0, 1))
-        listData.add(ItemData(0, "تنظیمات", 0, 0))
+        startAnim()
+        startGame.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        startGame.setOnClickListener { act.showGameMode() }
 
-        RVMainMenu.layoutManager = LinearLayoutManager(ctx)
-        val adapter = AdapterMainMenu(listData){act.animateImageToHome()}
-        RVMainMenu.adapter = adapter
+        gameOut.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        gameOut.setOnClickListener { act.finish() }
+
+        aboutUs.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        aboutUs.setOnClickListener {  }
+
+    }
+
+    private fun startAnim() {
+        (startGame.background as Animatable).start()
+        (setting.background as Animatable).start()
+        (comment.background as Animatable).start()
+        (aboutUs.background as Animatable).start()
+        (gameOut.background as Animatable).start()
     }
 
 }

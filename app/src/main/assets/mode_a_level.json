@@ -18,7 +18,7 @@
     "space_x":0,
     "puzzle_x":1,
     "puzzle_y":1
-  },
+  }/*,
   {
     "level_id" :2,
     "subject" : "مرحله سوم",
@@ -48,5 +48,5 @@
     "space_x":1,
     "puzzle_x":1,
     "puzzle_y":0
-  }
+  }*/
 ]

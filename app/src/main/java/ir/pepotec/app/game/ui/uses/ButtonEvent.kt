@@ -11,7 +11,7 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.ui.App
 
-class ButtonEvent(private val v: View, e: MotionEvent?, @RawRes private val soundId: Int = R.raw.sound_primary) {
+class ButtonEvent(private val v: View, e: MotionEvent?, @RawRes private val soundId: Int = R.raw.click3) {
 
     private var mp: MediaPlayer? = null
 
@@ -21,7 +21,9 @@ class ButtonEvent(private val v: View, e: MotionEvent?, @RawRes private val soun
 
     init {
         if (!(Pref().getBollValue(Pref.mute, false)))
-           mp = MediaPlayer.create(App.instance, soundId)
+           mp = MediaPlayer.create(App.instance, soundId).apply {
+               setVolume(0.7f,0.7f)
+           }
         v.isSoundEffectsEnabled = false
         when (e?.action) {
             MotionEvent.ACTION_DOWN -> actionDown()
