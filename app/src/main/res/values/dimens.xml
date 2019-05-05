@@ -9,4 +9,6 @@
     <dimen name="line_space_three">15sp</dimen>
     <dimen name="item_game_mode">200dp</dimen>
     <dimen name="item_main_menu_height">72dp</dimen>
+    <dimen name="black_shadow_alpha">0.3</dimen>
+    <dimen name="launcher_two_txt_powered_height">35dp</dimen>
 </resources>

@@ -8,7 +8,7 @@
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/loser_message"
+            android:src="@drawable/loser_message_animate"
             android:id="@+id/imgDialogLoser"
     />
     <LinearLayout
@@ -93,7 +93,27 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_weight="0.33">
+                android:layout_height="0dp" android:layout_weight="0.33" android:gravity="center_horizontal|top">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:background="@drawable/txt_back_green"
+                    android:padding="8dp" android:layout_margin="16dp" android:gravity="center"
+                    android:id="@+id/btnRejectLevel" android:visibility="gone">
+                <TextView
+                        android:text="کسر بیست نشان و رفتن به مرحله بعد"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView"
+                        android:textSize="@dimen/txt_small_two" android:textStyle="bold"
+                        android:textColor="@color/light3"/>
+                <TextView
+                        android:text="-20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView2"
+                        android:textSize="@dimen/txt_small_two" android:textStyle="bold"
+                        android:textColor="@color/light" android:background="@drawable/ic_head_mester_brain"
+                        android:padding="8dp" android:layout_marginStart="8dp"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

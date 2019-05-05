@@ -24,7 +24,7 @@
             app:srcCompat="@drawable/ic_head_mester_brain"
             android:id="@+id/imgBrainItemModeD"
             android:scaleType="fitCenter"
-            android:alpha="0"/>
+            android:alpha="1" android:scaleX="0" android:scaleY="0"/>
 
     <LinearLayout
             android:orientation="horizontal"

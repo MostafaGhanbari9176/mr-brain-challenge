@@ -7,12 +7,14 @@ import android.graphics.Color
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
+import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import kotlinx.android.synthetic.main.dialog_finish_mode.view.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -25,8 +27,8 @@ class DialogFinishMode(
 ) : Dialog(ctx) {
 
 
-    private val message:String
-    get() = "تبریک شما مراحل $modeName رو با امتیاز کل $score به پایان رساندید"
+    private val message: String
+        get() = "تبریک شما مراحل $modeName رو با امتیاز کل $score به پایان رساندید"
     private val v: View = LayoutInflater.from(ctx).inflate(R.layout.dialog_finish_mode, null, false)
 
     init {
@@ -43,6 +45,7 @@ class DialogFinishMode(
         v.txtDialogFinishMode.text = message
         setCancelable(false)
         show()
+        ActivityMain.musicService?.finishMode()
         start()
 
     }
@@ -51,24 +54,17 @@ class DialogFinishMode(
         val d = v.imgDialogFinishMode.drawable as Animatable
         d.start()
         v.imgDialogFinishMode.requestLayout()
-        doAsync {
-            while (true) {
-                Thread.sleep(100)
-                if (!(d.isRunning))
-                {
-                    uiThread {
-                        animText()
-                    }
-                    break
-                }
-
+        val h = Handler()
+        Thread(
+            Runnable {
+                Thread.sleep(1400)
+                h.post { animText() }
             }
-
-        }
+        ).start()
     }
 
     private fun animText() {
-        ObjectAnimator.ofFloat(v.txtDialogFinishMode, View.ALPHA, 0f,1f).apply {
+        ObjectAnimator.ofFloat(v.txtDialogFinishMode, View.ALPHA, 0f, 1f).apply {
             duration = 100
             interpolator = AccelerateInterpolator()
             start()

@@ -20,7 +20,7 @@
             android:background="@drawable/ic_head_mester_brain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/txtBarinNumberMain"
-            android:layout_toEndOf="@+id/imgMenuAG" android:padding="16dp" android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/imgMenuAG" android:padding="12dp" android:layout_marginTop="16dp"
             android:textSize="@dimen/txt_small_two" android:textStyle="bold"
             android:textColor="@color/light"/>
     <ImageView
@@ -30,7 +30,6 @@
             android:id="@+id/imgMenuAG"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"/>
     <Button
             android:orientation="vertical"

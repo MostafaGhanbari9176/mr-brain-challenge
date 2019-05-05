@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layoutDirection="rtl"
+                android:background="@color/launcher_two_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ImageView
+            app:srcCompat="@drawable/ic_mester_brain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    <TextView
+            android:id="@+id/txtGameNameLauncher"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/txt_big"
+            android:textColor="@color/launcher_two_dot"
+            android:text="چالش مستر مغز"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/launcher_two_txt_powered_height" android:layout_marginBottom="32dp"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+
+        <TextView
+                android:id="@+id/txtPoweredLauncher"
+                android:textStyle="bold"
+                android:textSize="@dimen/txt_small_one"
+                android:textColor="@color/primaryLightColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:shadowColor="@color/launcher_two_main"
+                android:text="Powered By Android Studio" android:layout_centerInParent="true"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="@color/launcher_two_main"
+                android:gravity="end" android:id="@+id/LLAndroid">
+            <ImageView
+                    android:layout_width="@dimen/launcher_two_txt_powered_height"
+                    android:layout_height="@dimen/launcher_two_txt_powered_height" app:srcCompat="@drawable/ic_android"
+                    android:id="@+id/imgAndroidLauncher"
+            />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/luancher_two_anim"
+            android:id="@+id/imgAnimLauncherTwo"/>
+</RelativeLayout>

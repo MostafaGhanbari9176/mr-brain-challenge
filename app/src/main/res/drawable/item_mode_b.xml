@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+        <vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportHeight="32"
+                android:viewportWidth="24"
+                android:height="32dp"
+                android:width="24dp">
+
+            <path
+                    android:name="parent"
+                    android:strokeColor="@color/item_mode_stroke"
+                    android:fillColor="@color/item_mode_primary"
+                    android:strokeWidth="0.2"
+                    android:pathData="M4,8.8 C 4,4 4,4 8.8,4 H15.2 C 20,4 20,4 20,8.8 V23.2 C 20,28 20,28 15.2,28 H8.8 C 4,28 4,28 4,23.2 z"
+
+            />
+            <path
+                    android:name="ghab"
+                    android:strokeColor="@color/item_mode_stroke"
+                    android:fillColor="@color/item_mode_ghab"
+                    android:strokeWidth="0.2"
+                    android:pathData="M6.5,10 C 6.5,6.5 6.5,6.5 10,6.5 H14 C 17.5,6.5 17.5,6.5 17.5,10 v4 C 17.5,17.5 17.5,17.5 14,17.5 h-4 C 6.5,17.5 6.5,17.5 6.5,14 Z"
+            />
+
+            <path
+                    android:name="puzzle"
+                    android:strokeColor="@color/item_mode_block"
+                    android:strokeWidth="1"
+                    android:pathData="M11,7.1 h2"
+            />
+
+            <path
+                    android:name="left"
+                    android:strokeColor="@color/item_mode_block"
+                    android:strokeWidth="1"
+                    android:pathData="M9,17 h3.9"
+            />
+
+            <path
+                    android:name="right"
+                    android:strokeColor="@color/item_mode_block"
+                    android:strokeWidth="1"
+                    android:pathData="M15,17 h-0.1"
+            />
+        </vector>
+    </aapt:attr>
+    <target  android:name="right">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+            android:propertyName="pathData"
+            android:duration="2000"
+            android:valueFrom="M15,17 h-0.1"
+            android:valueTo="M15,17 h-3.9"
+            android:valueType="pathType"
+            android:repeatCount="infinite"
+            android:repeatMode="reverse"
+            />
+        </aapt:attr>
+    </target>
+    <target  android:name="left">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="pathData"
+                    android:duration="2000"
+                    android:valueFrom="M9,17 h3.9"
+                    android:valueTo="M9,17 h0.1"
+                    android:valueType="pathType"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+            />
+        </aapt:attr>
+    </target>
+</animated-vector>

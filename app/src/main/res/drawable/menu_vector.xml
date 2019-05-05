@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:height="360dp"
+        android:viewportHeight="360"
+        android:viewportWidth="72"
+        android:width="72dp">
+
+    <group
+            android:name="parent_c_one"
+            android:scaleY="3"
+            android:scaleX="3"
+            android:pivotX="36"
+            android:pivotY="-10">
+        <path android:fillColor="#000" android:fillAlpha="0.15"
+              android:pathData="MM36,16m-10,0a10.1,10 0,1 1,20 0a10.1,10 0,1 1,-20 0"/>
+        <path
+                android:name="c_one"
+                android:fillColor="#fff"
+                android:pathData="M36,16m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+        <clip-path
+                android:pathData="M30,6 H45 V22 H30Z M30,23.2 H41 V26 H30Z"
+        />
+        <path
+                android:name="q_mark"
+                android:trimPathEnd="1"
+                android:strokeWidth="1.5"
+                android:strokeLineCap="round"
+                android:strokeColor="@color/blue"
+                android:pathData="M33,13 C 32,7 41,7 40,14 C 40,15 38,17 38,17 C 36,19 36,22 36,24"
+        />
+    </group>
+    <group
+            android:name="parent_c_two"
+            android:scaleY="3"
+            android:scaleX="3"
+            android:translateY="24"
+            android:pivotX="36"
+            android:pivotY="-60">
+        <path android:fillColor="#000" android:fillAlpha="0.15"
+              android:pathData="MM36,16m-10,0a10.1,10 0,1 1,20 0a10.1,10 0,1 1,-20 0"/>
+        <path
+                android:name="c_two"
+                android:fillColor="#fff"
+                android:pathData="M36,16m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+        <path
+                android:name="m_mark"
+                android:strokeColor="@color/blue"
+                android:strokeWidth="3.3"
+                android:strokeLineCap="round"
+                android:pathData="M31,16H31.1 M36,16H36.1 M41,16H41.1 M31,11H31.1 M36,11H36.1 M41,11H41.1 M31,21H31.1 M36,21H36.1 M41,21H41.1"
+        />
+    </group>
+    <group
+            android:name="parent_c_three"
+            android:translateY="48"
+            android:scaleY="3"
+            android:scaleX="3"
+            android:pivotX="36"
+            android:pivotY="-111">
+        <path android:fillColor="#000" android:fillAlpha="0.15"
+              android:pathData="MM36,16m-10,0a10.1,10 0,1 1,20 0a10.1,10 0,1 1,-20 0"/>
+        <path
+                android:name="c_three"
+                android:fillColor="#fff"
+                android:pathData="M36,16m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+        <path
+                android:name="volume"
+                android:strokeColor="@color/blue"
+                android:strokeWidth="1"
+                android:strokeLineCap="round"
+                android:strokeLineJoin="round"
+                android:trimPathEnd="1"
+                android:pathData="M30,14 H33 L38,10 V22 L33,18 H30 V14 M40,15 C 41.5,15 41.5,17 40,17 M40,13 C 44,13 44,19 40,19"
+        />
+    </group>
+</vector>

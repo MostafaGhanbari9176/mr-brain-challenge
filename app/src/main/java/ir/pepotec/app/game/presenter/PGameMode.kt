@@ -35,9 +35,9 @@ class PGameMode(private val listener: PGameModeListener? = null) {
         score/=3
        /* val count = db.getCount()*/
         if(score > 25)
-            db.unLock("b")
-        if(score > 55) {
             db.unLock("c")
+        if(score > 55) {
+            db.unLock("b")
             db.unLock("d")
         }
         return score

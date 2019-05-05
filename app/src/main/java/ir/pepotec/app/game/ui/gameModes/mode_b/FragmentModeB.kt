@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.local_data_base.ModeBDb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeBLevel
 import ir.pepotec.app.game.ui.App
@@ -47,6 +48,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
     private var scaleX: ValueAnimator? = null
     private var limit = 0
     private var animRun = true
+    private var loseNumber:Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mode_b, container, false)
@@ -185,7 +187,8 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
     }
 
     private fun showDialogLoser() {
-            DialogLoser("", this)
+        ModeBDb(ctx).incrementLose(levelId)
+        DialogLoser("", this, loseNumber >= 2, levelId, "b", isFinally)
     }
 
     private fun runStartTapTimer() {
@@ -201,8 +204,10 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
         alpha: Float,
         guideSeat: LinearLayout,
         guidePuzzle: LinearLayout,
-        isFinally: Boolean
+        isFinally: Boolean,
+        loseNumber:Int
     ) {
+        this.loseNumber = loseNumber
         this.space = space
         this.alpha = alpha
         this.guidePuzzle = guidePuzzle
@@ -257,7 +262,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
 
     override fun nextLevel() {
         if (isFinally) {
-            (ctx as ActivityGame).startGame("c", 1)
+            (ctx as ActivityGame).startGame("d", 1)
         } else {
             levelId++
             (ctx as ActivityGame).startGame("b", levelId)

@@ -16,7 +16,7 @@ class ServiceMusic : Service() {
     val isPlay: Boolean?
         get() = mp?.isPlaying
 
-    private var effectVolume = 0.4f
+    private var effectVolume = 0.6f
     private var volume: Float = 0.5f
         set(value) {
             field = value
@@ -70,7 +70,7 @@ class ServiceMusic : Service() {
     fun muteMusic(mute: Boolean) {
         Pref().saveBollValue(Pref.mute, mute)
         volume = if (mute) 0f else 0.5f
-        effectVolume = if (mute) 0f else 0.4f
+        effectVolume = if (mute) 0f else 0.6f
     }
 
     fun winSound() {
@@ -86,7 +86,7 @@ class ServiceMusic : Service() {
 
     fun loseSound() {
         decreaseVolume()
-        MediaPlayer.create(this, R.raw.loser).apply {
+        MediaPlayer.create(this, R.raw.loser_sound).apply {
             start()
             setVolume(effectVolume, effectVolume)
             setOnCompletionListener {
@@ -98,7 +98,7 @@ class ServiceMusic : Service() {
     fun eatSound()
     {
         decreaseVolume()
-        MediaPlayer.create(this, R.raw.infinite).apply {
+        MediaPlayer.create(this, R.raw.eat).apply {
             start()
             setVolume(effectVolume, effectVolume)
             setOnCompletionListener {
@@ -123,6 +123,30 @@ class ServiceMusic : Service() {
     {
         decreaseVolume()
         MediaPlayer.create(this, R.raw.stop).apply {
+            start()
+            setVolume(effectVolume, effectVolume)
+            setOnCompletionListener {
+                increaseVolume()
+            }
+        }
+    }
+
+    fun addDel()
+    {
+        decreaseVolume()
+        MediaPlayer.create(this, R.raw.add_del).apply {
+            start()
+            setVolume(effectVolume, effectVolume)
+            setOnCompletionListener {
+                increaseVolume()
+            }
+        }
+    }
+
+    fun finishMode()
+    {
+        decreaseVolume()
+        MediaPlayer.create(this, R.raw.finisho_mode).apply {
             start()
             setVolume(effectVolume, effectVolume)
             setOnCompletionListener {

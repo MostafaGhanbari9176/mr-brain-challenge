@@ -15,7 +15,7 @@
 
         <TextView
                 android:background="@drawable/item_main_start"
-                android:text="شروع بازی"
+                android:text="مراحل بازی"
                 android:textColor="@color/light3"
                 android:textSize="@dimen/txt_normal"
                 android:textStyle="bold"

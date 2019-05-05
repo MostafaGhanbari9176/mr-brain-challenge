@@ -1,6 +1,5 @@
 package ir.pepotec.app.game.ui.activityMain
 
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.ComponentName
@@ -63,7 +62,6 @@ class ActivityMain : AppCompatActivity() {
     }
 
     private fun initViews() {
-        App.fullScreen(this)
         initProgress()
         floatBtnMain.setOnTouchListener { v, event ->
             ButtonEvent(v, event)
@@ -144,6 +142,7 @@ class ActivityMain : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         App.instance = this
+        App.fullScreen(this)
         musicService?.startMusic(R.raw.main)
     }
 

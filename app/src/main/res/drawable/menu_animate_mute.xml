@@ -48,7 +48,7 @@
                 <path
                         android:name="m_mark"
                         android:strokeColor="@color/blue"
-                        android:strokeWidth="3.3"
+                        android:strokeWidth="0"
                         android:strokeLineCap="round"
                         android:pathData="M31,16H31.1 M36,16H36.1 M41,16H41.1 M31,11H31.1 M36,11H36.1 M41,11H41.1 M31,21H31.1 M36,21H36.1 M41,21H41.1"
                 />
@@ -179,6 +179,125 @@
                     android:duration="300"
                     android:valueFrom="0"
                     android:valueTo="1"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
+
+    <target android:name="parent_c_one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="scaleX"
+                    android:duration="0"
+                    android:valueFrom="3"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="scaleX"
+                    android:duration="0"
+                    android:valueFrom="3"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="scaleX"
+                    android:duration="0"
+                    android:valueFrom="3"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="scaleY"
+                    android:duration="0"
+                    android:valueFrom="3"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="scaleY"
+                    android:duration="0"
+                    android:valueFrom="3"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="parent_c_three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="scaleY"
+                    android:duration="0"
+                    android:valueFrom="3"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="q_mark">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="trimPathEnd"
+                    android:duration="0"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="m_mark">
+        <aapt:attr name="android:animation">
+
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="strokeWidth"
+                    android:duration="0"
+                    android:valueFrom="3.3"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+
+            />
+
+        </aapt:attr>
+    </target>
+    <target android:name="volume">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="1650"
+                    android:propertyName="trimPathEnd"
+                    android:duration="0"
+                    android:valueFrom="1"
+                    android:valueTo="0"
                     android:interpolator="@android:anim/decelerate_interpolator"
                     android:valueType="floatType"
             />

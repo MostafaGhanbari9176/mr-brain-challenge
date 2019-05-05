@@ -13,6 +13,8 @@ class Pref {
         const val block = "block"
         const val del = "del"
         const val DLock = "DLock"
+        const val brain = "brain"
+        const val dbCreated = "db"
     }
 
     private val p = App.instance.getSharedPreferences("MostafaGhanbari", MODE_PRIVATE)

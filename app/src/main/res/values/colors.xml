@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#404048</color>
-    <color name="primaryLightColor">#424250</color>
+    <color name="primaryLightColor">#4E4E57</color>
     <color name="primaryDarkColor">#33333d</color>
     <color name="secondaryOrange">#ff6859</color>
     <color name="secondaryDarkOrange">#C0352A</color>
@@ -25,8 +25,26 @@
     <color name="c5">#E76F51</color>
     <color name="b1">#01A1FE</color>
     <color name="b2">#0064DF</color>
+    <!--Item Main-->
     <color name="item_main_primary">#045d56</color>
     <color name="item_main_shadow">#2A9D8F</color>
-    <color name="item_main_circle">#fcfcfc</color>
-    <color name="item_main_icon">#2B2B2B</color>
+    <color name="item_main_circle">#fff</color>
+    <color name="item_main_icon">#404048</color>
+    <!--Item Mode-->
+    <color name="item_mode_primary">#045d56</color>
+    <color name="item_mode_stroke">#073532</color>
+    <color name="item_mode_progress">#FFEB3B</color>
+    <color name="item_mode_shadow">#0BADA1</color>
+    <color name="item_mode_ghab">#70d9e7</color>
+    <color name="item_mode_block">#176199</color>
+    <!--Item Level-->
+    <color name="item_level_primary">#045d56</color>
+    <color name="item_level_stroke">#2B2B2B</color>
+    <color name="item_level_progress">#CDDC39</color>
+    <color name="item_level_shadow">#2A9D8F</color>
+    <color name="item_level_ghab">#70d9e7</color>
+    <color name="item_level_dot">#FFFFFF</color>
+    <!--Launcher Two-->
+    <color name="launcher_two_main">#404048</color>
+    <color name="launcher_two_dot">#fff</color>
 </resources>

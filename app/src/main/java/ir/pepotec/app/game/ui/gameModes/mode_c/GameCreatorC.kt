@@ -33,7 +33,8 @@ class GameCreatorC(
             guideBus: LinearLayout,
             guidePuzzle: LinearLayout,
             isFinally: Boolean,
-            puzzlePosition:Int
+            puzzlePosition:Int,
+            loseNumber:Int
         )
     }
 
@@ -78,7 +79,8 @@ class GameCreatorC(
                 createGuide(busX, 1, alpha, getHeightPX()/2f),
                 createGuide(puzzleX, 0, alpha, (getHeightPX() + 10f)),
                 isFinally == 1,
-                getXAlign(puzzleX)
+                getXAlign(puzzleX),
+                loseNumber
             )
         }
     }

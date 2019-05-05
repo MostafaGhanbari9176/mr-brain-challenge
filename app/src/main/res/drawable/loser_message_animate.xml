@@ -37,7 +37,7 @@
                         android:pivotX="7"
                         android:pivotY="17"
                 >
-                    <path android:fillColor="#000" android:fillAlpha="0.15" android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+                    <path android:fillColor="#000" android:fillAlpha="@dimen/black_shadow_alpha" android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
                     <path android:fillColor="#fff" android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
                     <group
                             android:scaleX="0.8"
@@ -56,7 +56,7 @@
                         android:pivotX="17"
                         android:pivotY="17"
                 >
-                    <path android:fillColor="#000" android:fillAlpha="0.15" android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+                    <path android:fillColor="#000" android:fillAlpha="@dimen/black_shadow_alpha" android:pathData="M12,13.5m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
                     <path android:fillColor="#fff" android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
                     <group
                             android:scaleX="0.8"
@@ -70,19 +70,57 @@
             </group>
         </vector>
     </aapt:attr>
+    <!--Animation-->
+    <target android:name="x">
+    <aapt:attr name="android:animation">
+        <set android:ordering="sequentially">
+            <objectAnimator
+                    android:interpolator="@android:anim/bounce_interpolator"
+                    android:propertyName="pathData"
+                    android:duration="500"
+                    android:valueFrom="M12,12 L12,12 M12,12 L12,12"
+                    android:valueTo="M5,19 L19,5 M19,19 L5,5"
+                    android:valueType="pathType"
+            />
+            <objectAnimator
+                    android:startOffset="50"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:propertyName="pathData"
+                    android:duration="150"
+                    android:valueFrom="M5,19 L19,5 M19,19 L5,5"
+                    android:valueTo="M5,19 L19,19 M19,19 L19,5"
+                    android:valueType="pathType"
+            />
+            <objectAnimator
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:propertyName="pathData"
+                    android:duration="100"
+                    android:valueFrom="M5,19 L19,19 M19,19 L19,5"
+                    android:valueTo="M18.9,19 L19,19 M19,19 L19,18.9"
+                    android:valueType="pathType"
+            />
+        </set>
+    </aapt:attr>
+</target>
     <target android:name="parent_x">
         <aapt:attr name="android:animation">
             <set android:ordering="together">
                 <objectAnimator
-                        android:startOffset="800"
+                        android:startOffset="810"
                         android:propertyName="translateX"
                         android:valueFrom="0"
                         android:valueTo="-12"
                         android:duration="100"
                         android:valueType="floatType"
                 />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="parent_x">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
                 <objectAnimator
-                        android:startOffset="800"
+                        android:startOffset="810"
                         android:propertyName="translateY"
                         android:valueFrom="0"
                         android:valueTo="-12"
@@ -92,10 +130,22 @@
             </set>
         </aapt:attr>
     </target>
+    <target android:name="#">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="900"
+                    android:duration="200"
+                    android:propertyName="pathData"
+                    android:valueFrom="M19,19 C5,5 5,5 19,19 H19 C 19,5 19,5 19,19 V19 C 19,19 19,19 19,19 H19 C 5,19 5,19 19,19"
+                    android:valueTo="M4,9 C4,4 4,4 9,4 H15 C 20,4 20,4 20,9 V15 C 20,20 20,20 15,20 H9 C 4,20 4,20 4,15"
+                    android:valueType="pathType"
+            />
+        </aapt:attr>
+    </target>
     <target android:name="parent_button">
         <aapt:attr name="android:animation">
             <objectAnimator
-                    android:startOffset="860"
+                    android:startOffset="950"
                     android:propertyName="scaleY"
                     android:valueFrom="0"
                     android:valueTo="1"
@@ -105,33 +155,45 @@
             />
         </aapt:attr>
     </target>
+    <!--ResetAnimation-->
     <target android:name="x">
         <aapt:attr name="android:animation">
             <set android:ordering="sequentially">
                 <objectAnimator
-                        android:interpolator="@android:anim/bounce_interpolator"
+                        android:startOffset="2100"
                         android:propertyName="pathData"
-                        android:duration="500"
-                        android:valueFrom="M12,12 L12,12 M12,12 L12,12"
-                        android:valueTo="M5,19 L19,5 M19,19 L5,5"
+                        android:duration="0"
+                        android:valueFrom="M18.9,19 L19,19 M19,19 L19,18.9"
+                        android:valueTo="M12,12 L12,12 M12,12 L12,12"
                         android:valueType="pathType"
                 />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="parent_x">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
                 <objectAnimator
-                        android:startOffset="50"
-                        android:interpolator="@android:anim/accelerate_interpolator"
-                        android:propertyName="pathData"
-                        android:duration="150"
-                        android:valueFrom="M5,19 L19,5 M19,19 L5,5"
-                        android:valueTo="M5,19 L19,19 M19,19 L19,5"
-                        android:valueType="pathType"
+                        android:startOffset="2100"
+                        android:propertyName="translateX"
+                        android:valueFrom="-12"
+                        android:valueTo="0"
+                        android:duration="0"
+                        android:valueType="floatType"
                 />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="parent_x">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
                 <objectAnimator
-                        android:interpolator="@android:anim/accelerate_interpolator"
-                        android:propertyName="pathData"
-                        android:duration="100"
-                        android:valueFrom="M5,19 L19,19 M19,19 L19,5"
-                        android:valueTo="M18.9,19 L19,19 M19,19 L19,18.9"
-                        android:valueType="pathType"
+                        android:startOffset="2100"
+                        android:propertyName="translateY"
+                        android:valueFrom="-12"
+                        android:valueTo="0"
+                        android:duration="0"
+                        android:valueType="floatType"
                 />
             </set>
         </aapt:attr>
@@ -139,14 +201,25 @@
     <target android:name="#">
         <aapt:attr name="android:animation">
             <objectAnimator
-                    android:startOffset="800"
-                    android:duration="200"
+                    android:startOffset="2100"
+                    android:duration="0"
                     android:propertyName="pathData"
-                    android:valueFrom="M19,19 C5,5 5,5 19,19 H19 C 19,5 19,5 19,19 V19 C 19,19 19,19 19,19 H19 C 5,19 5,19 19,19"
-                    android:valueTo="M4,9 C4,4 4,4 9,4 H15 C 20,4 20,4 20,9 V15 C 20,20 20,20 15,20 H9 C 4,20 4,20 4,15"
+                    android:valueTo="M19,19 C5,5 5,5 19,19 H19 C 19,5 19,5 19,19 V19 C 19,19 19,19 19,19 H19 C 5,19 5,19 19,19"
+                    android:valueFrom="M4,9 C4,4 4,4 9,4 H15 C 20,4 20,4 20,9 V15 C 20,20 20,20 15,20 H9 C 4,20 4,20 4,15"
                     android:valueType="pathType"
             />
         </aapt:attr>
     </target>
+    <target android:name="parent_button">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:startOffset="2100"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:duration="0"
+                    android:valueType="floatType"
+            />
+        </aapt:attr>
+    </target>
 </animated-vector>
-        <!--android:interpolator="@android:interpolator/fast_out_slow_in"-->

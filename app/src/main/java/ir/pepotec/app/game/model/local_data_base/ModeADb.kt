@@ -20,13 +20,14 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
         const val puzzleX = "puzzle_x"
         const val puzzleY = "puzzle_y"
         const val isFinally = "is_finally"
+        const val loseNumber = "loseNumber"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(
             " CREATE TABLE $tbName ( $levelId INTEGER PRIMARY KEY AUTOINCREMENT , $subject TEXT , " +
                     "$score TEXT , $lock BOOLEAN , $alpha FLOAT , " +
-                    "$spaceX INTEGER , $puzzleX INTEGER , $puzzleY INTEGER , $isFinally INTEGER )"
+                    "$spaceX INTEGER , $puzzleX INTEGER , $puzzleY INTEGER , $isFinally INTEGER , $loseNumber INTEGER )"
         )
     }
 
@@ -48,6 +49,7 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
             cValue.put(ModeADb.puzzleX, puzzleX)
             cValue.put(ModeADb.puzzleY, puzzleY)
             cValue.put(ModeADb.isFinally, isFinally)
+            cValue.put(ModeADb.loseNumber, 0)
         }
 
         writer.insert(tbName, null, cValue)
@@ -71,7 +73,8 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
                         cursor.getInt(cursor.getColumnIndex(spaceX)),
                         cursor.getInt(cursor.getColumnIndex(puzzleX)),
                         cursor.getInt(cursor.getColumnIndex(puzzleY)),
-                        cursor.getInt(cursor.getColumnIndex(isFinally))
+                        cursor.getInt(cursor.getColumnIndex(isFinally)),
+                        cursor.getInt(cursor.getColumnIndex(loseNumber))
                     )
                 )
             } while (cursor.moveToNext())
@@ -95,7 +98,8 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
                 cursor.getInt(cursor.getColumnIndex(spaceX)),
                 cursor.getInt(cursor.getColumnIndex(puzzleX)),
                 cursor.getInt(cursor.getColumnIndex(puzzleY)),
-                cursor.getInt(cursor.getColumnIndex(isFinally))
+                cursor.getInt(cursor.getColumnIndex(isFinally)),
+                cursor.getInt(cursor.getColumnIndex(loseNumber))
             )
 
         }
@@ -139,6 +143,13 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
         cursor.close()
         reader.close()
         return data
+    }
+
+    fun incrementLose(id:Int)
+    {
+        val writer = this.writableDatabase
+        writer.execSQL(" UPDATE $tbName SET $loseNumber = $loseNumber + 1 WHERE $levelId = $id ")
+        writer.close()
     }
 
     fun deleteDb() {

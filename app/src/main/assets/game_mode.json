@@ -1,21 +1,21 @@
 [
   {
     "mode_id":"a",
-    "subject":"خفن",
-    "score_average":0,
-    "lock":0
-  },
-  {
-    "mode_id":"b",
-    "subject":"باحال دشوار",
+    "subject":"مقدماتی",
     "score_average":0,
     "lock":0
   },
   {
     "mode_id":"c",
-    "subject":"دیونه کننده",
+    "subject":"حرفه ایی",
     "score_average":0,
-    "lock":0
+    "lock":1
+  },
+  {
+    "mode_id":"b",
+    "subject":"پیشرفته",
+    "score_average":0,
+    "lock":1
   },
   {
     "mode_id":"d",

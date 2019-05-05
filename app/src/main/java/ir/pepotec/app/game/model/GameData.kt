@@ -23,7 +23,8 @@ data class ModeAData(
     val spaceX: Int,
     val puzzleX: Int,
     val puzzleY: Int,
-    val isFinally: Int
+    val isFinally: Int,
+    val loseNumber:Int
 )
 
 data class ModeBData(
@@ -33,7 +34,8 @@ data class ModeBData(
     val lock: Int,
     val alpha: Float,
     val puzzleY: Int,
-    val isFinally: Int
+    val isFinally: Int,
+    val loseNumber:Int
 )
 
 data class ModeCData(
@@ -45,7 +47,8 @@ data class ModeCData(
     val spaceX: Int,
     val puzzleX: Int,
     val busX: Int,
-    val isFinally: Int
+    val isFinally: Int,
+    val loseNumber:Int
 )
 
 data class ModeDData(

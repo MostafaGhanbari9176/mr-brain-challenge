@@ -3,6 +3,8 @@ package ir.pepotec.app.game.ui.gameModes
 import android.app.Activity
 import android.graphics.drawable.Animatable
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.core.content.ContextCompat
 import android.view.MotionEvent
 import android.view.View
@@ -34,7 +36,6 @@ class ActivityGame : AppCompatActivity() {
         set(value) {
             music?.muteMusic(value)
         }
-    private var closeGame = false
     private var menuIsShow = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,11 +49,11 @@ class ActivityGame : AppCompatActivity() {
             modeId = intent.getStringExtra("modeId")
 
         }
+        txtBarinNumberMain.text = "${Pref().getIntegerValue(Pref.brain, 100)}"
         startGame(modeId, levelId)
     }
 
     private fun initView() {
-        App.fullScreen(this)
         //mute = preferences
         btnMenuAG.setOnClickListener {
             openMenu()
@@ -64,8 +65,7 @@ class ActivityGame : AppCompatActivity() {
         }
 
         btnBackMenuAG.setOnClickListener {
-            closeGame = true
-            closeMenu()
+            onBackPressed()
         }
 
         btnHelpAG.setOnClickListener {
@@ -76,10 +76,10 @@ class ActivityGame : AppCompatActivity() {
         parentAG.setOnTouchListener { v, event -> !onTouchEvent(event) }
 
         parentAG.setOnClickListener {
-/*            if (menuIsShow)
-                closeMenu()
-            else*/
-                f?.myClickListener()
+            /*            if (menuIsShow)
+                            closeMenu()
+                        else*/
+            f?.myClickListener()
         }
     }
 
@@ -97,27 +97,29 @@ class ActivityGame : AppCompatActivity() {
         btnVolumeAG.visibility = View.GONE
         btnHelpAG.visibility = View.GONE
         btnMenuAG.visibility = View.VISIBLE
-        doAsync {
-            Thread.sleep(100)
-            uiThread { d.start() }
-        }
-        doAsync {
-            while (true) {
-                if (!d.isRunning)
-                    break
+        val a = imgMenuAG.drawable as Animatable
+        val h = Handler()
+        a.start()
+        Thread(
+            Runnable {
+                Thread.sleep(1200)
+                if(!menuIsShow) {
+                    h.post {
+                        imgMenuAG.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                this,R.drawable.menu_animate_mute
+                            )
+                        )
+                    }
+                }
             }
-            uiThread {
-                if (closeGame)
-                    onBackPressed()
+        ).start()
 
-            }
-        }
 
     }
 
     private fun openMenu() {
-        if(f is FragmentModeD)
-        {
+        if (f is FragmentModeD) {
             (f as FragmentModeD).stopGame()
             return
         }
@@ -132,7 +134,26 @@ class ActivityGame : AppCompatActivity() {
         btnVolumeAG.visibility = View.VISIBLE
         btnHelpAG.visibility = View.VISIBLE
         btnMenuAG.visibility = View.GONE
-        (imgMenuAG.drawable as Animatable).start()
+
+        val a = imgMenuAG.drawable as Animatable
+        val h = Handler()
+        a.start()
+        Thread(
+            Runnable {
+                Thread.sleep(1150)
+                if(menuIsShow) {
+                    h.post {
+                        imgMenuAG.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                this,
+                                if (mute) R.drawable.menu_mute_vector else R.drawable.menu_vector
+                            )
+                        )
+                    }
+                }
+            }
+        ).start()
+
     }
 
     fun startGame(modeId: String, levelId: Int) {
@@ -140,17 +161,17 @@ class ActivityGame : AppCompatActivity() {
         this.levelId = levelId
         when (modeId) {
             "a" -> {
-                if(f !is FragmentModeA || !(music?.isPlay!!))
-                music?.startMusic(R.raw.mode_a)
+                if (f !is FragmentModeA || !(music?.isPlay!!))
+                    music?.startMusic(R.raw.mode_a)
                 f = FragmentModeA()
             }
             "b" -> {
-                if(f !is FragmentModeB || !(music?.isPlay!!))
-                music?.startMusic(R.raw.mode_b)
+                if (f !is FragmentModeB || !(music?.isPlay!!))
+                    music?.startMusic(R.raw.mode_b)
                 f = FragmentModeB()
             }
             "c" -> {
-                if(f !is FragmentModeC || !(music?.isPlay!!))
+                if (f !is FragmentModeC || !(music?.isPlay!!))
                     music?.startMusic(R.raw.mode_c)
                 f = FragmentModeC()
             }
@@ -170,7 +191,7 @@ class ActivityGame : AppCompatActivity() {
         var dy = 0
         when (ev?.action) {
             MotionEvent.ACTION_DOWN -> {
-                if(menuIsShow)
+                if (menuIsShow)
                     closeMenu()
                 mLastTouchX = ev.x.toInt()
                 mLastTouchY = ev.y.toInt()
@@ -203,6 +224,7 @@ class ActivityGame : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         App.instance = this
+        App.fullScreen(this)
         music?.resumeMusic()
     }
 

@@ -7,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import ir.pepotec.app.game.R
-import ir.pepotec.app.game.model.ItemData
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.activityMain.adapters.AdapterMainMenu
+import ir.pepotec.app.game.ui.dialog.DialogAboutUs
+import ir.pepotec.app.game.ui.dialog.DialogSoundSettings
 import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.fragment_main_menu.*
 
@@ -47,7 +46,17 @@ class FragmentMainMenu : Fragment() {
             ButtonEvent(v, event)
             false
         }
-        aboutUs.setOnClickListener {  }
+        aboutUs.setOnClickListener {
+            DialogAboutUs()
+        }
+
+        setting.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        setting.setOnClickListener {
+            DialogSoundSettings()
+        }
 
     }
 

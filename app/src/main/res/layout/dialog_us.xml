@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+                android:layout_height="400dp"
+>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/about_us_back" android:id="@+id/imageView4"/>
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center" android:layout_centerInParent="true">
+
+        <TextView
+                android:shadowColor="@color/light2"
+                android:text="مصطفی قنبری"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView5" android:textSize="@dimen/txt_small_one"
+                android:textStyle="bold" android:textColor="@color/primaryColor" android:padding="4dp"
+                android:layout_marginBottom="8dp" android:layout_marginTop="16dp"/>
+        <TextView
+                android:shadowColor="@color/light2"
+                android:text="GodHelot1@gmail.com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView4" android:autoLink="email"
+                android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/primaryColor"
+                android:padding="4dp" android:layout_marginBottom="8dp"
+                android:textColorLink="@color/red"
+        />
+        <TextView
+                android:shadowColor="@color/light2"
+                android:text="MostafaGhanbari.iR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView3" android:autoLink="web"
+                android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/primaryColor"
+                android:padding="4dp" android:layout_marginBottom="16dp"
+                android:textColorLink="@color/blue"
+        />
+    </LinearLayout>
+</RelativeLayout>

@@ -44,14 +44,34 @@ class AdapterModeD(private val p: Point, private val easy: Boolean, private val 
         private fun showBrain(r: Int) {
             if (easy) {
                 if (pos % 5 == 0 && r!=0)
-                    itemView.imgBrainItemModeD.alpha = 1f
+                {
+                    itemView.imgBrainItemModeD.apply {
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                }
                 else
-                    itemView.imgBrainItemModeD.alpha = 0f
+                {
+                    itemView.imgBrainItemModeD.apply {
+                        scaleX = 0f
+                        scaleY = 0f
+                    }
+                }
             } else {
                 if (pos % 3 == 0 && r!=0)
-                    itemView.imgBrainItemModeD.alpha = 1f
+                {
+                    itemView.imgBrainItemModeD.apply {
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                }
                 else
-                    itemView.imgBrainItemModeD.alpha = 0f
+                {
+                    itemView.imgBrainItemModeD.apply {
+                        scaleX = 0f
+                        scaleY = 0f
+                    }
+                }
             }
 
         }

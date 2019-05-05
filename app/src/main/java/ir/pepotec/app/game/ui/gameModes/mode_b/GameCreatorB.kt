@@ -28,7 +28,8 @@ class GameCreatorB(
             alpha: Float,
             guideSeat: LinearLayout,
             guidePuzzle: LinearLayout,
-            isFinally: Boolean
+            isFinally: Boolean,
+            loseNumber:Int
         )
     }
 
@@ -69,7 +70,8 @@ class GameCreatorB(
             data.alpha,
             createGuide(false, 0, data.alpha, 0f),
             createGuide(true, data.puzzleY, data.alpha, (getHeightPX() + 10f)),
-            data.isFinally == 1
+            data.isFinally == 1,
+            data.loseNumber
         )
     }
 

@@ -29,6 +29,7 @@ import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import ir.pepotec.app.game.ui.uses.MyFragment
+import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.dialog_mode_d.view.*
 import kotlinx.android.synthetic.main.dialog_start_infinite.*
 import kotlinx.android.synthetic.main.dialog_start_infinite.view.*
@@ -69,6 +70,7 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
         get() = LLPuzzleModeD.width
     private val blockLength: Int
         get() = blockView.width
+    private var eatPosition: Int = -1
     private var position: Int = 1
         set(value) {
             field = value
@@ -97,7 +99,8 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
 
     private fun setScore() {
         if (position > addRefrense) {
-            //handlerRun.post { txtDel.text = "${++delCount}" }
+            ActivityMain.musicService?.addDel()
+            txtDel.text = "${++delCount}"
             addRefrense += 30
         }
         if (position == 0)
@@ -218,8 +221,9 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
                             if (abs(puzzleLength - blockLength) > 2 * delta && !puzzleIsGhost) {
                                 gameSpeed = 15L
                                 accident()
-                            } else if (brainView?.alpha == 1f && !puzzleIsGhost) {
+                            } else if (brainView?.scaleX == 1f && !puzzleIsGhost && position != eatPosition) {
                                 Log.d("Mostafa", "** EAT **")
+                                eatPosition = position
                                 eatBrain()
                             }
                         }
@@ -242,6 +246,9 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
     }
 
     private fun eatBrain() {
+        ActivityMain.musicService?.eatSound()
+        val current = Pref().getIntegerValue(Pref.brain, 100)
+        Pref().saveIntegerValue(Pref.brain, current + 5)
         val h = Handler()
         Thread(
             Runnable {
@@ -253,14 +260,16 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
                         duration = 100
                         start()
                     }
+                    (ctx as ActivityGame).txtBarinNumberMain.text="${current+5}"
                 }
             }
         ).start()
+
     }
 
     private fun changeSpeed() {
         if (gameSpeed2 > 0)
-            gameSpeed2 -= 1
+            gameSpeed2 -= 2
         else if (gameSpeed > 5) {
             gameSpeed2 = 900
             gameSpeed--
@@ -310,7 +319,8 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
     private fun animateDel() {
         (imgDel.drawable as Animatable).apply {
             stop()
-            start() }
+            start()
+        }
     }
 
     private var step: Int = 0

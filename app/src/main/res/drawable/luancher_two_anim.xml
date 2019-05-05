@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+        <vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportHeight="16"
+                android:viewportWidth="9"
+                android:height="16dp"
+                android:width="9dp">
+
+            <path
+                    android:name="main_back"
+                    android:pathData="M0,0 h9 v16 h-9 z"
+                    android:fillColor="@color/launcher_two_main"
+            />
+
+            <path
+                    android:name="dot"
+                    android:strokeWidth="0.5"
+                    android:pathData="M4.5,-1 h0.01"
+                    android:strokeLineCap="round"
+                    android:strokeColor="@color/launcher_two_dot"
+                    android:fillColor="@color/launcher_two_dot"
+            />
+
+        </vector>
+    </aapt:attr>
+    <target android:name="dot">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                        android:duration="300"
+                        android:propertyName="pathData"
+                        android:valueFrom="M4.5,-1 h0.01"
+                        android:valueTo="M4.5,14 h0.01"
+                        android:valueType="pathType"
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="dot">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                        android:startOffset="300"
+                        android:propertyName="strokeWidth"
+                        android:valueFrom="0.5"
+                        android:valueTo="28"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/decelerate_interpolator"
+                        android:duration="200"
+
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="dot">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                        android:startOffset="450"
+                        android:propertyName="strokeAlpha"
+                        android:valueFrom="1"
+                        android:valueTo="0"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/decelerate_interpolator"
+                        android:duration="200"
+
+                />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="main_back">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                        android:startOffset="450"
+                        android:propertyName="fillAlpha"
+                        android:valueFrom="1"
+                        android:valueTo="0"
+                        android:valueType="floatType"
+                        android:interpolator="@android:anim/decelerate_interpolator"
+                        android:duration="300"
+
+                />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

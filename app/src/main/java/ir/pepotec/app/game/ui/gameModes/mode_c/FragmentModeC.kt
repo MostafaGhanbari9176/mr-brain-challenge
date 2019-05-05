@@ -18,6 +18,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.local_data_base.ModeCDb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeCLevel
 import ir.pepotec.app.game.ui.App
@@ -34,6 +35,7 @@ import kotlin.math.abs
 class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDialogResponse {
 
     override var levelId: Int = 0
+    private var loseNumber:Int = 0
     private val ctx: Context = App.instance
     private var gameStarted = false
     private var firstTap = false
@@ -86,7 +88,8 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
         guideBus: LinearLayout,
         guidePuzzle: LinearLayout,
         isFinally: Boolean,
-        puzzlePosition: Int
+        puzzlePosition: Int,
+        loseNumber:Int
     ) {
         this.puzzlePosition = puzzlePosition
         this.isFinally = isFinally
@@ -230,7 +233,8 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     }
 
     private fun showLoserDialog() {
-            DialogLoser("", this)
+        ModeCDb(ctx).incrementLose(levelId)
+        DialogLoser("", this, loseNumber >= 2, levelId, "c", isFinally)
     }
 
     private fun runStartTapTimer() {
@@ -265,7 +269,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
 
     override fun nextLevel() {
         if (isFinally) {
-            (ctx as ActivityGame).startGame("d", 1)
+            (ctx as ActivityGame).startGame("b", 1)
         } else {
             levelId++
             (ctx as ActivityGame).startGame("c", levelId)

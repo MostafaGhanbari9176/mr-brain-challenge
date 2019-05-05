@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportHeight="4"
+                android:viewportWidth="12"
+                android:height="4dp"
+                android:width="12dp">
+
+            <path
+                    android:strokeColor="@color/item_mode_shadow"
+                    android:strokeWidth="2.5"
+                    android:strokeLineCap="round"
+                    android:pathData="M2,2 h8"
+            />
+            <path
+                    android:name="progress"
+                    android:trimPathEnd="0.1"
+                    android:strokeColor="@color/item_mode_progress"
+                    android:strokeWidth="2"
+                    android:strokeLineCap="round"
+                    android:pathData="M2,2 h8"
+            />
+        </vector>

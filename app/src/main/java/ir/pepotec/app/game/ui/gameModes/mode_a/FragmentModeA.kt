@@ -24,6 +24,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.Pref
+import ir.pepotec.app.game.model.local_data_base.ModeADb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeALevel
 import ir.pepotec.app.game.ui.App
@@ -44,6 +45,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
 
 
     private var isFinally = false
+    private var loseNumber = 0
     private lateinit var helperView: HelpModeA
     private var parentView: ViewGroup? = null
     private lateinit var puzzle: CardView
@@ -139,7 +141,8 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     private fun showLoserDialog() {
-        DialogLoser("txt", this)
+        ModeADb(ctx).incrementLose(levelId)
+        DialogLoser("txt", this, loseNumber >= 2, levelId, "a", isFinally)
 
     }
 
@@ -204,13 +207,15 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         alpha: Float,
         guideSpace: LinearLayout,
         guidePuzzle: LinearLayout,
-        isFinally: Boolean
+        isFinally: Boolean,
+        loseNumber:Int
     ) {
         this.isFinally = isFinally
         this.space = space
         this.alpha = alpha
         this.guidePuzzle = guidePuzzle
         this.guideSpace = guideSpace
+        this.loseNumber = loseNumber
         txtAlphaA.text = alpha.toString()
         if (levelId == 1 && !Pref().getBollValue(Pref.help_a, false)) {
             answerForHelp()
@@ -303,7 +308,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
 
     override fun nextLevel() {
         if (isFinally) {
-            (ctx as ActivityGame).startGame("b", 1)
+            (ctx as ActivityGame).startGame("c", 1)
         } else {
             levelId++
             (ctx as ActivityGame).startGame("a", levelId)

@@ -2,6 +2,9 @@ package ir.pepotec.app.game.ui.activityMain.adapters
 
 import android.animation.ValueAnimator
 import android.graphics.Point
+import android.graphics.drawable.Animatable
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,81 +25,116 @@ import kotlinx.android.synthetic.main.item_game_level.view.*
 class AdapterGameLevel(
     private val source: ArrayList<ItemData>,
     private val listener: (levelId: Int) -> Unit
-) : RecyclerView.Adapter<AdapterGameLevel.Holder>() {
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
-        return Holder(LayoutInflater.from(App.instance).inflate(R.layout.item_game_level, p0, false), listener)
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    var highlightPosition = source.size - 1
+
+    init {
+        for (o in source) {
+            if (o.lock == 1) {
+                highlightPosition = source.indexOf(o) - 1
+                break
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == 1)
+            HolderLock(LayoutInflater.from(App.instance).inflate(R.layout.item_game_level, parent, false))
+        else
+            HighlightHolder(LayoutInflater.from(App.instance).inflate(R.layout.item_game_level, parent, false))
+
     }
 
     override fun getItemCount(): Int = source.size
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.binder(source[position], position)
+    override fun getItemViewType(position: Int): Int {
+        return if (position == highlightPosition) 2 else 1
     }
 
-    class Holder(itemView: View, private val listener: (levelId: Int) -> Unit) : RecyclerView.ViewHolder(itemView) {
-        fun binder(data: ItemData, position: Int) {
-            initItemView(position)
-            itemView.setOnTouchListener { v, event ->
-                ButtonEvent(v, event)
-                false
-            }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-            with(data) {
-                itemView.txtSubjectLevel.text = subject
-                if (lock == 1) {
-                    itemView.txtScoreLevel.visibility = View.GONE
-                    itemView.imgLevelMenu.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            App.instance,
-                            R.drawable.item_level_lock
-                        )
+        val v = holder.itemView
+        if(position == highlightPosition)
+            startAndRepeatAnimate(v.imgLevelMenu.drawable as Animatable)
+        initItemView(position, v)
+        v.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        with(source[position]) {
+            v.txtSubjectLevel.text = subject
+            if (lock == 1) {
+                v.txtScoreLevel.visibility = View.GONE
+                v.setOnClickListener {}
+                v.imgStateLevel.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        App.instance,
+                        R.drawable.ic_lock_black_24dp
                     )
-                    itemView.setOnClickListener {}
-                } else {
-                    itemView.txtScoreLevel.visibility = View.VISIBLE
-                    itemView.imgLevelMenu.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            App.instance,
-                            R.drawable.item_level
-                        )
+                )
+            } else {
+                v.txtScoreLevel.visibility = View.VISIBLE
+                v.setOnClickListener {
+                    listener(id)
+                }
+                v.imgStateLevel.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        App.instance,
+                        R.drawable.item_level_progress
                     )
-                    itemView.setOnClickListener {
-                        listener(id)
-                    }
-                    animateProgress(score)
-                }
+                )
+                animateProgress(score, v)
             }
-        }
-
-        private fun initItemView(position: Int) {
-
-            val p = Point()
-            (App.instance as ActivityMain).windowManager.defaultDisplay.getRealSize(p)
-            val param = RelativeLayout.LayoutParams(p.x / 2, p.x / 2)
-            itemView.layoutParams = param
-            if (position == 0 || position == 1)
-                setMargin(itemView)
-        }
-
-        private fun animateProgress(score: Int) {
-            ValueAnimator.ofInt(0, score).apply {
-                duration = 500
-                startDelay = 100
-                interpolator = DecelerateInterpolator()
-                addUpdateListener {
-                    val vector = VectorChildFinder(App.instance, R.drawable.item_level, itemView.imgLevelMenu)
-                    val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
-                    val v = it.animatedValue as Int
-                    path.trimPathEnd =  v/ 100f
-                    itemView.txtScoreLevel.text="$v"
-                }
-                start()
-            }
-        }
-
-        private fun setMargin(v: View) {
-            val params = (v.layoutParams) as RelativeLayout.LayoutParams
-            params.topMargin = ((App.instance) as ActivityMain).imgProgressAM.height
         }
     }
+
+    private fun initItemView(position: Int, itemView: View) {
+
+        val p = Point()
+        (App.instance as ActivityMain).windowManager.defaultDisplay.getRealSize(p)
+        val param = RelativeLayout.LayoutParams(p.x / 2, p.x / 2)
+        itemView.layoutParams = param
+        if (position == 0 || position == 1)
+            setMargin(itemView)
+    }
+
+    private fun animateProgress(score: Int, itemView: View) {
+        ValueAnimator.ofInt(0, score).apply {
+            duration = 500
+            startDelay = 100
+            interpolator = DecelerateInterpolator()
+            addUpdateListener {
+                val vector = VectorChildFinder(App.instance, R.drawable.item_level_progress, itemView.imgStateLevel)
+                val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
+                val v = it.animatedValue as Int
+                path.trimPathEnd = (if (v == 0) 1 else v) / 100f
+                itemView.txtScoreLevel.text = "$v"
+            }
+            start()
+        }
+    }
+
+    private fun setMargin(v: View) {
+        val params = (v.layoutParams) as RelativeLayout.LayoutParams
+        params.topMargin = ((App.instance) as ActivityMain).imgProgressAM.height
+    }
+
+    private fun startAndRepeatAnimate(a: Animatable) {
+        val h = Handler()
+        Thread(
+            Runnable {
+                while (true) {
+                    Thread.sleep(100)
+                    if (!a.isRunning)
+                        h.post { a.start() }
+                }
+            }
+        ).start()
+    }
+
+    class HolderLock(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    class HighlightHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
 }

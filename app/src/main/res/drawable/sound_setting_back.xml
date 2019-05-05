@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:viewportHeight="5"
+        android:viewportWidth="25"
+        android:height="5dp"
+        android:width="25dp">
+    <path
+            android:strokeAlpha="@dimen/black_shadow_alpha"
+            android:strokeColor="@color/dark"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"
+            android:pathData="M3.2,2.8 H21.8"
+    />
+    <path
+            android:strokeColor="@color/light3"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"
+            android:pathData="M3,2.5 H22"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M3,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M4,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M5,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M6,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M7,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M8,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M9,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M10,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M11,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M12,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M13,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M14,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M15,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M16,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M17,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M18,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M19,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M20,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M21,4.5 v-4"
+    />
+    <path android:strokeColor="@color/item_mode_primary"
+          android:strokeAlpha="0.15"
+          android:strokeWidth="0.5"
+          android:pathData="M22,4.5 v-4"
+    />
+</vector>

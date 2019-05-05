@@ -151,24 +151,18 @@
                         android:strokeLineCap="round"
                         android:pathData="M6.5,10.5 H17.5"
                 />
-                <group
-                        android:name="parent_progress"
-                        android:pivotX="6.5"
-                        android:pivotY="12"
-                        android:scaleX="1"
-                >
-                    <path
-                            android:trimPathEnd="0.1"
-                            android:name="progress"
-                            android:strokeColor="#2196F3"
-                            android:strokeWidth="2"
-                            android:strokeLineCap="round"
-                            android:pathData="M6.5,10.5 H17.5"
-                    />
-                </group>
+                <path
+                        android:name="progress"
+                        android:strokeColor="#2196F3"
+                        android:trimPathEnd="0.1"
+                        android:strokeWidth="2"
+                        android:strokeLineCap="round"
+                        android:pathData="M6.5,10.5 H17.5"
+                />
             </group>
         </vector>
     </aapt:attr>
+
     <target android:name="star_one_parent">
         <aapt:attr name="android:animation">
             <set>
@@ -212,7 +206,6 @@
     <target android:name="star_two_parent">
         <aapt:attr name="android:animation">
             <set android:ordering="sequentially">
-                <set android:ordering="together">
                     <objectAnimator
                             android:startOffset="150"
                             android:propertyName="scaleX"
@@ -222,36 +215,39 @@
                             android:valueType="floatType"
                     />
                     <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0"
-                            android:valueTo="0.4"
-                            android:duration="300"
-                            android:valueType="floatType"
-                    />
-                </set>
-                <set android:ordering="together">
-                    <objectAnimator
                             android:propertyName="scaleX"
                             android:valueFrom="0.4"
                             android:valueTo="0.2"
                             android:duration="100"
                             android:valueType="floatType"
                     />
-                    <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0.4"
-                            android:valueTo="0.2"
-                            android:duration="100"
-                            android:valueType="floatType"
-                    />
-                </set>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="star_two_parent">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                        android:startOffset="150"
+                        android:propertyName="scaleY"
+                        android:valueFrom="0"
+                        android:valueTo="0.4"
+                        android:duration="300"
+                        android:valueType="floatType"
+                />
+                <objectAnimator
+                        android:propertyName="scaleY"
+                        android:valueFrom="0.4"
+                        android:valueTo="0.2"
+                        android:duration="100"
+                        android:valueType="floatType"
+                />
             </set>
         </aapt:attr>
     </target>
     <target android:name="star_three_parent">
         <aapt:attr name="android:animation">
             <set android:ordering="sequentially">
-                <set android:ordering="together">
                     <objectAnimator
                             android:startOffset="300"
                             android:propertyName="scaleX"
@@ -261,36 +257,39 @@
                             android:valueType="floatType"
                     />
                     <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0"
-                            android:valueTo="0.3"
-                            android:duration="300"
-                            android:valueType="floatType"
-                    />
-                </set>
-                <set android:ordering="together">
-                    <objectAnimator
                             android:propertyName="scaleX"
                             android:valueFrom="0.3"
                             android:valueTo="0.2"
                             android:duration="100"
                             android:valueType="floatType"
                     />
-                    <objectAnimator
-                            android:propertyName="scaleY"
-                            android:valueFrom="0.3"
-                            android:valueTo="0.2"
-                            android:duration="100"
-                            android:valueType="floatType"
-                    />
-                </set>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="star_three_parent">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                        android:startOffset="300"
+                        android:propertyName="scaleY"
+                        android:valueFrom="0"
+                        android:valueTo="0.3"
+                        android:duration="300"
+                        android:valueType="floatType"
+                />
+                <objectAnimator
+                        android:propertyName="scaleY"
+                        android:valueFrom="0.3"
+                        android:valueTo="0.2"
+                        android:duration="100"
+                        android:valueType="floatType"
+                />
             </set>
         </aapt:attr>
     </target>
     <target android:name="parent_star">
         <aapt:attr name="android:animation">
             <set android:ordering="sequentially">
-                <set android:ordering="together">
                     <objectAnimator
                             android:startOffset="500"
                             android:duration="300"
@@ -300,29 +299,33 @@
                             android:valueType="floatType"
                     />
                     <objectAnimator
-                            android:duration="300"
-                            android:propertyName="scaleY"
-                            android:valueFrom="0"
-                            android:valueTo="1.2"
-                            android:valueType="floatType"
-                    />
-                </set>
-                <set android:ordering="together">
-                    <objectAnimator
                             android:duration="200"
                             android:propertyName="scaleX"
                             android:valueFrom="1.2"
                             android:valueTo="1"
                             android:valueType="floatType"
                     />
-                    <objectAnimator
-                            android:duration="200"
-                            android:propertyName="scaleY"
-                            android:valueFrom="1.2"
-                            android:valueTo="1"
-                            android:valueType="floatType"
-                    />
-                </set>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="parent_star">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                        android:startOffset="500"
+                        android:duration="300"
+                        android:propertyName="scaleY"
+                        android:valueFrom="0"
+                        android:valueTo="1.2"
+                        android:valueType="floatType"
+                />
+                <objectAnimator
+                        android:duration="200"
+                        android:propertyName="scaleY"
+                        android:valueFrom="1.2"
+                        android:valueTo="1"
+                        android:valueType="floatType"
+                />
             </set>
         </aapt:attr>
     </target>

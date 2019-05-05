@@ -29,14 +29,16 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        if(!(Pref().getBollValue(Pref.dbCreated,false)))
         addDataToDb()
         overrideFont("SERIF", "fonts/Far_Tanab.ttf")
 
     }
 
     private fun addDataToDb() {
+        Pref().saveBollValue(Pref.dbCreated, true)
         Pref().saveBollValue(Pref.help_a, false)
-
+        Pref().saveIntegerValue(Pref.brain, 100)
         ModeADb(this).deleteDb()
         ModeCDb(this).deleteDb()
         ModeBDb(this).deleteDb()
@@ -59,7 +61,8 @@ class App : Application() {
                         get(ModeADb.spaceX).asInt,
                         get(ModeADb.puzzleX).asInt,
                         get(ModeADb.puzzleY).asInt,
-                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0
+                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0,
+                        0
                     )
                 )
             }
@@ -102,7 +105,8 @@ class App : Application() {
                         get(ModeCDb.spaceX).asInt,
                         get(ModeCDb.puzzleX).asInt,
                         get(ModeCDb.busX).asInt,
-                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0
+                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0,
+                        0
                     )
                 )
             }
@@ -125,7 +129,8 @@ class App : Application() {
                         get(ModeBDb.lock).asInt,
                         get(ModeBDb.alpha).asFloat,
                         get(ModeBDb.puzzleY).asInt,
-                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0
+                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0,
+                        0
                     )
                 )
             }

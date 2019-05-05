@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/item_main_menu_height" android:background="@drawable/sound_setting_back"
+              android:layoutDirection="rtl">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" android:layout_weight="0.6"
+            android:gravity="center">
+        <TextView
+                android:text="صدا : "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textStyle="bold" android:textSize="@dimen/txt_normal"
+                android:textColor="?attr/colorPrimary"
+        />
+        <TextView
+                android:text="روشن"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/txtSoundSetting" android:textStyle="bold"
+                android:textSize="@dimen/txt_normal"
+                android:textColor="@color/item_level_primary"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" android:layout_weight="0.4" android:gravity="center">
+        <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/swcSoundSetting"
+                android:padding="16dp"/>
+    </LinearLayout>
+</LinearLayout>

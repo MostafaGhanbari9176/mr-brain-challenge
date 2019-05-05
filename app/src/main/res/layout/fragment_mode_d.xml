@@ -69,4 +69,7 @@
                     android:gravity="center" android:layout_margin="8dp"/>
         </LinearLayout>
     </LinearLayout>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/g_light" android:id="@+id/imageView2"/>
 </RelativeLayout>

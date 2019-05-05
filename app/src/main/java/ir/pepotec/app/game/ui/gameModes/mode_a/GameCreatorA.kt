@@ -24,7 +24,7 @@ class GameCreatorA(
 ) : PModeALevel.PModeALevelInterface {
 
     interface GameCreatorInterface {
-        fun gameCreated(space: Int, alpha: Float, guideSpace: LinearLayout, guidePuzzle: LinearLayout, isFinally:Boolean)
+        fun gameCreated(space: Int, alpha: Float, guideSpace: LinearLayout, guidePuzzle: LinearLayout, isFinally:Boolean, loseNumber:Int)
     }
 
     private val ctx: Context = App.instance
@@ -65,7 +65,8 @@ class GameCreatorA(
             data.alpha,
             createGuide(data.spaceX, 0, data.alpha, (p.y - getHeightPX()).toFloat()),
             createGuide(data.puzzleX, data.puzzleY, data.alpha, (getHeightPX() + 10f)),
-            data.isFinally == 1
+            data.isFinally == 1,
+            data.loseNumber
         )
     }
 
