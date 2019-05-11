@@ -1,23 +1,20 @@
 package ir.pepotec.app.game.ui.gameModes.mode_c
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
 import android.graphics.Point
+import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.BounceInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.model.local_data_base.ModeCDb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeCLevel
@@ -35,7 +32,7 @@ import kotlin.math.abs
 class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDialogResponse {
 
     override var levelId: Int = 0
-    private var loseNumber:Int = 0
+    private var loseNumber: Int = 0
     private val ctx: Context = App.instance
     private var gameStarted = false
     private var firstTap = false
@@ -63,7 +60,26 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
             setExitFadeDuration(4000)
             start()
         }
+        startImgBackAnimate()
         createGame()
+    }
+
+    private fun startImgBackAnimate() {
+        val h = Handler()
+        Thread(
+            Runnable {
+                while (true) {
+                    for (i in 0..40) {
+                        Thread.sleep(100)
+                        h.post { imgBackC?.alpha = i / 100f }
+                    }
+                    for (i in 40 downTo 0) {
+                        Thread.sleep(100)
+                        h.post { imgBackC?.alpha = i / 100f }
+                    }
+                }
+            }
+        ).start()
     }
 
     private fun createGame() {
@@ -75,7 +91,6 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
             LLSeatC,
             LLRightBusC,
             LLLeftBusC,
-            LLBusC,
             LLPuzzleC,
             this
         ).createGame()
@@ -89,7 +104,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
         guidePuzzle: LinearLayout,
         isFinally: Boolean,
         puzzlePosition: Int,
-        loseNumber:Int
+        loseNumber: Int
     ) {
         this.puzzlePosition = puzzlePosition
         this.isFinally = isFinally
@@ -98,6 +113,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
         this.guidePuzzle = guidePuzzle
         this.guideSpace = guideSpace
         this.guideBus = guideBus
+        this.loseNumber = loseNumber
         txtAlphaC.text = alpha.toString()
         guideBus.x = LLBusC.x + (LLBusC.width - guideBus.width) / 2
     }
@@ -116,6 +132,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
 
         step += dx
         if (abs(step) >= (p.x / 80)) {
+            imgHelpC.visibility = View.GONE
             if (dx > 0 && (LLPuzzleC.x + LLPuzzleC.width) < p.x) {
                 if (LLPuzzleC.x + LLPuzzleC.width + dx > p.x) {
                     LLPuzzleC.x = p.x - LLPuzzleC.width.toFloat()
@@ -163,7 +180,16 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     private fun startGame() {
         gameStarted = true
         step = 0
+        if(levelId == 1)
+        showFingerHelp()
         runPuzzle()
+    }
+
+    private fun showFingerHelp() {
+        imgHelpC.apply {
+            visibility = View.VISIBLE
+            (drawable as Animatable).start()
+        }
     }
 
     private fun runPuzzle() {
@@ -187,7 +213,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
                     Thread.sleep(10)
                 }
                 if (!lose)
-                    h.post{showDialogWinner()}
+                    h.post { showDialogWinner() }
             }
         ).start()
         scaleX = ValueAnimator.ofFloat(LLPuzzleC.width.toFloat(), LLPuzzleC.width / alpha).apply {
@@ -250,6 +276,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     }
 
     override fun onDestroy() {
+        lose = true
         animRun = false
         scaleX?.cancel()
         super.onDestroy()
@@ -257,7 +284,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
 
     override fun prevMenu() {
         (ctx as ActivityGame).apply {
-            setResult(Activity.RESULT_OK, intent.putExtra("mode_id", "c"))
+            setResult(Activity.RESULT_OK, intent.putExtra("modeId", "c"))
             finish()
         }
     }

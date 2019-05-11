@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="android">#A4C639</color>
+    <color name="kotlin1">#C859B2</color>
+    <color name="kotlin2">#F68809</color>
     <color name="primaryColor">#404048</color>
     <color name="primaryLightColor">#4E4E57</color>
     <color name="primaryDarkColor">#33333d</color>
@@ -18,11 +21,6 @@
     <color name="light">#fff</color>
     <color name="light2">#E9E9E9</color>
     <color name="light3">#DFDFDF</color>
-    <color name="c1">#264653</color>
-    <color name="c2">#2A9D8F</color>
-    <color name="c3">#E9C46A</color>
-    <color name="c4">#F4A261</color>
-    <color name="c5">#E76F51</color>
     <color name="b1">#01A1FE</color>
     <color name="b2">#0064DF</color>
     <!--Item Main-->
@@ -42,9 +40,12 @@
     <color name="item_level_stroke">#2B2B2B</color>
     <color name="item_level_progress">#CDDC39</color>
     <color name="item_level_shadow">#2A9D8F</color>
-    <color name="item_level_ghab">#70d9e7</color>
     <color name="item_level_dot">#FFFFFF</color>
     <!--Launcher Two-->
     <color name="launcher_two_main">#404048</color>
     <color name="launcher_two_dot">#fff</color>
+    <!--Stars Back-->
+    <color name="stars_back_dot">#fff</color>
+    <!--Clouds Back-->
+    <color name="clouds_back_dot">#fff</color>
 </resources>

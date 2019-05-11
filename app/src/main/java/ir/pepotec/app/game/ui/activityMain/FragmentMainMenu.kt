@@ -1,7 +1,8 @@
 package ir.pepotec.app.game.ui.activityMain
 
-import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Animatable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,15 +17,13 @@ import kotlinx.android.synthetic.main.fragment_main_menu.*
 
 class FragmentMainMenu : Fragment() {
 
-    private val ctx:Context = App.instance
-    lateinit private var act:ActivityMain
+    private val act:ActivityMain = (App.instance as ActivityMain)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main_menu, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        act = activity as ActivityMain
         init()
     }
 
@@ -58,10 +57,29 @@ class FragmentMainMenu : Fragment() {
             DialogSoundSettings()
         }
 
+        helpMovie.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        helpMovie.setOnClickListener {
+           act.setView(FragmentHelpMovie())
+        }
+
+        comment.setOnTouchListener { v, event ->
+            ButtonEvent(v, event)
+            false
+        }
+        comment.setOnClickListener {
+            val intent = Intent(Intent.ACTION_EDIT)
+            intent.data = Uri.parse("http://cafebazaar.ir/app/?id=${act.packageName}")
+            startActivity(intent)
+        }
+
     }
 
     private fun startAnim() {
         (startGame.background as Animatable).start()
+        (helpMovie.background as Animatable).start()
         (setting.background as Animatable).start()
         (comment.background as Animatable).start()
         (aboutUs.background as Animatable).start()

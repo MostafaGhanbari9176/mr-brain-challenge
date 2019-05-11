@@ -8,7 +8,8 @@ import ir.pepotec.app.game.ui.App
 class PGameMode(private val listener: PGameModeListener? = null) {
 
     private val ctx: Context = App.instance
-
+    val minForC = 25
+    val minForB = 55
     interface PGameModeListener {
         fun gameModeData(data: ArrayList<GameModeData>)
     }
@@ -33,10 +34,9 @@ class PGameMode(private val listener: PGameModeListener? = null) {
             score += s
         }
         score/=3
-       /* val count = db.getCount()*/
-        if(score > 25)
+        if(score >= minForC)
             db.unLock("c")
-        if(score > 55) {
+        if(score >= minForB) {
             db.unLock("b")
             db.unLock("d")
         }

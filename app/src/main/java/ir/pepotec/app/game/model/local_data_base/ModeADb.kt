@@ -20,7 +20,7 @@ class ModeADb(private val ctx: Context, private val tbName: String = "mode_a_tb"
         const val puzzleX = "puzzle_x"
         const val puzzleY = "puzzle_y"
         const val isFinally = "is_finally"
-        const val loseNumber = "loseNumber"
+        const val loseNumber = "lose_number"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {

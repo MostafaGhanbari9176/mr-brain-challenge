@@ -11,10 +11,11 @@ class Pref {
         const val mute = "mute"
         const val score = "score"
         const val block = "block"
-        const val del = "del"
-        const val DLock = "DLock"
         const val brain = "brain"
         const val dbCreated = "db"
+        const val helpMovie = "help_movie"
+        const val helpD = "help_d"
+        const val helpC = "help_c"
     }
 
     private val p = App.instance.getSharedPreferences("MostafaGhanbari", MODE_PRIVATE)
@@ -29,16 +30,6 @@ class Pref {
         return editor.commit()
     }
 
-    fun getStringValue(name: String, defValue: String): String {
-        return p.getString(name, defValue)!!
-    }
-
-    fun saveStringValue(name: String, value: String): Boolean {
-        val editor = p.edit()
-        editor.putString(name, value)
-        return editor.commit()
-    }
-
     fun getIntegerValue(name: String, defValue: Int): Int {
         return p.getInt(name, defValue)
     }
@@ -46,17 +37,6 @@ class Pref {
     fun saveIntegerValue(name: String, value: Int): Boolean {
         val editor = p.edit()
         editor.putInt(name, value)
-        return editor.commit()
-    }
-
-
-    fun getLongValue(name: String, defValue: Long): Long? {
-        return p.getLong(name, defValue)
-    }
-
-    fun saveLongValue(name: String, value: Long): Boolean {
-        val editor = p.edit()
-        editor.putLong(name, value)
         return editor.commit()
     }
 

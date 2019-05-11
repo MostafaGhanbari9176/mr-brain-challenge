@@ -1,8 +1,5 @@
 package ir.pepotec.app.game.ui.gameModes.mode_b
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
@@ -10,7 +7,6 @@ import android.graphics.Point
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +16,6 @@ import ir.pepotec.app.game.model.local_data_base.ModeBDb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeBLevel
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.dialog.DialogFinishMode
 import ir.pepotec.app.game.ui.dialog.DialogLoser
 import ir.pepotec.app.game.ui.dialog.DialogWinner
@@ -62,9 +57,31 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
 
     private fun initView() {
         animateBackgrounds()
+        startImgBackAnimate()
         blockHeight = App.getBlockHeight().toInt()
         (ctx as ActivityGame).windowManager.defaultDisplay.getRealSize(p)
         limit = p.y - 2 * blockHeight
+    }
+
+    private fun startImgBackAnimate() {
+        val h = Handler()
+        Thread(
+            Runnable {
+                while(true)
+                {
+                    for(i in 0..100 step 5)
+                    {
+                        Thread.sleep(100)
+                        h.post { imgBackB?.alpha = i/100f }
+                    }
+                    for(i in 100 downTo 0 step 5)
+                    {
+                        Thread.sleep(100)
+                        h.post { imgBackB?.alpha = i/100f }
+                    }
+                }
+            }
+        ).start()
     }
 
     private fun animateBackgrounds() {
@@ -73,21 +90,6 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
             setEnterFadeDuration(2000)
             start()
         }
-/*        (LLPuzzleModeB.background as AnimationDrawable).apply {
-            setExitFadeDuration(4000)
-            setEnterFadeDuration(2000)
-            start()
-        }
-        (LLRightB.background as AnimationDrawable).apply {
-            setExitFadeDuration(4000)
-            setEnterFadeDuration(2000)
-            start()
-        }
-        (LLLeftB.background as AnimationDrawable).apply {
-            setExitFadeDuration(4000)
-            setEnterFadeDuration(2000)
-            start()
-        }*/
     }
 
     private var step = 0
@@ -213,6 +215,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
         this.guidePuzzle = guidePuzzle
         this.guideSeat = guideSeat
         this.isFinally = isFinally
+        this.loseNumber = loseNumber
         txtAlphaB.text = "$alpha"
         runSeat()
     }
@@ -250,7 +253,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
 
     override fun prevMenu() {
         (ctx as ActivityGame).apply {
-            setResult(Activity.RESULT_OK, intent.putExtra("mode_id", "b"))
+            setResult(Activity.RESULT_OK, intent.putExtra("modeId", "b"))
             finish()
         }
     }

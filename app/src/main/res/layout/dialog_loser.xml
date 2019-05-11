@@ -98,19 +98,20 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:background="@drawable/txt_back_green"
-                    android:padding="8dp" android:layout_margin="16dp" android:gravity="center"
-                    android:id="@+id/btnRejectLevel" android:visibility="gone">
+                    android:padding="4dp" android:layout_margin="16dp" android:gravity="center"
+                    android:visibility="gone"
+                    android:id="@+id/btnRejectLevel">
                 <TextView
-                        android:text="کسر بیست نشان و رفتن به مرحله بعد"
+                        android:text="کسر صد نشان و رفتن به مرحله بعد"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textView"
-                        android:textSize="@dimen/txt_small_two" android:textStyle="bold"
-                        android:textColor="@color/light3"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_normal" android:textStyle="bold"
+                        android:textColor="@color/light3" android:layout_weight="1"/>
                 <TextView
-                        android:text="-20"
+                        android:text="-100"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textView2"
-                        android:textSize="@dimen/txt_small_two" android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_normal" android:textStyle="bold"
                         android:textColor="@color/light" android:background="@drawable/ic_head_mester_brain"
                         android:padding="8dp" android:layout_marginStart="8dp"/>
             </LinearLayout>

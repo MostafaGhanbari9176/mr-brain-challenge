@@ -4,69 +4,84 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layoutDirection="rtl">
-    <LinearLayout
+        android:layoutDirection="rtl" android:paddingTop="64dp">
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-    >
-
-
-        <TextView
-                android:background="@drawable/item_main_start"
-                android:text="مراحل بازی"
-                android:textColor="@color/light3"
-                android:textSize="@dimen/txt_normal"
-                android:textStyle="bold"
-                android:gravity="center"
+            android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_main_menu_height" android:id="@+id/startGame"
-                android:layout_marginBottom="16dp"/>
-
-        <TextView
-                android:background="@drawable/item_main_setting"
-                android:text="تنظیمات"
-                android:textColor="@color/light3"
-                android:textSize="@dimen/txt_normal"
-                android:textStyle="bold"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_main_menu_height"
-                android:layout_marginBottom="16dp" android:id="@+id/setting"/>
+                android:orientation="vertical"
+        >
 
-        <TextView
-                android:background="@drawable/item_main_comment"
-                android:text="ثبت نظر و امتیاز"
-                android:textColor="@color/light3"
-                android:textSize="@dimen/txt_normal"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_main_menu_height"
-                android:layout_marginBottom="16dp" android:id="@+id/comment"/>
 
-        <TextView
-                android:background="@drawable/item_main_us"
-                android:text="درباره ما"
-                android:textColor="@color/light3"
-                android:textSize="@dimen/txt_normal"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_main_menu_height" android:id="@+id/aboutUs"
-                android:layout_marginBottom="16dp"/>
+            <TextView
+                    android:background="@drawable/item_main_start"
+                    android:text="مراحل بازی"
+                    android:textColor="@color/light3"
+                    android:textSize="@dimen/txt_normal"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_main_menu_height" android:id="@+id/startGame"
+                    android:layout_marginBottom="16dp"/>
 
-        <TextView
-                android:background="@drawable/item_main_out"
-                android:text="خروج"
-                android:textColor="@color/light3"
-                android:textSize="@dimen/txt_small_one"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_main_menu_height" android:id="@+id/gameOut"
-        />
+            <TextView
+                    android:background="@drawable/item_main_help"
+                    android:text="مشاهده راهنما"
+                    android:textColor="@color/light3"
+                    android:textSize="@dimen/txt_normal"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_main_menu_height"
+                    android:layout_marginBottom="16dp" android:id="@+id/helpMovie"/>
 
-    </LinearLayout>
+            <TextView
+                    android:background="@drawable/item_main_setting"
+                    android:text="تنظیمات"
+                    android:textColor="@color/light3"
+                    android:textSize="@dimen/txt_normal"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_main_menu_height"
+                    android:layout_marginBottom="16dp" android:id="@+id/setting"/>
+
+            <TextView
+                    android:background="@drawable/item_main_comment"
+                    android:text="ثبت نظر و امتیاز"
+                    android:textColor="@color/light3"
+                    android:textSize="@dimen/txt_normal"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_main_menu_height"
+                    android:layout_marginBottom="16dp" android:id="@+id/comment"/>
+
+            <TextView
+                    android:background="@drawable/item_main_us"
+                    android:text="درباره ما"
+                    android:textColor="@color/light3"
+                    android:textSize="@dimen/txt_normal"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_main_menu_height" android:id="@+id/aboutUs"
+                    android:layout_marginBottom="16dp"/>
+
+            <TextView
+                    android:background="@drawable/item_main_out"
+                    android:text="خروج"
+                    android:textColor="@color/light3"
+                    android:textSize="@dimen/txt_small_one"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_main_menu_height" android:id="@+id/gameOut"
+            />
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

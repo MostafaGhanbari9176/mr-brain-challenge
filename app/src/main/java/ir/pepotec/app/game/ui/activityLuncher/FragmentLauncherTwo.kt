@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
-import kotlinx.android.synthetic.main.fragment_launcher_one.*
 import kotlinx.android.synthetic.main.fragment_launcher_two.*
 
 class FragmentLauncherTwo:Fragment() {
@@ -31,18 +30,17 @@ class FragmentLauncherTwo:Fragment() {
         (imgAnimLauncherTwo.drawable as Animatable).start()
         (App.instance as ActivityLauncher).windowManager.defaultDisplay.getRealSize(p)
         startAnimation()
-        imgAnimLauncherTwo.setOnClickListener {
-            (App.instance as ActivityLauncher).setView(FragmentLauncherTwo())
-        }
     }
 
     private fun startAnimation() {
         val h = Handler()
         val imgWidth = resources.getDimension(R.dimen.launcher_two_txt_powered_height)
-        val to = (p.x - imgWidth).toInt()
+        LLAndroid.translationX = -imgWidth
+        val to = (p.x + imgWidth).toInt()
         Thread(
             Runnable {
-                for (i in 0..to step 5) {
+                Thread.sleep(290)
+                for (i in -(imgWidth.toInt())..to step 5) {
                     Thread.sleep(5)
                     h.post {
                         LLAndroid.translationX = i.toFloat()
@@ -53,6 +51,7 @@ class FragmentLauncherTwo:Fragment() {
             }
         ).start()
     }
+
     private fun nextActivity() {
         val i = Intent(App.instance, ActivityMain::class.java)
         (App.instance as ActivityLauncher).apply {

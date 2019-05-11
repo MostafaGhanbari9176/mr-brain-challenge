@@ -5,7 +5,6 @@ import android.graphics.Point
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import androidx.cardview.widget.CardView
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.ModeAData
 import ir.pepotec.app.game.presenter.PModeALevel
@@ -15,10 +14,10 @@ import ir.pepotec.app.game.ui.gameModes.ActivityGame
 class GameCreatorA(
     private val gId: Int,
     private val parentView: RelativeLayout,
-    private val LLRight: CardView,
-    private val LLLeft: CardView,
+    private val LLRight: LinearLayout,
+    private val LLLeft: LinearLayout,
     private val LLSpace: LinearLayout,
-    private val LLPuzzle: CardView,
+    private val LLPuzzle: LinearLayout,
     private val p: Point,
     private val listener: GameCreatorInterface
 ) : PModeALevel.PModeALevelInterface {

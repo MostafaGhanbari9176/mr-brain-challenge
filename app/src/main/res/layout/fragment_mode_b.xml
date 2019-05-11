@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
                 android:layout_height="match_parent" android:layoutDirection="rtl" android:id="@+id/ParentModeB"
-                android:background="@drawable/animate_gradient_purple">
+                android:background="@drawable/anim_g_b">
 
-    <include layout="@layout/help_guide"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/stars_back" android:id="@+id/imgBackB"
+            android:alpha="0"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -38,7 +41,7 @@
             android:text="0.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/txtAlphaB" android:layout_alignParentEnd="true"
-            android:background="@drawable/txt_back_purple" android:padding="8dp" android:textStyle="bold"
+            android:background="@drawable/txt_back_blue" android:padding="8dp" android:textStyle="bold"
             android:layout_marginTop="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp" android:textColor="@color/light3"
             android:textSize="@dimen/txt_small_one"/>

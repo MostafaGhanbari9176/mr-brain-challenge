@@ -1,0 +1,1367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+        <vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportHeight="16"
+                android:viewportWidth="9"
+                android:width="9dp"
+                android:height="16dp">
+            <group
+                    android:name="parent"
+                    android:pivotX="0"
+                    android:pivotY="8"
+            >
+                <group
+                android:name="child0"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child1"
+                        android:translateY="1"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child2"
+                        android:translateY="2"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child3"
+                        android:translateY="3"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child4"
+                        android:translateY="4"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child5"
+                        android:translateY="5"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child6"
+                        android:translateY="6"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child7"
+                        android:translateY="7"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child8"
+                        android:translateY="8"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child9"
+                        android:translateY="9"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child10"
+                        android:translateY="10"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child11"
+                        android:translateY="11"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child12"
+                        android:translateY="12"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child13"
+                        android:translateY="13"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child14"
+                        android:translateY="14"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child15"
+                        android:translateY="15"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+                <group
+                        android:name="child16"
+                        android:translateY="16"
+                >
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M0,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M1,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M2,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M3,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M4,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M5,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M6,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M7,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M8,0 h0.01"
+                    />
+                    <path
+                            android:strokeColor="@color/stars_back_dot"
+                            android:strokeLineCap="round"
+                            android:strokeWidth="0.1"
+                            android:pathData="M9,0 h0.01"
+                    />
+                </group>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="parent">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="translateX"
+                    android:duration="100"
+                    android:valueFrom="0"
+                    android:valueTo="10"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+            />
+        </aapt:attr>
+    </target>
+<!--    <target android:name="parent">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="translateX"
+                    android:duration="100"
+                    android:valueFrom="0"
+                    android:valueTo="0.1"
+                    android:repeatMode="reverse"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>-->
+<!--    <target android:name="parent">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+            android:propertyName="rotation"
+            android:duration="20000"
+            android:valueFrom="0"
+            android:valueTo="360"
+            android:repeatMode="reverse"
+            android:valueType="floatType"
+            android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>-->
+
+<!--    <target android:name="child0">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child1">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child2">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child3">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child4">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child5">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child6">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child7">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child8">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child9">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child10">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child11">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child12">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child13">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child14">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child15">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>
+    <target android:name="child16">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+            />
+        </aapt:attr>
+    </target>-->
+</animated-vector>

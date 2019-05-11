@@ -5,19 +5,15 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Animatable
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AccelerateInterpolator
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import kotlinx.android.synthetic.main.dialog_finish_mode.view.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class DialogFinishMode(
     private val modeName: String,
@@ -28,7 +24,7 @@ class DialogFinishMode(
 
 
     private val message: String
-        get() = "تبریک شما مراحل $modeName رو با امتیاز کل $score به پایان رساندید"
+        get() = "تبریک, مراحل $modeName رو با امتیاز کل $score به پایان رسوندی"
     private val v: View = LayoutInflater.from(ctx).inflate(R.layout.dialog_finish_mode, null, false)
 
     init {

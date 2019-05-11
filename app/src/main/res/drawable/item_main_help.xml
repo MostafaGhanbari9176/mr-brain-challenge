@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:aapt="http://schemas.android.com/aapt"
+                 xmlns:android="http://schemas.android.com/apk/res/android">
+    <aapt:attr name="android:drawable">
+        <vector
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:viewportHeight="5"
+                android:viewportWidth="25"
+                android:height="5dp"
+                android:width="25dp">
+            <path
+                    android:strokeAlpha="0.3"
+                    android:strokeColor="@color/dark"
+                    android:strokeWidth="4"
+                    android:strokeLineCap="round"
+                    android:pathData="M3.2,2.8 H21.8"
+            />
+            <path
+                    android:strokeColor="@color/item_main_primary"
+                    android:strokeWidth="4"
+                    android:strokeLineCap="round"
+                    android:pathData="M3,2.5 H22"
+            />
+            <group>
+                <clip-path
+                        android:pathData="M0,0 H25 V2.4 H0 z"
+                />
+                <path
+                        android:strokeAlpha="0.3"
+                        android:strokeColor="@color/item_main_shadow"
+                        android:strokeWidth="4"
+                        android:strokeLineCap="round"
+                        android:pathData="M3.3,2.9 H21.7"
+                />
+            </group>
+            <path
+                    android:strokeAlpha="0.2"
+                    android:strokeColor="@color/dark"
+                    android:strokeWidth="3.5"
+                    android:strokeLineCap="round"
+                    android:pathData="M21.9,2.5 h0.1"
+            />
+            <path
+                    android:strokeColor="@color/item_main_circle"
+                    android:strokeWidth="3.2"
+                    android:strokeLineCap="round"
+                    android:pathData="M21.9,2.5 h0.1"
+            />
+            <group
+                    android:pivotY="0.6"
+                    android:pivotX="19.8"
+                    android:scaleX="0.13"
+                    android:scaleY="0.13"
+            >
+                <group>
+                    <clip-path
+                            android:pathData="M30,6 H45 V22 H30Z M30,23.2 H41 V26 H30Z"
+                    />
+                    <path
+                            android:name="q_mark"
+                            android:trimPathEnd="1"
+                            android:strokeWidth="3"
+                            android:strokeLineCap="round"
+                            android:strokeColor="@color/item_main_icon"
+                            android:pathData="M33,13 C 32,7 41,7 40,14 C 40,15 38,17 38,17 C 36,19 36,22 36,24"
+                    />
+                </group>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="q_mark">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                    android:propertyName="trimPathEnd"
+                    android:duration="1000"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+            />
+        </aapt:attr>
+    </target>
+</animated-vector>

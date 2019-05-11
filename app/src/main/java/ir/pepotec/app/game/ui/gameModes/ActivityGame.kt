@@ -4,7 +4,6 @@ import android.app.Activity
 import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.core.content.ContextCompat
 import android.view.MotionEvent
 import android.view.View
@@ -19,9 +18,7 @@ import ir.pepotec.app.game.ui.gameModes.mode_c.FragmentModeC
 import ir.pepotec.app.game.ui.gameModes.mode_d.FragmentModeD
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.activity_game.*
-import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
-import org.jetbrains.anko.uiThread
 
 class ActivityGame : AppCompatActivity() {
 
@@ -54,7 +51,6 @@ class ActivityGame : AppCompatActivity() {
     }
 
     private fun initView() {
-        //mute = preferences
         btnMenuAG.setOnClickListener {
             openMenu()
         }
@@ -73,12 +69,9 @@ class ActivityGame : AppCompatActivity() {
             closeMenu()
         }
 
-        parentAG.setOnTouchListener { v, event -> !onTouchEvent(event) }
+        parentAG.setOnTouchListener { _, event -> !onTouchEvent(event) }
 
         parentAG.setOnClickListener {
-            /*            if (menuIsShow)
-                            closeMenu()
-                        else*/
             f?.myClickListener()
         }
     }
@@ -207,9 +200,8 @@ class ActivityGame : AppCompatActivity() {
             }
 
             MotionEvent.ACTION_UP -> {
-/*                if (!actionMove)
-                    f.myClickListener()*/
-            }//mPosX = 0;
+
+            }
 
             MotionEvent.ACTION_CANCEL -> {
             }
@@ -235,7 +227,7 @@ class ActivityGame : AppCompatActivity() {
 
     override fun onBackPressed() {
         f?.onDestroy()
-        setResult(Activity.RESULT_OK, intent.putExtra("mode_id", modeId))
+        setResult(Activity.RESULT_OK, intent.putExtra("modeId", modeId))
         this@ActivityGame.finish()
         super.onBackPressed()
     }

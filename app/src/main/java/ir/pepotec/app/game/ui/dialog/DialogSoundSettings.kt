@@ -21,7 +21,7 @@ class DialogSoundSettings : Dialog(App.instance) {
         (App.instance as ActivityMain).windowManager.defaultDisplay.getRealSize(point)
         initView()
         setContentView(v)
-        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         v.layoutParams.width = point.x
         v.layoutParams.height = (App.instance as ActivityMain).resources.getDimension(R.dimen.item_main_menu_height).toInt()
         show()

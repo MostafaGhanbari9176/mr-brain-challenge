@@ -12,13 +12,11 @@ class PModeDLevel(private val listener: PModeDInterface) {
     }
 
     fun saveData(score: Int, block: Int) {
-        var hScore = false
         val p =Pref()
         val lScore = p.getIntegerValue(Pref.score, 0)
         val lBlock = p.getIntegerValue(Pref.block, 0)
         if(score > lScore) {
             p.saveIntegerValue(Pref.score, score)
-            hScore = true
         }
         if(block > lBlock)
             p.saveIntegerValue(Pref.block, block)

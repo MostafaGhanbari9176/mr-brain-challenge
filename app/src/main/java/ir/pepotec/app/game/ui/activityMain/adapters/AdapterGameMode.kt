@@ -17,6 +17,7 @@ import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.GameModeData
 import ir.pepotec.app.game.model.Pref
+import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.uses.ButtonEvent
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.item_game_mode.view.*
 import kotlinx.android.synthetic.main.item_infinite.view.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class AdapterGameMode(private val source: ArrayList<GameModeData>, private val listener: (modeId: String) -> Unit) :
@@ -77,23 +79,41 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
                     startAndRepeatAnim()
                 } else
                     (itemView.imgItemMode.drawable as Animatable).start()
-                if(lock == 1)
-                {
-                    itemView.apply{
-                        setOnClickListener {  }
+                if (lock == 1) {
+                    itemView.apply {
+                        setOnClickListener {
+                            (App.instance as ActivityMain).apply {
+                                toast(
+                                    when (modeId) {
+                                        "c" -> "امتیاز کل خودرا به ${PGameMode().minForC} برسانید."
+                                        "b" -> "امتیاز کل خودرا به ${PGameMode().minForB} برسانید."
+                                        else -> ":)"
+                                    }
+                                )
+                                flushScore()
+                            }
+                        }
                         scoreItemMode.visibility = View.GONE
-                        imgStateItemMode.setImageDrawable(ContextCompat.getDrawable(App.instance, R.drawable.ic_lock_black_24dp))
+                        imgStateItemMode.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                App.instance,
+                                R.drawable.ic_lock_black_24dp
+                            )
+                        )
                     }
 
-                }
-                else
-                {
-                    itemView.apply{
+                } else {
+                    itemView.apply {
                         setOnClickListener {
                             listener(modeId)
                         }
                         scoreItemMode.visibility = View.VISIBLE
-                        imgStateItemMode.setImageDrawable(ContextCompat.getDrawable(App.instance, R.drawable.item_mode_progress))
+                        imgStateItemMode.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                App.instance,
+                                R.drawable.item_mode_progress
+                            )
+                        )
                         animateProgress(scoreAverage)
                     }
                 }
@@ -108,10 +128,9 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
             val h = Handler()
             Thread(
                 Runnable {
-                    while(true)
-                    {
+                    while (true) {
                         Thread.sleep(100)
-                        if(!a.isRunning)
+                        if (!a.isRunning)
                             h.post { a.start() }
                     }
                 }
@@ -130,15 +149,16 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
 
         private fun animateProgress(score: Int) {
 
-            ValueAnimator.ofInt(0,  score).apply {
+            ValueAnimator.ofInt(0, score).apply {
                 duration = 500
                 startDelay = 400
                 interpolator = DecelerateInterpolator()
                 addUpdateListener {
-                    val vector = VectorChildFinder(App.instance, R.drawable.item_mode_progress, itemView.imgStateItemMode)
+                    val vector =
+                        VectorChildFinder(App.instance, R.drawable.item_mode_progress, itemView.imgStateItemMode)
                     val path = vector.findPathByName("progress") as VectorDrawableCompat.VFullPath
                     val v = it.animatedValue as Int
-                    path.trimPathEnd =(if(v == 0) 1 else v) / 100f
+                    path.trimPathEnd = (if (v == 0) 1 else v) / 100f
                     itemView.scoreItemMode.text = "$v"
                 }
                 start()
@@ -180,8 +200,8 @@ class AdapterGameMode(private val source: ArrayList<GameModeData>, private val l
             (App.instance as ActivityMain).windowManager.defaultDisplay.getRealSize(p)
             itemView.layoutParams.width = p.x / 2
             itemView.layoutParams.height = (p.x / 2f * 1.5f).toInt()
-            itemView.parentInfiniteItem.layoutParams.width = p.x/2 -120
-            itemView.parentInfiniteItem.layoutParams.height = p.x/2 -120
+            itemView.parentInfiniteItem.layoutParams.width = p.x / 2 - 120
+            itemView.parentInfiniteItem.layoutParams.height = p.x / 2 - 120
 
         }
     }

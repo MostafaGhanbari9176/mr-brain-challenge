@@ -10,13 +10,15 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import kotlinx.android.synthetic.main.item_mode_d.view.*
 
-class AdapterModeD(private val p: Point, private val easy: Boolean, private val listener:InterFaceAdapterD) :
+class AdapterModeD(private val p: Point, private val easy: Boolean, private val listener: InterFaceAdapterD) :
     RecyclerView.Adapter<AdapterModeD.Holder>() {
 
     private val length = p.x / 6
-    interface InterFaceAdapterD{
-        fun currentView(v:View, position:Int)
+
+    interface InterFaceAdapterD {
+        fun currentView(v: View, position: Int)
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(LayoutInflater.from(App.instance).inflate(R.layout.item_mode_d, parent, false), p, easy, length)
     }
@@ -33,6 +35,7 @@ class AdapterModeD(private val p: Point, private val easy: Boolean, private val 
         private val h = p.y / 2
         private var pos = 0
         fun onBindData(position: Int) {
+            itemView.alpha = if (position == 0) 0f else 1f
             val r: Int = if (easy) (0..2).random() else (0..4).random()
             pos = position
             itemView.txtPosition.text = "$position"
@@ -43,30 +46,24 @@ class AdapterModeD(private val p: Point, private val easy: Boolean, private val 
 
         private fun showBrain(r: Int) {
             if (easy) {
-                if (pos % 5 == 0 && r!=0)
-                {
+                if (pos % 5 == 0 && r != 0) {
                     itemView.imgBrainItemModeD.apply {
                         scaleX = 1f
                         scaleY = 1f
                     }
-                }
-                else
-                {
+                } else {
                     itemView.imgBrainItemModeD.apply {
                         scaleX = 0f
                         scaleY = 0f
                     }
                 }
             } else {
-                if (pos % 3 == 0 && r!=0)
-                {
+                if (pos % 3 == 0 && r != 0) {
                     itemView.imgBrainItemModeD.apply {
                         scaleX = 1f
                         scaleY = 1f
                     }
-                }
-                else
-                {
+                } else {
                     itemView.imgBrainItemModeD.apply {
                         scaleX = 0f
                         scaleY = 0f

@@ -3,8 +3,10 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layoutDirection="rtl"
-                android:background="@drawable/g_sky" android:id="@+id/ParentModeD">
-    <include layout="@layout/help_guide"/>
+                android:background="@drawable/g_sky">
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/clouds_back"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/RVModeD" android:clickable="false"/>
@@ -71,5 +73,9 @@
     </LinearLayout>
     <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" app:srcCompat="@drawable/g_light" android:id="@+id/imageView2"/>
+            android:layout_height="match_parent" app:srcCompat="@drawable/finger_animation"
+            android:id="@+id/imgFingerHelpD" />
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/g_light"/>
 </RelativeLayout>

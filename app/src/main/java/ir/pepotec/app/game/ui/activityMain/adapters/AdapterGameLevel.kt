@@ -4,13 +4,13 @@ import android.animation.ValueAnimator
 import android.graphics.Point
 import android.graphics.drawable.Animatable
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.devs.vectorchildfinder.VectorDrawableCompat
@@ -21,21 +21,35 @@ import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.item_game_level.view.*
+import java.lang.Exception
 
 class AdapterGameLevel(
     private val source: ArrayList<ItemData>,
+    private val layoutManager: GridLayoutManager,
     private val listener: (levelId: Int) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var highlightPosition = source.size - 1
+    private var highlightPosition = source.size - 1
 
     init {
-        for (o in source) {
-            if (o.lock == 1) {
-                highlightPosition = source.indexOf(o) - 1
-                break
+        val h = Handler()
+        Thread(
+            Runnable {
+                for (o in source) {
+                    if (o.lock == 1) {
+                        highlightPosition = source.indexOf(o) - 1
+                        break
+                    }
+                    h.post {
+                        try {
+                            layoutManager.scrollToPosition(highlightPosition)
+                        } catch (e: Exception) {
+                        }
+                    }
+                }
+
             }
-        }
+        ).start()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,7 +69,7 @@ class AdapterGameLevel(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val v = holder.itemView
-        if(position == highlightPosition)
+        if (position == highlightPosition)
             startAndRepeatAnimate(v.imgLevelMenu.drawable as Animatable)
         initItemView(position, v)
         v.setOnTouchListener { v, event ->
@@ -63,7 +77,7 @@ class AdapterGameLevel(
             false
         }
         with(source[position]) {
-            v.txtSubjectLevel.text = subject
+            v.txtSubjectLevel.text = "$id"
             if (lock == 1) {
                 v.txtScoreLevel.visibility = View.GONE
                 v.setOnClickListener {}

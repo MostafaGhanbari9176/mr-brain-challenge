@@ -9,7 +9,6 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.ModeCData
 import ir.pepotec.app.game.presenter.PModeCLevel
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 
 class GameCreatorC(
@@ -20,7 +19,6 @@ class GameCreatorC(
     private val LLSeat: LinearLayout,
     private val rightBus: LinearLayout,
     private val leftBus: LinearLayout,
-    private val LLBus: LinearLayout,
     private val LLPuzzle: LinearLayout,
     private val listener: GameCreatorInterface
 ) : PModeCLevel.PModeCLevelInterface {
@@ -147,7 +145,6 @@ class GameCreatorC(
         val max: Int = if(alpha<=1) 32 else  (40f / alpha).toInt()
         space = ((min..max).random() * step)
         LLSeat.layoutParams.width = space
-      //  LLBus.layoutParams = params
     }
 
     private fun getPuzzleLength(alpha: Float): Int =

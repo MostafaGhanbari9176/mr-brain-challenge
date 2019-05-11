@@ -6,15 +6,6 @@
         android:layout_height="match_parent"
         android:layoutDirection="rtl" android:background="@drawable/main_back">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_margin="16dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@drawable/ic_arrow"
-            android:id="@+id/floatBtnMain"/>
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,17 +13,46 @@
     >
 
     </FrameLayout>
+    <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txtModeNameNews"
+            android:layout_toEndOf="@+id/floatBtnMain" android:layout_alignParentBottom="true"
+            android:textColor="@color/light2"
+            android:layout_marginBottom="16dp" android:textSize="@dimen/txt_normal"
+            android:textStyle="bold" android:background="@drawable/txt_back_green" android:padding="8dp"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_arrow"
+            android:id="@+id/floatBtnMain" android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
+            app:backgroundTint="@color/item_mode_primary" android:visibility="gone"/>
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/big_progress"
             android:id="@+id/imgProgressAM"
             android:alpha="1" android:visibility="gone"/>
-    <TextView
-            android:text="50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/txtScoreMain" android:textSize="@dimen/txt_normal"
-            android:textStyle="bold" android:textColor="@color/dark" android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp" android:gravity="center">
+        <TextView
+                android:text="50"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtScoreMain"
+                android:textSize="@dimen/txt_normal"
+                android:textStyle="bold"
+                android:textColor="@color/dark"
+                android:background="@drawable/circle_flush"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:visibility="gone"/>
+    </LinearLayout>
 </RelativeLayout>

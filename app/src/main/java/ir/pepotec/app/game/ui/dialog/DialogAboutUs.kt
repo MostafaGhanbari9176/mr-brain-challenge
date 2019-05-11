@@ -6,11 +6,14 @@ import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.Window
+import android.view.WindowManager
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
 
 class DialogAboutUs(ctx: Context = App.instance) : Dialog(ctx) {
+
 
     init {
         val p = Point()

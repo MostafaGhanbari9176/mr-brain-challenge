@@ -7,15 +7,15 @@
   },
   {
     "mode_id":"c",
-    "subject":"حرفه ایی",
+    "subject":"پیشرفته",
     "score_average":0,
-    "lock":1
+    "lock":0
   },
   {
     "mode_id":"b",
-    "subject":"پیشرفته",
+    "subject":"حرفه ایی",
     "score_average":0,
-    "lock":1
+    "lock":0
   },
   {
     "mode_id":"d",

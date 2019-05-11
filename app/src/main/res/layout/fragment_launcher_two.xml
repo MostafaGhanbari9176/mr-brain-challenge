@@ -10,7 +10,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     <TextView
-            android:id="@+id/txtGameNameLauncher"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="100dp"
@@ -25,14 +24,36 @@
             android:layout_height="@dimen/launcher_two_txt_powered_height" android:layout_marginBottom="32dp"
             android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
 
-        <TextView
-                android:id="@+id/txtPoweredLauncher"
-                android:textStyle="bold"
-                android:textSize="@dimen/txt_small_one"
-                android:textColor="@color/primaryLightColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:shadowColor="@color/launcher_two_main"
-                android:text="Powered By Android Studio" android:layout_centerInParent="true"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:gravity="center">
+            <TextView
+                    android:textStyle="bold"
+                    android:textSize="@dimen/txt_small_one"
+                    android:textColor="@color/kotlin2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:shadowColor="@color/launcher_two_main"
+                    android:text="Kotlin" android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+            <TextView
+                    android:textStyle="bold"
+                    android:textSize="@dimen/txt_small_one"
+                    android:textColor="@color/launcher_two_dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:shadowColor="@color/launcher_two_main"
+                    android:text="+" android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"/>
+            <TextView
+                    android:textStyle="bold"
+                    android:textSize="@dimen/txt_small_one"
+                    android:textColor="@color/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:shadowColor="@color/launcher_two_main"
+                    android:text="Android" android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+        </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -41,7 +62,6 @@
             <ImageView
                     android:layout_width="@dimen/launcher_two_txt_powered_height"
                     android:layout_height="@dimen/launcher_two_txt_powered_height" app:srcCompat="@drawable/ic_android"
-                    android:id="@+id/imgAndroidLauncher"
             />
         </LinearLayout>
     </RelativeLayout>

@@ -1,29 +1,20 @@
 package ir.pepotec.app.game.ui.dialog
 
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Outline
-import android.graphics.Rect
 import android.graphics.drawable.*
-import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.DecelerateInterpolator
-import android.widget.Toast
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
-import kotlinx.android.synthetic.main.dialog_loser.view.*
 import kotlinx.android.synthetic.main.dialog_winner.view.*
-import kotlinx.android.synthetic.main.morph.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class DialogWinner(

@@ -4,9 +4,13 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/animate_gradient_orange"
+                android:background="@drawable/anim_g_c"
                 android:id="@+id/GameParentC" android:layoutDirection="rtl">
-    <include layout="@layout/help_guide"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/horizontal_line_back"
+            android:id="@+id/imgBackC"
+            android:alpha="0"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -67,6 +71,10 @@
             android:layout_height="wrap_content" android:id="@+id/txtAlphaC"
             android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp" android:textSize="18sp" android:textStyle="bold"
-            android:textColor="@color/secondaryLightYellow" android:background="@drawable/progress_back"
+            android:textColor="@color/secondaryLightYellow" android:background="@drawable/txt_back_blue"
             android:padding="4dp" android:layout_alignParentEnd="true"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/finger_animation"
+            android:id="@+id/imgHelpC" android:visibility="gone"/>
 </RelativeLayout>

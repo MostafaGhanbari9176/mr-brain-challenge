@@ -7,7 +7,6 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Path
 import android.graphics.Point
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.ColorDrawable
@@ -18,9 +17,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
-import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.Pref
@@ -35,8 +32,6 @@ import kotlinx.android.synthetic.main.dialog_start_infinite.*
 import kotlinx.android.synthetic.main.dialog_start_infinite.view.*
 import kotlinx.android.synthetic.main.fragment_mode_d.*
 import kotlinx.android.synthetic.main.item_mode_d.view.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import java.lang.Exception
 import kotlin.math.abs
 
@@ -177,8 +172,15 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
     }
 
     private fun initRV(easy: Boolean) {
+        showFingerHelp()
         RVModeD.layoutManager = LinearLayoutManager(ctx)
         RVModeD.adapter = AdapterModeD(p, easy, this)
+    }
+
+    private fun showFingerHelp() {
+
+        (imgFingerHelpD.drawable as Animatable).start()
+
     }
 
     private fun startMusic() {
@@ -222,16 +224,12 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
                                 gameSpeed = 15L
                                 accident()
                             } else if (brainView?.scaleX == 1f && !puzzleIsGhost && position != eatPosition) {
-                                Log.d("Mostafa", "** EAT **")
                                 eatPosition = position
                                 eatBrain()
                             }
                         }
-
-                        //  handlerRun.post {
                         RVModeD.requestLayout()
                         RVModeD.scrollBy(0, 10)
-                        // }
                     } catch (e: Exception) {
                         e.message
                     }
@@ -246,6 +244,8 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
     }
 
     private fun eatBrain() {
+        if (position == 0)
+            return
         ActivityMain.musicService?.eatSound()
         val current = Pref().getIntegerValue(Pref.brain, 100)
         Pref().saveIntegerValue(Pref.brain, current + 5)
@@ -260,7 +260,7 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
                         duration = 100
                         start()
                     }
-                    (ctx as ActivityGame).txtBarinNumberMain.text="${current+5}"
+                    (ctx as ActivityGame).txtBarinNumberMain.text = "${current + 5}"
                 }
             }
         ).start()
@@ -277,15 +277,15 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
     }
 
     private fun accident() {
+        if (position == 0)
+            return
         ActivityMain.musicService?.accident()
         if (delCount == 0) {
             gameRuning = false
             PModeDLevel(this).saveData(score, position)
         } else {
-            //  handlerRun.post {
             txtDel.text = "${--delCount}"
             animateDel()
-            //   }
             ghostingPuzzle()
         }
 
@@ -326,6 +326,7 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
     private var step: Int = 0
 
     override fun myTouchListener(dx: Int, dy: Int) {
+        imgFingerHelpD.visibility = View.GONE
         step += dx
         if (abs(step) >= (p.x / 100)) {
             myClickListener()
@@ -355,9 +356,7 @@ class FragmentModeD : MyFragment(), PModeDLevel.PModeDInterface, AdapterModeD.In
         if (dialogShowing)
             return
         dialogShowing = true
-        // handlerRun.post {
         showStopDialog(true, lScore, lBlock)
-        // }
     }
 
     private fun back() {

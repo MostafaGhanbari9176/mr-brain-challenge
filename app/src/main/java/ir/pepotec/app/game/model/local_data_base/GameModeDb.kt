@@ -111,15 +111,6 @@ class GameModeDb(
         return data
     }
 
-    fun getCount(): Int {
-        val reader = this.readableDatabase
-        val cursor = reader.rawQuery(" SELECT * FROM $tbName ", null)
-        val data = cursor.count
-        cursor.close()
-        reader.close()
-        return data
-    }
-
     fun unLock(modeId:String){
         val writer = this.writableDatabase
         writer.execSQL(" UPDATE $tbName SET $lock = 0 WHERE ${GameModeDb.modeId} = '$modeId' ")

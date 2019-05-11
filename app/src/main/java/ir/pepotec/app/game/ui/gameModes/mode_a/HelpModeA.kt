@@ -17,7 +17,6 @@ import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.uses.ButtonEvent
 import kotlinx.android.synthetic.main.help_mode_a.view.*
-import org.jetbrains.anko.toast
 
 @SuppressLint("ViewConstructor")
 class HelpModeA(

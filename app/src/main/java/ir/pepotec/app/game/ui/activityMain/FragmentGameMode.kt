@@ -32,7 +32,6 @@ class FragmentGameMode : Fragment(), PGameMode.PGameModeListener {
     }
 
     private fun init() {
-        //ctx.toast("loaded")
         PGameMode(this).getGameModeData()
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game</string>
-    <string name="help_mode_a">نحوه انجام بازی به این شکله که باید اندازه پازل رو با کشیدن دست روی صفحه تغییر بدی و اندازه اون رو به, ضریب ضرب در اندازه جایگاه برسونی یعنی اگر ضریب دو باشه باید اندازه پازل رو به دو برابر اندازه جایگاه برسونی</string>
-    <string name="txt_news_start">بعد از اینکه اندازه پازل رو تنظیم کردی ,برای شروع دوبار بروی صفحه ضربه بزن</string>
+    <string name="app_name">چالش مستر مغز</string>
+    <string name="help_mode_a">ضریب * اندازه جایگاه = اندازه پازل</string>
+    <string name="txt_news_start">دوبار بروی صفحه ضربه بزن</string>
 </resources>

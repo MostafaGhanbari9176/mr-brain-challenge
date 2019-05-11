@@ -13,6 +13,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -29,116 +30,9 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        if(!(Pref().getBollValue(Pref.dbCreated,false)))
-        addDataToDb()
         overrideFont("SERIF", "fonts/Far_Tanab.ttf")
 
     }
-
-    private fun addDataToDb() {
-        Pref().saveBollValue(Pref.dbCreated, true)
-        Pref().saveBollValue(Pref.help_a, false)
-        Pref().saveIntegerValue(Pref.brain, 100)
-        ModeADb(this).deleteDb()
-        ModeCDb(this).deleteDb()
-        ModeBDb(this).deleteDb()
-        GameModeDb(this).deleteDb()
-
-        var jsonString = this.assets.open("mode_a_level.json").bufferedReader().use {
-            it.readText()
-        }
-        var jsonArr: JsonArray = JsonParser().parse(jsonString) as JsonArray
-        for (x in jsonArr) {
-            val jsonObject: JsonObject = x as JsonObject
-            with(jsonObject) {
-                ModeADb(this@App).save(
-                    ModeAData(
-                        get(ModeADb.levelId).asInt,
-                        get(ModeADb.subject).asString,
-                        get(ModeADb.score).asInt,
-                        get(ModeADb.lock).asInt,
-                        get(ModeADb.alpha).asFloat,
-                        get(ModeADb.spaceX).asInt,
-                        get(ModeADb.puzzleX).asInt,
-                        get(ModeADb.puzzleY).asInt,
-                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0,
-                        0
-                    )
-                )
-            }
-        }
-
-        jsonString = this.assets.open("game_mode.json").bufferedReader().use {
-            it.readText()
-        }
-        jsonArr = JsonParser().parse(jsonString) as JsonArray
-        for (x in jsonArr) {
-            val jsonObject: JsonObject = x as JsonObject
-            with(jsonObject) {
-                GameModeDb(this@App).save(
-                    GameModeData(
-                        get(GameModeDb.modeId).asString,
-                        get(GameModeDb.subject).asString,
-                        get(GameModeDb.scoreAverage).asInt,
-                        get(GameModeDb.lock).asInt
-                    )
-                )
-            }
-        }
-
-
-        jsonString = this.assets.open("mode_c_level.json").bufferedReader().use {
-            it.readText()
-        }
-
-        jsonArr = JsonParser().parse(jsonString) as JsonArray
-        for (x in jsonArr) {
-            val jsonObject: JsonObject = x as JsonObject
-            with(jsonObject) {
-                ModeCDb(this@App).save(
-                    ModeCData(
-                        get(ModeCDb.levelId).asInt,
-                        get(ModeCDb.subject).asString,
-                        get(ModeCDb.score).asInt,
-                        get(ModeCDb.lock).asInt,
-                        get(ModeCDb.alpha).asFloat,
-                        get(ModeCDb.spaceX).asInt,
-                        get(ModeCDb.puzzleX).asInt,
-                        get(ModeCDb.busX).asInt,
-                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0,
-                        0
-                    )
-                )
-            }
-        }
-
-
-        jsonString = this.assets.open("mode_b_level.json").bufferedReader().use {
-            it.readText()
-        }
-
-        jsonArr = JsonParser().parse(jsonString) as JsonArray
-        for (x in jsonArr) {
-            val jsonObject: JsonObject = x as JsonObject
-            with(jsonObject) {
-                ModeBDb(this@App).save(
-                    ModeBData(
-                        get(ModeBDb.levelId).asInt,
-                        get(ModeBDb.subject).asString,
-                        get(ModeBDb.score).asInt,
-                        get(ModeBDb.lock).asInt,
-                        get(ModeBDb.alpha).asFloat,
-                        get(ModeBDb.puzzleY).asInt,
-                        if (jsonArr.size() - 1 == jsonArr.indexOf(x)) 1 else 0,
-                        0
-                    )
-                )
-            }
-        }
-
-
-    }
-
     companion object {
         lateinit var instance: Context
         fun fullScreen(context: AppCompatActivity) {

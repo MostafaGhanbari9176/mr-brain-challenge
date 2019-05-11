@@ -5,23 +5,19 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.app.Activity.RESULT_OK
-import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Point
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimationDrawable
-import android.media.MediaPlayer
 import android.os.Bundle
-import android.view.Gravity
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
-import android.widget.CalendarView
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.cardview.widget.CardView
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.model.local_data_base.ModeADb
@@ -34,7 +30,6 @@ import ir.pepotec.app.game.ui.dialog.DialogLoser
 import ir.pepotec.app.game.ui.dialog.DialogWinner
 import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
-import ir.pepotec.app.game.ui.uses.MyAnimation
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.fragment_mode_a.*
 import org.jetbrains.anko.doAsync
@@ -48,7 +43,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private var loseNumber = 0
     private lateinit var helperView: HelpModeA
     private var parentView: ViewGroup? = null
-    private lateinit var puzzle: CardView
+    private lateinit var puzzle: LinearLayout
     private var alpha: Float = 0f
     private var space: Int = 0
     private val p = Point()
@@ -61,6 +56,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     private lateinit var guidePuzzle: LinearLayout
     private val ctx: Context = App.instance
     private var fingerVector: Animatable? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mode_a, container, false)
     }
@@ -68,13 +64,8 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        if (levelId == -1) {
-            val t: Toast = Toast.makeText(ctx, "levelId is $levelId (-1)", Toast.LENGTH_LONG)
-            t.setGravity(Gravity.TOP, 0, 0)
-            t.show()
-        } else {
-            createGame(levelId)
-        }
+        createGame(levelId)
+
     }
 
     private fun initViews() {
@@ -84,6 +75,25 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
             start()
         }
         puzzle = LLPuzzleA
+        startImgBackAnimate()
+    }
+
+    private fun startImgBackAnimate() {
+        val h = Handler()
+        Thread(
+            Runnable {
+                while (true) {
+                    for (i in 0..40) {
+                        Thread.sleep(100)
+                        h.post { imgBackA?.alpha = i / 100f }
+                    }
+                    for (i in 40 downTo 0) {
+                        Thread.sleep(100)
+                        h.post { imgBackA?.alpha = i / 100f }
+                    }
+                }
+            }
+        ).start()
     }
 
     private fun startGame() {
@@ -95,18 +105,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         }
     }
 
-/*    private fun runLoserGame() {
-        val xTransTo = (LLSpaceA.x + (LLSpaceA.width) / 2) - (puzzle.x + (puzzle.width) / 2)
-        val yTransTo = (LLSpaceA.y) - (puzzle.y)
-        MyAnimation(puzzle).apply {
-            moveX(xTransTo, 1000)
-            moveY(yTransTo, 1000)
-            scaleX(1f, 1 / alpha, 1000)
-            startAnimation()
-        }
-    }*/
-
-     private fun runLoserGame() {
+    private fun runLoserGame() {
         val xTransTo = (LLSpaceA.x + (LLSpaceA.width) / 2) - (puzzle.x + (puzzle.width) / 2)
         val yTransTo = (LLSpaceA.y) - (puzzle.y)
         val tranY =
@@ -208,7 +207,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         guideSpace: LinearLayout,
         guidePuzzle: LinearLayout,
         isFinally: Boolean,
-        loseNumber:Int
+        loseNumber: Int
     ) {
         this.isFinally = isFinally
         this.space = space
@@ -217,25 +216,10 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
         this.guideSpace = guideSpace
         this.loseNumber = loseNumber
         txtAlphaA.text = alpha.toString()
-        if (levelId == 1 && !Pref().getBollValue(Pref.help_a, false)) {
-            answerForHelp()
+        if (levelId == 1) {
+            imgFingerHelperA.visibility = View.VISIBLE
             fingerVector = imgFingerHelperA.drawable as Animatable
             fingerVector?.start()
-            imgFingerHelperA.alpha = 1f
-        }
-    }
-
-    private fun answerForHelp() {
-        Pref().saveBollValue(Pref.help_a, true)
-        AlertDialog.Builder(ctx).apply {
-            setTitle("راهنما")
-            setMessage("مایل به مشاهده راهنما هستی؟")
-            setNegativeButton("نه") { dialog, which -> dialog.cancel() }
-            setPositiveButton("بله") { dialog, which ->
-                runHelper()
-                dialog.cancel()
-            }
-            show()
         }
     }
 
@@ -244,7 +228,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     override fun myTouchListener(dx: Int, dy: Int) {
         if (fingerVector?.isRunning == true) {
             fingerVector?.stop()
-            imgFingerHelperA.alpha = 0f
+            imgFingerHelperA.visibility = View.GONE
             ObjectAnimator.ofFloat(txtStartNews, View.ALPHA, 0f, 1f).apply {
                 duration = 300
                 interpolator = AccelerateInterpolator()
@@ -296,7 +280,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
 
     override fun prevMenu() {
         (ctx as ActivityGame).apply {
-            setResult(RESULT_OK, intent.putExtra("mode_id", "a"))
+            setResult(RESULT_OK, intent.putExtra("modeId", "a"))
             finish()
         }
     }

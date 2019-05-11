@@ -2,13 +2,16 @@ package ir.pepotec.app.game.ui.activityMain
 
 import android.animation.ValueAnimator
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.graphics.Point
+import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
@@ -17,6 +20,7 @@ import androidx.fragment.app.Fragment
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.devs.vectorchildfinder.VectorDrawableCompat
 import ir.pepotec.app.game.R
+import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.uses.ButtonEvent
@@ -27,7 +31,7 @@ import org.jetbrains.anko.toast
 
 class ActivityMain : AppCompatActivity() {
 
-   private val musicConnection = object : ServiceConnection {
+    private val musicConnection = object : ServiceConnection {
         override fun onServiceDisconnected(name: ComponentName?) {
             toast("rebindMusic")
             connectToMusicService()
@@ -55,7 +59,7 @@ class ActivityMain : AppCompatActivity() {
     }
 
     private fun connectToMusicService() {
-        if(musicService != null)
+        if (musicService != null)
             return
         val intent = Intent(this, ServiceMusic::class.java)
         bindService(intent, musicConnection, Context.BIND_AUTO_CREATE)
@@ -71,7 +75,10 @@ class ActivityMain : AppCompatActivity() {
             musicService?.onDestroy()
             onBackPressed()
         }
-        setView(FragmentMainMenu())
+
+        val p = Pref().getBollValue(Pref.dbCreated, false)
+        setView(if(!p) FragmentDB() else FragmentMainMenu())
+
     }
 
     private fun initProgress() {
@@ -82,8 +89,26 @@ class ActivityMain : AppCompatActivity() {
     }
 
     fun showGameMode() {
+        showModeName(false)
         animateProgress(PGameMode().getScoreAverage())
         setView(FragmentGameMode())
+
+    }
+
+    private fun showModeName(show: Boolean, modeId: String = "") {
+        floatBtnMain.show()
+        if (show) {
+            txtModeNameNews.visibility = View.VISIBLE
+            txtModeNameNews.text =
+                when (modeId) {
+                    "a" -> "مقدماتی"
+                    "c" -> "پیشرفته"
+                    "b" -> "حرفه ایی"
+                    else -> "Welcome"
+                }
+        }
+        else
+            txtModeNameNews.visibility = View.GONE
 
     }
 
@@ -104,13 +129,14 @@ class ActivityMain : AppCompatActivity() {
     }
 
     fun showGameLevel(modeId: String) {
+        showModeName(true, modeId)
         val f = FragmentGameLevel()
         f.modeId = modeId
         setView(f)
         animateProgress(PGameMode().getScoreAverage(modeId))
     }
 
-    private fun setView(fragment: Fragment) {
+    fun setView(fragment: Fragment) {
         if (fragment is FragmentMainMenu) {
             floatBtnMain.hide()
             imgProgressAM.visibility = View.GONE
@@ -127,6 +153,10 @@ class ActivityMain : AppCompatActivity() {
         ).replace(R.id.containerGameLevels, fragment).commit()
     }
 
+    fun flushScore() {
+        (txtScoreMain.background as Animatable).start()
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         App.instance = this
@@ -141,6 +171,8 @@ class ActivityMain : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("Mostafa"," * Resume * ")
+
         App.instance = this
         App.fullScreen(this)
         musicService?.startMusic(R.raw.main)
@@ -148,6 +180,7 @@ class ActivityMain : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        Log.d("Mostafa"," * Pause * ")
         musicService?.stopMusic()
     }
 

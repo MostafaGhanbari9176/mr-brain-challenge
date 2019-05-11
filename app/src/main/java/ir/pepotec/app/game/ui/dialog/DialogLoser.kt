@@ -4,10 +4,8 @@ import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.Animatable
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.view.LayoutInflater
@@ -23,8 +21,6 @@ import ir.pepotec.app.game.ui.activityMain.ActivityMain
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.dialog_loser.view.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class DialogLoser(
     private val message: String,
@@ -72,12 +68,12 @@ class DialogLoser(
 
     private fun rejectLevel() {
         val currentVal = Pref().getIntegerValue(Pref.brain, 100)
-        if(currentVal < 20)
+        if(currentVal < 100)
             showDialogLowBrain()
         else
         {
-            Pref().saveIntegerValue(Pref.brain, currentVal - 20)
-            (ctx as ActivityGame).txtBarinNumberMain.text = "${currentVal - 20 }"
+            Pref().saveIntegerValue(Pref.brain, currentVal - 100)
+            (ctx as ActivityGame).txtBarinNumberMain.text = "${currentVal - 100 }"
             when (modeId)
             {
                 "a" -> ModeADb(ctx).unLockLevel(levelId + 1)
@@ -97,7 +93,7 @@ class DialogLoser(
             (ctx as ActivityGame).startGame("d", 1)
             dialog.cancel()
         }
-        d.setNegativeButton("سیع مجدد"){dialog, which ->
+        d.setNegativeButton("تلاش مجدد"){dialog, which ->
             listener.replay()
             dialog.cancel()
         }
