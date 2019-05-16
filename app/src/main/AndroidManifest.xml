@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ir.pepotec.app.game">
-
-<uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".ui.App"
         android:allowBackup="true"
@@ -26,5 +24,4 @@
         />
         <service android:name=".ui.uses.ServiceMusic"/>
     </application>
-
 </manifest>

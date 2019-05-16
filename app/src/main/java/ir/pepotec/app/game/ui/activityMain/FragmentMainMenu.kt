@@ -70,9 +70,11 @@ class FragmentMainMenu : Fragment() {
             false
         }
         comment.setOnClickListener {
-            val intent = Intent(Intent.ACTION_EDIT)
-            intent.data = Uri.parse("http://cafebazaar.ir/app/?id=${act.packageName}")
-            startActivity(intent)
+            try {
+                val intent = Intent(Intent.ACTION_EDIT)
+                intent.data = Uri.parse("http://cafebazaar.ir/app/?id=${act.packageName}")
+                startActivity(intent)
+            }catch (e:Exception){}
         }
 
     }

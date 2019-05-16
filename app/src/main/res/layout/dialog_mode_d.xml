@@ -10,7 +10,7 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:background="@drawable/gradient_night"
+            android:layout_height="match_parent" android:background="@drawable/gradient_red_start"
             android:layoutDirection="rtl" android:gravity="center_horizontal">
 
         <LinearLayout
@@ -156,21 +156,21 @@
                     android:text="تکرار بازی"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnRepeatModeD" android:layout_margin="8dp"
-                    android:padding="16dp" android:background="@drawable/btn_purple"
+                    android:padding="16dp" android:background="@drawable/btn_infinite"
                     android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"/>
             <Button
                     android:text="ادامه بازی"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnContinueInfinite"
                     android:layout_margin="8dp"
-                    android:padding="16dp" android:background="@drawable/btn_purple"
+                    android:padding="16dp" android:background="@drawable/btn_infinite"
                     android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"/>
         </LinearLayout>
         <Button
                 android:text="بازگشت به منو"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/btnBackModeD"
-                android:padding="16dp" android:background="@drawable/btn_purple"
+                android:padding="16dp" android:background="@drawable/btn_infinite"
                 android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/light"
                 android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"/>
     </LinearLayout>

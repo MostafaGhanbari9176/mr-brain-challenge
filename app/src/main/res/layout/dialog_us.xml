@@ -13,18 +13,25 @@
 
         <TextView
                 android:shadowColor="@color/light2"
+                android:text="طراح و برنامه نویس :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/txt_small_one"
+                android:textStyle="bold" android:textColor="@color/primaryColor" android:padding="4dp"
+        />
+        <TextView
+                android:shadowColor="@color/light2"
                 android:text="مصطفی قنبری"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:textSize="@dimen/txt_small_one"
                 android:textStyle="bold" android:textColor="@color/primaryColor" android:padding="4dp"
-                android:layout_marginBottom="8dp" android:layout_marginTop="16dp"/>
+        />
         <TextView
                 android:shadowColor="@color/light2"
                 android:text="GodHelot1@gmail.com"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:autoLink="email"
                 android:textSize="@dimen/txt_small_one" android:textStyle="bold" android:textColor="@color/primaryColor"
-                android:padding="4dp" android:layout_marginBottom="8dp"
+                android:padding="4dp"
                 android:textColorLink="@color/red"
         />
         <TextView
@@ -36,5 +43,24 @@
                 android:padding="4dp" android:layout_marginBottom="16dp"
                 android:textColorLink="@color/blue"
         />
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" android:background="@color/android" android:layout_marginBottom="8dp">
+        </LinearLayout>
+        <TextView
+                android:shadowColor="@color/light2"
+                android:text="صدا ها برگرفته شده از :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/txt_small_one"
+                android:textStyle="bold" android:textColor="@color/primaryColor" android:padding="4dp"
+        />
+        <TextView
+                android:shadowColor="@color/light2"
+                android:text="بازی سوپرماریو سگا"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/txt_small_one"
+                android:textStyle="bold" android:textColor="@color/primaryColor" android:padding="4dp"
+                android:layout_marginBottom="8dp"/>
     </LinearLayout>
 </RelativeLayout>

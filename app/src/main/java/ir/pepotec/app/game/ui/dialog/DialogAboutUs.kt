@@ -18,7 +18,7 @@ class DialogAboutUs(ctx: Context = App.instance) : Dialog(ctx) {
     init {
         val p = Point()
         (ctx as ActivityMain).windowManager.defaultDisplay.getRealSize(p)
-        val dialogSize = p.x * 0.9
+        val dialogSize = p.x 
         val v = LayoutInflater.from(ctx).inflate(R.layout.dialog_us, null, false)
         setContentView(v)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

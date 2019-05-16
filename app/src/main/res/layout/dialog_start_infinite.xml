@@ -10,7 +10,7 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:background="@drawable/gradient_night"
+            android:layout_height="wrap_content" android:background="@drawable/gradient_red_start"
             android:layoutDirection="rtl" android:gravity="center_horizontal" android:paddingTop="16dp"
             android:paddingBottom="16dp">
 
@@ -33,7 +33,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/btnEasyInfinite"
                         android:layout_margin="8dp"
-                        android:padding="16dp" android:background="@drawable/btn_purple"
+                        android:padding="16dp" android:background="@drawable/btn_infinite"
                         android:textSize="@dimen/txt_small_one" android:textStyle="bold"
                         android:textColor="@color/light"/>
                 <Button
@@ -41,7 +41,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/btnDificuktInfinite"
                         android:layout_margin="8dp"
-                        android:padding="16dp" android:background="@drawable/btn_purple"
+                        android:padding="16dp" android:background="@drawable/btn_infinite"
                         android:textSize="@dimen/txt_small_one" android:textStyle="bold"
                         android:textColor="@color/light"/>
             </LinearLayout>
@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/btnBackStartDialogInfinite"
                 android:layout_margin="16dp"
-                android:padding="16dp" android:background="@drawable/btn_purple"
+                android:padding="16dp" android:background="@drawable/btn_infinite"
                 android:textSize="@dimen/txt_small_one" android:textStyle="bold"
                 android:textColor="@color/light"/>
     </LinearLayout>

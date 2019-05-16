@@ -48,4 +48,9 @@
     <color name="stars_back_dot">#fff</color>
     <!--Clouds Back-->
     <color name="clouds_back_dot">#fff</color>
+    <!--Item Infinite-->
+    <color name="primary_light_infinite">#F68809</color>
+    <color name="primary_dark_infinite">#F44336</color>
+    <color name="light_infinite">#FFEB3B</color>
+    <color name="shadow_infinite">#FFC778</color>
 </resources>
