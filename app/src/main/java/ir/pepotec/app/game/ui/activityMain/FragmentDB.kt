@@ -72,6 +72,7 @@ class FragmentDB : Fragment() {
                 act.setView(FragmentHelpMovie())
                 dialog.cancel()
             }
+            setCancelable(false)
             show()
         }
     }

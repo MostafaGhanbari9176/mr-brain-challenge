@@ -3,7 +3,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" android:layoutDirection="rtl">
 
     <ImageView
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/btnReplayDialogWinner"
+                        android:id="@+id/btnNextDialogWinner"
                         android:background="@android:color/transparent"
                 />
             </LinearLayout>
@@ -85,7 +85,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/btnNextDialogWinner"
+                        android:id="@+id/btnReplayDialogWinner"
                         android:background="@android:color/transparent"
                 />
             </LinearLayout>

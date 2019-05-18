@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ir.pepotec.app.game.R
 import ir.pepotec.app.game.ui.App
@@ -74,7 +75,9 @@ class FragmentMainMenu : Fragment() {
                 val intent = Intent(Intent.ACTION_EDIT)
                 intent.data = Uri.parse("http://cafebazaar.ir/app/?id=${act.packageName}")
                 startActivity(intent)
-            }catch (e:Exception){}
+            }catch (e:Exception){
+                Toast.makeText(App.instance, "برای ثبت نظر,لطفا برنامه کافه بازار را نصب کنید.", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
