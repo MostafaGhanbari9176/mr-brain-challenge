@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parentLevelPresent">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@drawable/level_present_back"
+            android:id="@+id/imgLevelPresent"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.4">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.1">
+            <TextView
+                    android:text="مراحل مقدماتی"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/txtModeSubjectLevelPresent"
+                    android:gravity="center"
+                    android:textSize="@dimen/txt_normal" android:textStyle="bold" android:textColor="@color/dark"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.15">
+            <TextView
+                    android:text="135"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/txtLevelNumberLevelPresent"
+                    android:textColor="@color/dark" android:textStyle="bold" android:textSize="@dimen/txt_big"
+                    android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:layout_weight="0.35">
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

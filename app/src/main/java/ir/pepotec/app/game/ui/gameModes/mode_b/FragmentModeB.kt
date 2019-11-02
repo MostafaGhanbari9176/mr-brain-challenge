@@ -16,10 +16,7 @@ import ir.pepotec.app.game.model.local_data_base.ModeBDb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeBLevel
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.dialog.DialogFinishMode
-import ir.pepotec.app.game.ui.dialog.DialogLoser
-import ir.pepotec.app.game.ui.dialog.DialogWinner
-import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
+import ir.pepotec.app.game.ui.dialog.*
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.fragment_mode_b.*
@@ -56,6 +53,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
     }
 
     private fun initView() {
+        DialogLevelPresent(levelId, "حرفه ایی")
         animateBackgrounds()
         startImgBackAnimate()
         blockHeight = App.getBlockHeight().toInt()
@@ -144,7 +142,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
                         animRun = false
                     }
                     h.post { LLPuzzleModeB.translationY = value }
-                    if (value > limit) {
+                    if (LLPuzzleModeB.y > limit) {
                         if (abs(LLPuzzleModeB.x - LLSeatModeB.x) > 20 || abs(LLPuzzleModeB.width - LLSeatModeB.width) > 20) {
                             lose = true
                             animRun = false
@@ -154,7 +152,7 @@ class FragmentModeB : MyFragment(), GameCreatorB.GameCreatorInterface, ResualtDi
                         h.post { showDialogLoser() }
                         break
                     }
-                    Thread.sleep(5)
+                    Thread.sleep(10)
                 }
                 if (!lose) {
                     h.post { showDialogWinner() }

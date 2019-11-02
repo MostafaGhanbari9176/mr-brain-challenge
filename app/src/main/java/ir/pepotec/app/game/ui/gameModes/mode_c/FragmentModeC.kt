@@ -14,15 +14,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import ir.pepotec.app.game.R
-import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.model.local_data_base.ModeCDb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeCLevel
 import ir.pepotec.app.game.ui.App
-import ir.pepotec.app.game.ui.dialog.DialogFinishMode
-import ir.pepotec.app.game.ui.dialog.DialogLoser
-import ir.pepotec.app.game.ui.dialog.DialogWinner
-import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
+import ir.pepotec.app.game.ui.dialog.*
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.fragment_mode_c.*
@@ -55,6 +51,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (ctx as ActivityGame).windowManager.defaultDisplay.getRealSize(p)
+        DialogLevelPresent(levelId, "پیشرفته")
         (GameParentC.background as AnimationDrawable).apply {
             setEnterFadeDuration(2000)
             setExitFadeDuration(4000)
@@ -210,7 +207,7 @@ class FragmentModeC : MyFragment(), GameCreatorC.GameCreatorInterface, ResualtDi
                         h.post { showLoserDialog() }
                         break
                     }
-                    Thread.sleep(10)
+                    Thread.sleep(15)
                 }
                 if (!lose)
                     h.post { showDialogWinner() }

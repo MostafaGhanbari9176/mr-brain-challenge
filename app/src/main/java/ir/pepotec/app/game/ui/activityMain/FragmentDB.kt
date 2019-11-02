@@ -52,6 +52,9 @@ class FragmentDB : Fragment() {
     }
 
     private fun createGameModeData() {
+
+        // ************************************Dialog Text Show*************************************
+
         GameModeDb(ctx).save(GameModeData("a", "مقدماتی", 0, 0))
         GameModeDb(ctx).save(GameModeData("c", "پیشرفته", 0, 1))
         GameModeDb(ctx).save(GameModeData("b", "حرفه ایی", 0, 1))

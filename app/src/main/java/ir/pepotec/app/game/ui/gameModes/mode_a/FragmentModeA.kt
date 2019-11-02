@@ -19,16 +19,12 @@ import android.view.animation.BounceInterpolator
 import android.widget.LinearLayout
 import android.widget.Toast
 import ir.pepotec.app.game.R
-import ir.pepotec.app.game.model.Pref
 import ir.pepotec.app.game.model.local_data_base.ModeADb
 import ir.pepotec.app.game.presenter.PGameMode
 import ir.pepotec.app.game.presenter.PModeALevel
 import ir.pepotec.app.game.ui.App
 import ir.pepotec.app.game.ui.activityMain.ActivityMain
-import ir.pepotec.app.game.ui.dialog.DialogFinishMode
-import ir.pepotec.app.game.ui.dialog.DialogLoser
-import ir.pepotec.app.game.ui.dialog.DialogWinner
-import ir.pepotec.app.game.ui.dialog.ResualtDialogResponse
+import ir.pepotec.app.game.ui.dialog.*
 import ir.pepotec.app.game.ui.gameModes.ActivityGame
 import ir.pepotec.app.game.ui.uses.MyFragment
 import kotlinx.android.synthetic.main.fragment_mode_a.*
@@ -69,6 +65,7 @@ class FragmentModeA : MyFragment(), GameCreatorA.GameCreatorInterface,
     }
 
     private fun initViews() {
+        DialogLevelPresent(levelId, "مقدماتی")
         (GameParentA.background as AnimationDrawable).apply {
             setEnterFadeDuration(2000)
             setExitFadeDuration(4000)
