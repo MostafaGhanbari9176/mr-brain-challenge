@@ -7,6 +7,10 @@
 
 - My First Android Game
 
-## Installation
+### Download
      
 you can download the latest APK from [resources](../master/app/release/app-release.apk).
+
+### Preview
+
+you can see the gameplay on [aparat](https://www.aparat.com/v/um4xl)
